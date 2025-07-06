@@ -23,7 +23,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const navItems = [
   { name: 'Services', href: '#services' },
   { name: 'CEO Message', href: '#ceo-message' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Projects', href: '/projects' },
   { name: 'Testimonials', href: '#testimonials' },
 ];
 

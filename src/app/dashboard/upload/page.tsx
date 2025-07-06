@@ -16,11 +16,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 const projectSchema = z.object({
-  title: z.string().min(3, { message: 'Title must be at least 3 characters.' }),
+  title: z.string().optional(),
   category: z.enum(['Residential', 'Commercial', 'Renovation']),
   description: z.string().optional(),
+  showOnHomepage: z.boolean().default(false),
   image: z
     .instanceof(FileList)
     .refine((files) => files?.length === 1, 'An image is required.')
@@ -39,6 +42,7 @@ export default function UploadProjectsPage() {
     defaultValues: {
       title: '',
       description: '',
+      showOnHomepage: false,
     },
   });
 
@@ -48,23 +52,22 @@ export default function UploadProjectsPage() {
       const imageFile = data.image[0];
       const storageRef = ref(storage, `projects/${Date.now()}_${imageFile.name}`);
       
-      // Upload image to Firebase Storage
       const uploadResult = await uploadBytes(storageRef, imageFile);
       const imageUrl = await getDownloadURL(uploadResult.ref);
 
-      // Save project metadata to Firestore
       await addDoc(collection(db, 'projects'), {
-        title: data.title,
+        title: data.title || '',
         category: data.category,
         description: data.description || '',
         image: imageUrl,
+        showOnHomepage: data.showOnHomepage,
         hint: `${data.category.toLowerCase()} project`,
         createdAt: serverTimestamp(),
       });
 
       toast({
         title: 'Project Uploaded!',
-        description: 'Your new project has been added to the showcase.',
+        description: 'Your new project has been added.',
       });
       form.reset();
     } catch (error) {
@@ -85,7 +88,7 @@ export default function UploadProjectsPage() {
         <CardHeader>
           <CardTitle>Project Image Upload</CardTitle>
           <CardDescription>
-            Upload images for new projects to be displayed on the homepage.
+            Upload images for new projects. Use the toggle to feature a project on the homepage.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -96,7 +99,7 @@ export default function UploadProjectsPage() {
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Title</FormLabel>
+                    <FormLabel>Project Title (Optional)</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g., Modern Villa" {...field} disabled={loading} />
                     </FormControl>
@@ -158,6 +161,28 @@ export default function UploadProjectsPage() {
                       />
                     </FormControl>
                     <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="showOnHomepage"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <div className="space-y-0.5">
+                      <FormLabel>Show on Homepage</FormLabel>
+                      <CardDescription>
+                        Enable to feature this project in the homepage showcase.
+                      </CardDescription>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        disabled={loading}
+                      />
+                    </FormControl>
                   </FormItem>
                 )}
               />
