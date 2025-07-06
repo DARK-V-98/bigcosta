@@ -1,6 +1,6 @@
 'use server';
 
-import { adminAuth, adminDb } from '@/lib/firebase';
+import { adminAuth, adminDb } from '@/lib/firebase-admin';
 import { z } from 'zod';
 
 const SignupSchema = z.object({

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useContext, createContext, ReactNode } from 'react';
 import type { User } from 'firebase/auth';
 import { onIdTokenChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth } from '@/lib/firebase-client';
 import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
