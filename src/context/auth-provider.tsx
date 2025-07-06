@@ -21,6 +21,8 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const DEVELOPER_EMAIL = 'thimira.vishwa2003@gmail.com';
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [role, setRole] = useState<Role | null>(null);
@@ -51,19 +53,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // Set up a real-time listener for the user's document
         firestoreUnsubscribe = onSnapshot(userDocRef, async (docSnap) => {
           if (docSnap.exists()) {
-            setRole((docSnap.data().role as Role) || 'user');
+            const data = docSnap.data();
+            // This will correct the role if it was ever set to something else in the DB.
+            if (data.email === DEVELOPER_EMAIL) {
+                if (data.role !== 'developer') {
+                  // The role is incorrect in the DB, so we fix it.
+                  await setDoc(userDocRef, { role: 'developer' }, { merge: true });
+                }
+                setRole('developer');
+            } else {
+                setRole((data.role as Role) || 'user');
+            }
           } else {
             // Document doesn't exist, so create it.
-            // This handles cases where the doc wasn't created on signup,
-            // or for users who existed before this logic was added.
             try {
               if (user.email) {
+                const newRole: Role = user.email === DEVELOPER_EMAIL ? 'developer' : 'user';
                 await setDoc(userDocRef, {
                   email: user.email,
-                  role: 'user', // Default role
+                  role: newRole,
                   createdAt: serverTimestamp(),
                 });
-                // The listener will automatically fire again with the new doc,
+                // The listener will automatically fire with the new doc,
                 // and the role will be set then.
               } else {
                  setRole('user'); // Fallback if no email

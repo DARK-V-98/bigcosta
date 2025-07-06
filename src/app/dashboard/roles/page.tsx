@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 export default function ManageRolesPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4">Manage User Roles</h1>
        <Card>
         <CardHeader>
           <CardTitle>User Role Management</CardTitle>

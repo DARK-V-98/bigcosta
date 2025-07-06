@@ -2,11 +2,12 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-provider';
-import { SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { LayoutDashboard, Users, ImageUp } from 'lucide-react';
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -23,49 +24,40 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   if (!user || (role !== 'admin' && role !== 'developer')) {
     router.replace('/');
-    return null;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
+          <h1 className="text-2xl font-bold">Access Denied</h1>
+          <p className="text-muted-foreground mt-2">You do not have permission to view this page.</p>
+          <Button asChild className="mt-4">
+              <Link href="/">Return to Homepage</Link>
+          </Button>
+      </div>
+    );
   }
 
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen">
-        <Sidebar>
-          <SidebarHeader>
-             <h2 className="text-lg font-semibold p-2 group-data-[collapsible=icon]:hidden">Admin Dashboard</h2>
-          </SidebarHeader>
-          <SidebarContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                 <SidebarMenuButton asChild tooltip="Overview">
-                    <Link href="/dashboard">
-                      <LayoutDashboard />
-                      <span>Overview</span>
-                    </Link>
-                  </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                 <SidebarMenuButton asChild tooltip="Manage Roles">
-                    <Link href="/dashboard/roles">
-                      <Users />
-                      <span>Manage Roles</span>
-                    </Link>
-                  </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Upload Projects">
-                    <Link href="/dashboard/upload">
-                      <ImageUp />
-                      <span>Upload Projects</span>
-                    </Link>
-                  </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarContent>
-        </Sidebar>
-        <main className="flex-1 p-8 bg-background">
-          {children}
-        </main>
-      </div>
-    </SidebarProvider>
+    <div className="flex flex-col min-h-screen bg-background">
+      <Header />
+      <main className="flex-1 container mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold font-headline">Dashboard</h1>
+          <nav className="mt-6 border-b">
+            <div className="flex space-x-8">
+               <Link href="/dashboard" className="pb-3 text-muted-foreground hover:text-primary font-medium">
+                  Overview
+                </Link>
+               <Link href="/dashboard/roles" className="pb-3 text-muted-foreground hover:text-primary font-medium">
+                  Manage Roles
+                </Link>
+               <Link href="/dashboard/upload" className="pb-3 text-muted-foreground hover:text-primary font-medium">
+                  Upload Projects
+                </Link>
+            </div>
+          </nav>
+        </div>
+        {children}
+      </main>
+      <Footer />
+    </div>
   );
 }
