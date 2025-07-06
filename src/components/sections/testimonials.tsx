@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -42,7 +43,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-bl from-secondary to-background p-12 md:p-20">
+      <div className="rounded-3xl bg-gradient-to-bl from-secondary to-background p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
           <p className="mt-4 text-lg text-secondary-foreground">

@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Home, Building2, Wrench } from 'lucide-react';
 import AnimateOnScroll from "@/components/layout/animate-on-scroll";
@@ -25,7 +26,7 @@ const animationDelays = ["delay-0", "delay-150", "delay-300"];
 export default function Services() {
   return (
     <section id="services" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-12 md:p-20">
+      <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Core Services</h2>
           <p className="mt-4 text-lg text-secondary-foreground">

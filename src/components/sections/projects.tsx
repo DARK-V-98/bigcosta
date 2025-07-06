@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -51,7 +52,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-br from-primary to-background p-12 md:p-20">
+      <div className="rounded-3xl bg-gradient-to-br from-primary to-background p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Project Showcase</h2>
           <p className="mt-4 text-lg text-foreground">

@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -21,7 +22,7 @@ export default function Hero() {
                 <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight drop-shadow-lg animate-fade-in-out">
                   Building Dreams, Crafting Futures
                 </h1>
-                <p className="mt-6 text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
+                <p className="mt-6 text-base md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
                   We specialize in creating exceptional buildings and spaces through expert craftsmanship, innovative design, and a steadfast commitment to quality.
                 </p>
               </div>

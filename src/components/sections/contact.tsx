@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -44,7 +45,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-br from-background to-secondary p-12 md:p-20">
+      <div className="rounded-3xl bg-gradient-to-br from-background to-secondary p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">Get In Touch</h2>
           <p className="mt-4 text-lg text-foreground">
@@ -53,7 +54,7 @@ export default function Contact() {
         </div>
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
+            <div className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
               <Image
                 src="https://placehold.co/600x800.png"
                 alt="Construction blueprint"

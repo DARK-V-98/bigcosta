@@ -1,3 +1,4 @@
+
 'use client';
 
 import { ReactNode } from 'react';
@@ -48,7 +49,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <Header />
       <main className="flex-1 container mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold font-headline">Dashboard</h1>
+          <h1 className="text-3xl md:text-4xl font-bold font-headline">Dashboard</h1>
           <nav className="mt-6 border-b">
             <div className="flex space-x-8 overflow-x-auto">
                {navItems.map((item) => (

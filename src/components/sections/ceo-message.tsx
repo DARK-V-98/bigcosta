@@ -1,11 +1,12 @@
+
 import Image from 'next/image';
 
 export default function CeoMessage() {
   return (
     <section id="ceo-message" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-br from-background to-primary p-12 md:p-20">
+      <div className="rounded-3xl bg-gradient-to-br from-background to-primary p-8 md:p-12 lg:p-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative w-full h-[600px] rounded-2xl overflow-hidden shadow-lg group">
+          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-lg group">
             <Image
               src="https://placehold.co/500x600.png"
               alt="CEO of BigCosta Construction"

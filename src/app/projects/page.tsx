@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -57,7 +58,7 @@ export default function ProjectsPage() {
               Browse our complete portfolio of residential, commercial, and renovation projects.
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {loading ? (
               Array.from({ length: 9 }).map((_, index) => (
                 <Card key={index} className="overflow-hidden bg-card rounded-2xl">
