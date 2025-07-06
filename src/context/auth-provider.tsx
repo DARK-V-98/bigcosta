@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useContext, createContext, ReactNode } from 'react';
 import type { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 
 import { auth, db } from '@/lib/firebase-client';
 import { useRouter } from 'next/navigation';
@@ -35,42 +35,66 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setLoading(true);
+    let firestoreUnsubscribe: (() => void) | null = null;
+
+    const authUnsubscribe = onAuthStateChanged(auth, (user) => {
+      // Unsubscribe from any previous Firestore listener
+      if (firestoreUnsubscribe) {
+        firestoreUnsubscribe();
+      }
+
       if (user) {
+        setLoading(true);
         setUser(user);
         const userDocRef = doc(db, 'users', user.uid);
-        const userDoc = await getDoc(userDocRef);
 
-        if (userDoc.exists()) {
-            setRole((userDoc.data().role as Role) || 'user');
-        } else {
+        // Set up a real-time listener for the user's document
+        firestoreUnsubscribe = onSnapshot(userDocRef, async (docSnap) => {
+          if (docSnap.exists()) {
+            setRole((docSnap.data().role as Role) || 'user');
+          } else {
             // Document doesn't exist, so create it.
             // This handles cases where the doc wasn't created on signup,
             // or for users who existed before this logic was added.
             try {
-                if (user.email) {
-                    await setDoc(userDocRef, {
-                        email: user.email,
-                        role: 'user', // Default role
-                        createdAt: serverTimestamp(),
-                    });
-                }
-                setRole('user');
+              if (user.email) {
+                await setDoc(userDocRef, {
+                  email: user.email,
+                  role: 'user', // Default role
+                  createdAt: serverTimestamp(),
+                });
+                // The listener will automatically fire again with the new doc,
+                // and the role will be set then.
+              } else {
+                 setRole('user'); // Fallback if no email
+              }
             } catch (error) {
-                console.error("Error creating Firestore document for user:", error);
-                // Fallback to 'user' role even if write fails
-                setRole('user');
+              console.error("Error creating Firestore document for user:", error);
+              setRole('user'); // Fallback to 'user' role even if write fails
             }
-        }
+          }
+          setLoading(false);
+        }, (error) => {
+          console.error("Error listening to user document:", error);
+          setUser(null);
+          setRole(null);
+          setLoading(false);
+        });
+
       } else {
         setUser(null);
         setRole(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
-    return () => unsubscribe();
+    // Cleanup function
+    return () => {
+      authUnsubscribe();
+      if (firestoreUnsubscribe) {
+        firestoreUnsubscribe();
+      }
+    };
   }, []);
 
   return (
