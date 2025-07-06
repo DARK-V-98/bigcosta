@@ -42,11 +42,11 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 md:py-28 bg-primary">
+    <section id="projects" className="py-20 md:py-28 bg-gradient-to-br from-primary to-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary-foreground">Project Showcase</h2>
-          <p className="mt-4 text-lg text-primary-foreground">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Project Showcase</h2>
+          <p className="mt-4 text-lg text-foreground">
             Explore a selection of our finest work, a testament to our commitment to quality and craftsmanship.
           </p>
         </div>

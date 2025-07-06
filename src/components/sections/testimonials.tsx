@@ -41,7 +41,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-secondary">
+    <section id="testimonials" className="py-20 md:py-28 bg-gradient-to-bl from-secondary to-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>

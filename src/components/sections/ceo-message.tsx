@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function CeoMessage() {
   return (
-    <section id="ceo-message" className="py-20 md:py-28 bg-background">
+    <section id="ceo-message" className="py-20 md:py-28 bg-gradient-to-br from-background to-primary">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[600px] rounded-lg overflow-hidden shadow-lg group">

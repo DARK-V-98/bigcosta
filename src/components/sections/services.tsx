@@ -21,7 +21,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-28 bg-secondary">
+    <section id="services" className="py-20 md:py-28 bg-gradient-to-br from-secondary to-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Core Services</h2>
