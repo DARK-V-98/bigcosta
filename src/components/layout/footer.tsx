@@ -54,6 +54,17 @@ export default function Footer() {
         <Separator className="my-8 bg-border" />
         <div className="text-center text-sm">
           <p>© {new Date().getFullYear()} BigCosta Construction. All rights reserved.</p>
+          <p className="mt-2">
+            Website powered by{' '}
+            <a 
+              href="https://www.esystemlk.xyz" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-primary transition-colors"
+            >
+              esystemlk
+            </a>
+          </p>
         </div>
       </div>
     </footer>
