@@ -41,7 +41,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-muted/50">
+    <section id="testimonials" className="py-20 md:py-28 bg-muted">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
@@ -60,13 +60,13 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-4 h-full">
-                    <Card className="h-full flex flex-col justify-between shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-xl bg-card/80 backdrop-blur-sm">
+                    <Card className="h-full flex flex-col justify-between shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-xl bg-card">
                       <CardContent className="p-6 flex-grow">
-                        <blockquote className="italic text-card-foreground/90 border-l-4 border-primary pl-4">
+                        <blockquote className="italic text-card-foreground border-l-4 border-primary pl-4">
                           "{testimonial.quote}"
                         </blockquote>
                       </CardContent>
-                      <div className="p-6 bg-black/20 flex items-center gap-4 rounded-b-lg">
+                      <div className="p-6 bg-muted flex items-center gap-4 rounded-b-lg">
                         <Avatar className="h-12 w-12">
                           <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
                           <AvatarFallback>{testimonial.initials}</AvatarFallback>

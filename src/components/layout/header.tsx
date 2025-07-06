@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
-      scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+      scrolled ? "border-b border-border bg-background" : "bg-transparent"
     )}>
       <div className="container flex h-20 max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-3 mr-4">
@@ -38,7 +38,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((item) => (
-            <Link key={item.name} href={item.href} className="transition-colors text-foreground/80 hover:text-primary">
+            <Link key={item.name} href={item.href} className="transition-colors text-muted-foreground hover:text-primary">
               {item.name}
             </Link>
           ))}

@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <Card className="bg-card/80 backdrop-blur-sm border border-border/50">
+            <Card className="bg-card">
               <CardHeader>
                 <CardTitle className="font-headline">Send us a Message</CardTitle>
                 <CardDescription>We'll get back to you within 24 hours.</CardDescription>
@@ -96,7 +96,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} className="bg-background/50 placeholder:text-muted-foreground" />
+                            <Input placeholder="John Doe" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -109,7 +109,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="john.doe@example.com" {...field} className="bg-background/50 placeholder:text-muted-foreground" />
+                            <Input placeholder="john.doe@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -122,7 +122,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="(123) 456-7890" {...field} className="bg-background/50 placeholder:text-muted-foreground" />
+                            <Input placeholder="(123) 456-7890" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -135,7 +135,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Your Message</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background/50 placeholder:text-muted-foreground" {...field} />
+                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

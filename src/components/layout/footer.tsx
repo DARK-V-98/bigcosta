@@ -12,7 +12,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-muted/80 text-muted-foreground">
+    <footer className="bg-muted text-muted-foreground">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
@@ -49,7 +49,7 @@ export default function Footer() {
              </div>
           </div>
         </div>
-        <Separator className="my-8 bg-border/50" />
+        <Separator className="my-8 bg-border" />
         <div className="text-center text-sm">
           <p>© {new Date().getFullYear()} BigCosta Construction. All rights reserved.</p>
         </div>
