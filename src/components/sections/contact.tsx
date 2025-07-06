@@ -43,7 +43,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28">
+    <section id="contact" className="py-20 md:py-28 bg-background">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">Get In Touch</h2>

@@ -21,11 +21,11 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-28 bg-muted">
+    <section id="services" className="py-20 md:py-28 bg-secondary">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Core Services</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-secondary-foreground">
             We provide a wide range of construction services, tailored to meet the unique needs of each client and project.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function Services() {
                 <CardTitle className="font-headline mt-4">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
+                <CardDescription className="text-secondary-foreground">{service.description}</CardDescription>
               </CardContent>
             </Card>
           ))}
