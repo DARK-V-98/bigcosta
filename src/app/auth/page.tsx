@@ -113,12 +113,16 @@ export default function AuthPage() {
         values.email,
         values.password
       );
+
+      if (!userCredential || !userCredential.user || !userCredential.user.email) {
+          throw new Error('Could not create user account. Please try again.');
+      }
+
       const { user } = userCredential;
 
-      const result = await setupNewUser({ uid: user.uid, email: user.email! });
-      if (!result.success) {
-        // This will be caught by the generic error handler below
-        throw new Error(result.error || 'Failed to set up new user.');
+      const result = await setupNewUser({ uid: user.uid, email: user.email });
+      if (!result || !result.success) {
+        throw new Error(result?.error || 'Failed to set up new user profile in the database.');
       }
 
       router.push('/');
@@ -152,13 +156,18 @@ export default function AuthPage() {
     setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
+      
+      if (!result || !result.user || !result.user.email) {
+          throw new Error('Could not sign in with Google. Please try again.');
+      }
+
       const user = result.user;
       const additionalInfo = getAdditionalUserInfo(result);
       
       if (additionalInfo?.isNewUser) {
-        const setupResult = await setupNewUser({ uid: user.uid, email: user.email! });
-        if (!setupResult.success) {
-          throw new Error(setupResult.error || 'Failed to set up new user.');
+        const setupResult = await setupNewUser({ uid: user.uid, email: user.email });
+        if (!setupResult || !setupResult.success) {
+          throw new Error(setupResult.error || 'Failed to set up new user profile.');
         }
       }
       

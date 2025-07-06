@@ -1,6 +1,7 @@
 'use server';
 
 import { adminAuth, adminDb } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 import { z } from 'zod';
 
 const SignupSchema = z.object({
@@ -20,7 +21,7 @@ export async function setupNewUser(data: z.infer<typeof SignupSchema>) {
     await adminDb.collection('users').doc(uid).set({
       email: email,
       role: 'user',
-      createdAt: new Date(),
+      createdAt: FieldValue.serverTimestamp(),
     });
 
     return { success: true };
@@ -29,6 +30,7 @@ export async function setupNewUser(data: z.infer<typeof SignupSchema>) {
     if (error instanceof z.ZodError) {
       return { success: false, error: 'Invalid data provided.' };
     }
-    return { success: false, error: 'An unexpected error occurred.' };
+    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
+    return { success: false, error: `User setup failed: ${errorMessage}` };
   }
 }
