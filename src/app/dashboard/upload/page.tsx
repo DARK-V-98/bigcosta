@@ -17,18 +17,23 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
 
 const projectSchema = z.object({
   title: z.string().optional(),
   category: z.enum(['Residential', 'Commercial', 'Renovation']),
   description: z.string().optional(),
   showOnHomepage: z.boolean().default(false),
-  image: z
+  images: z
     .instanceof(FileList)
-    .refine((files) => files?.length === 1, 'An image is required.')
-    .refine((files) => files?.[0]?.type.startsWith('image/'), 'Only image files are accepted.')
-    .refine((files) => files?.[0]?.size <= 5 * 1024 * 1024, 'Image size must be less than 5MB.'),
+    .refine((files) => files?.length >= 1, 'At least one image is required.')
+    .refine(
+        (files) => Array.from(files).every((file) => file.size <= 5 * 1024 * 1024),
+        'Each image size must be less than 5MB.'
+    )
+    .refine(
+        (files) => Array.from(files).every((file) => file.type.startsWith('image/')),
+        'Only image files are accepted.'
+    ),
 });
 
 type ProjectFormValues = z.infer<typeof projectSchema>;
@@ -49,17 +54,21 @@ export default function UploadProjectsPage() {
   const onSubmit = async (data: ProjectFormValues) => {
     setLoading(true);
     try {
-      const imageFile = data.image[0];
-      const storageRef = ref(storage, `projects/${Date.now()}_${imageFile.name}`);
+      const imageFiles = Array.from(data.images);
       
-      const uploadResult = await uploadBytes(storageRef, imageFile);
-      const imageUrl = await getDownloadURL(uploadResult.ref);
+      const imageUrls = await Promise.all(
+        imageFiles.map(async (file) => {
+          const storageRef = ref(storage, `projects/${Date.now()}_${file.name}`);
+          const uploadResult = await uploadBytes(storageRef, file);
+          return getDownloadURL(uploadResult.ref);
+        })
+      );
 
       await addDoc(collection(db, 'projects'), {
         title: data.title || '',
         category: data.category,
         description: data.description || '',
-        image: imageUrl,
+        images: imageUrls,
         showOnHomepage: data.showOnHomepage,
         hint: `${data.category.toLowerCase()} project`,
         createdAt: serverTimestamp(),
@@ -70,6 +79,10 @@ export default function UploadProjectsPage() {
         description: 'Your new project has been added.',
       });
       form.reset();
+      // Need to specifically reset the file input as it's not always controlled
+      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
+      if(fileInput) fileInput.value = '';
+
     } catch (error) {
       console.error('Error uploading project:', error);
       toast({
@@ -88,7 +101,7 @@ export default function UploadProjectsPage() {
         <CardHeader>
           <CardTitle>Project Image Upload</CardTitle>
           <CardDescription>
-            Upload images for new projects. Use the toggle to feature a project on the homepage.
+            Upload one or more images for new projects. Use the toggle to feature a project on the homepage.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -147,14 +160,15 @@ export default function UploadProjectsPage() {
               
               <FormField
                 control={form.control}
-                name="image"
+                name="images"
                 render={({ field: { onChange, value, ...rest } }) => (
                   <FormItem>
-                    <FormLabel>Project Image</FormLabel>
+                    <FormLabel>Project Images</FormLabel>
                     <FormControl>
                       <Input 
                         type="file" 
                         accept="image/*"
+                        multiple
                         onChange={(e) => onChange(e.target.files)}
                         {...rest}
                         disabled={loading}

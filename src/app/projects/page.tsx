@@ -3,32 +3,30 @@
 
 import { useState, useEffect } from 'react';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
-import Image from 'next/image';
 
 import { db } from '@/lib/firebase-client';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import ProjectCard from '@/components/project-card';
+import ImageCarouselDialog from '@/components/image-carousel-dialog';
 
 interface Project {
   id: string;
   title?: string;
   category: string;
-  image: string;
+  images: string[];
   hint: string;
 }
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const [isCarouselOpen, setIsCarouselOpen] = useState(false);
+  const [carouselImages, setCarouselImages] = useState<string[]>([]);
+  const [carouselStartIndex, setCarouselStartIndex] = useState(0);
 
   useEffect(() => {
     const q = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
@@ -47,6 +45,12 @@ export default function ProjectsPage() {
     return () => unsubscribe();
   }, []);
 
+  const handleCardClick = (images: string[], startIndex: number) => {
+    setCarouselImages(images);
+    setCarouselStartIndex(startIndex);
+    setIsCarouselOpen(true);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -63,7 +67,7 @@ export default function ProjectsPage() {
               Array.from({ length: 9 }).map((_, index) => (
                 <Card key={index} className="overflow-hidden bg-card rounded-2xl">
                   <CardContent className="p-0">
-                    <Skeleton className="w-full h-[250px]" />
+                    <Skeleton className="w-full h-auto aspect-[3/2]" />
                     <div className="p-6">
                       <Skeleton className="h-6 w-3/4 mb-2" />
                       <Skeleton className="h-4 w-1/2" />
@@ -73,29 +77,7 @@ export default function ProjectsPage() {
               ))
             ) : (
               projects.map((project) => (
-                <div key={project.id} onClick={() => setSelectedImage(project.image)} className="cursor-pointer">
-                  <Card className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl h-full">
-                    <CardContent className="p-0 relative">
-                      <Image
-                        src={project.image}
-                        alt={project.title || 'Project Image'}
-                        data-ai-hint={project.hint}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
-                      />
-                      {project.title && (
-                        <>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                          <div className="absolute bottom-0 left-0 p-6">
-                            <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
-                            <p className="text-primary font-semibold">{project.category}</p>
-                          </div>
-                        </>
-                      )}
-                    </CardContent>
-                  </Card>
-                </div>
+                <ProjectCard key={project.id} project={project} onCardClick={handleCardClick} />
               ))
             )}
           </div>
@@ -107,21 +89,12 @@ export default function ProjectsPage() {
         </section>
       </main>
       <Footer />
-      {selectedImage && (
-        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-          <DialogContent className="max-w-4xl p-0 bg-transparent border-0">
-            <DialogTitle className="sr-only">Enlarged Project Image</DialogTitle>
-            <DialogDescription className="sr-only">A larger view of the selected project image.</DialogDescription>
-            <Image
-              src={selectedImage}
-              alt="Enlarged project view"
-              width={1200}
-              height={800}
-              className="rounded-lg object-contain w-full h-full"
-            />
-          </DialogContent>
-        </Dialog>
-      )}
+       <ImageCarouselDialog
+        open={isCarouselOpen}
+        onOpenChange={setIsCarouselOpen}
+        images={carouselImages}
+        startIndex={carouselStartIndex}
+      />
     </div>
   );
 }

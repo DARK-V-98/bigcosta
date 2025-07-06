@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { MoreVertical, Edit, Trash2, Loader2 } from 'lucide-react';
+import { MoreVertical, Edit, Trash2, Loader2, ImageIcon } from 'lucide-react';
 
 import { db, storage } from '@/lib/firebase-client';
 import { useToast } from '@/hooks/use-toast';
@@ -53,7 +53,7 @@ interface Project {
   title?: string;
   category: 'Residential' | 'Commercial' | 'Renovation';
   description?: string;
-  image: string;
+  images: string[];
   showOnHomepage: boolean;
   hint: string;
 }
@@ -120,9 +120,17 @@ export default function ManageProjectsPage() {
     if (!selectedProject) return;
     setIsSubmitting(true);
     try {
-      // Delete image from storage
-      const imageRef = ref(storage, selectedProject.image);
-      await deleteObject(imageRef);
+      // Delete images from storage
+      if (selectedProject.images && selectedProject.images.length > 0) {
+        const deletePromises = selectedProject.images.map(imageUrl => {
+            const imageRef = ref(storage, imageUrl);
+            return deleteObject(imageRef).catch(err => {
+                // Log error but don't fail the whole process if one image fails to delete
+                console.error(`Failed to delete image ${imageUrl}:`, err);
+            });
+        });
+        await Promise.all(deletePromises);
+      }
 
       // Delete document from firestore
       await deleteDoc(doc(db, 'projects', selectedProject.id));
@@ -130,19 +138,7 @@ export default function ManageProjectsPage() {
       toast({ title: 'Success', description: 'Project deleted successfully.' });
     } catch (error: any) {
       console.error("Error deleting project:", error);
-      let description = "Could not delete project. Please try again.";
-      if (error.code === 'storage/object-not-found') {
-        // If image doesn't exist, still try to delete firestore doc
-        try {
-            await deleteDoc(doc(db, 'projects', selectedProject.id));
-            toast({ title: 'Success', description: 'Project deleted successfully (image not found in storage).' });
-        } catch (dbError) {
-            console.error("Error deleting firestore doc after storage error:", dbError);
-            toast({ title: 'Error', description, variant: 'destructive' });
-        }
-      } else {
-         toast({ title: 'Error', description: error.message || description, variant: 'destructive' });
-      }
+      toast({ title: 'Error', description: 'Could not delete project. Please try again.', variant: 'destructive' });
     } finally {
       setIsSubmitting(false);
       setIsDeleteDialogOpen(false);
@@ -188,6 +184,7 @@ export default function ManageProjectsPage() {
                   <TableHead className="w-[80px]">Image</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Category</TableHead>
+                  <TableHead>Images</TableHead>
                   <TableHead>On Homepage</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -199,6 +196,7 @@ export default function ManageProjectsPage() {
                       <TableCell><Skeleton className="h-12 w-16 rounded-md" /></TableCell>
                       <TableCell><Skeleton className="h-4 w-[200px]" /></TableCell>
                       <TableCell><Skeleton className="h-4 w-[100px]" /></TableCell>
+                      <TableCell><Skeleton className="h-4 w-[50px]" /></TableCell>
                       <TableCell><Skeleton className="h-6 w-12" /></TableCell>
                       <TableCell className="text-right"><Skeleton className="h-8 w-8 ml-auto" /></TableCell>
                     </TableRow>
@@ -207,11 +205,20 @@ export default function ManageProjectsPage() {
                   projects.map((project) => (
                     <TableRow key={project.id}>
                       <TableCell>
-                        <Image src={project.image} alt={project.title || 'Project'} width={64} height={48} className="rounded-md object-cover" />
+                        {project.images && project.images.length > 0 ? (
+                           <Image src={project.images[0]} alt={project.title || 'Project'} width={64} height={48} className="rounded-md object-cover" />
+                        ) : (
+                            <div className="h-12 w-16 rounded-md bg-muted flex items-center justify-center">
+                                <ImageIcon className="h-6 w-6 text-muted-foreground" />
+                            </div>
+                        )}
                       </TableCell>
                       <TableCell className="font-medium">{project.title || <span className="text-muted-foreground">Untitled</span>}</TableCell>
                       <TableCell>
                         <Badge variant="secondary">{project.category}</Badge>
+                      </TableCell>
+                       <TableCell>
+                        <Badge variant="outline">{project.images?.length || 0}</Badge>
                       </TableCell>
                       <TableCell>
                         <Badge variant={project.showOnHomepage ? 'default' : 'outline'}>
@@ -256,7 +263,7 @@ export default function ManageProjectsPage() {
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete the project
-              and its image from the servers.
+              and all its images from the servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -275,7 +282,7 @@ export default function ManageProjectsPage() {
           <DialogHeader>
             <DialogTitle>Edit Project</DialogTitle>
             <DialogDescription>
-              Make changes to the project details. Click save when you're done.
+              Make changes to the project details. Click save when you're done. Note: Images cannot be edited here.
             </DialogDescription>
           </DialogHeader>
           <Form {...form}>
