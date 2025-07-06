@@ -7,7 +7,12 @@ import { db } from '@/lib/firebase-client';
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from "next/image";
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 
 interface Project {
@@ -103,6 +108,8 @@ export default function Projects() {
        {selectedImage && (
         <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
           <DialogContent className="max-w-4xl p-0 bg-transparent border-0">
+            <DialogTitle className="sr-only">Enlarged Project Image</DialogTitle>
+            <DialogDescription className="sr-only">A larger view of the selected project image.</DialogDescription>
             <Image
               src={selectedImage}
               alt="Enlarged project view"
