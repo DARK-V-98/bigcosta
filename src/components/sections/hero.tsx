@@ -13,7 +13,7 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-3xl animated-light-bg"></div>
           
           <div 
-            className="absolute inset-[3px] rounded-3xl bg-black flex items-center justify-center"
+            className="absolute inset-[3px] rounded-3xl bg-gradient-to-br from-primary via-black to-secondary flex items-center justify-center"
           >
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
               <div 
