@@ -1,18 +1,26 @@
-
 'use client';
 
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/context/auth-provider';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
+
+const navItems = [
+    { name: 'Overview', href: '/dashboard' },
+    { name: 'Manage Roles', href: '/dashboard/roles' },
+    { name: 'Upload Projects', href: '/dashboard/upload' },
+    { name: 'Manage Projects', href: '/dashboard/manage-projects' },
+];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { user, role, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   if (loading) {
     return (
@@ -42,16 +50,19 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <div className="mb-8">
           <h1 className="text-4xl font-bold font-headline">Dashboard</h1>
           <nav className="mt-6 border-b">
-            <div className="flex space-x-8">
-               <Link href="/dashboard" className="pb-3 text-muted-foreground hover:text-primary font-medium">
-                  Overview
+            <div className="flex space-x-8 overflow-x-auto">
+               {navItems.map((item) => (
+                 <Link 
+                    key={item.name} 
+                    href={item.href} 
+                    className={cn(
+                        "pb-3 font-medium transition-colors whitespace-nowrap",
+                        pathname === item.href ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-primary'
+                    )}
+                >
+                  {item.name}
                 </Link>
-               <Link href="/dashboard/roles" className="pb-3 text-muted-foreground hover:text-primary font-medium">
-                  Manage Roles
-                </Link>
-               <Link href="/dashboard/upload" className="pb-3 text-muted-foreground hover:text-primary font-medium">
-                  Upload Projects
-                </Link>
+               ))}
             </div>
           </nav>
         </div>
