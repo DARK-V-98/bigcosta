@@ -25,16 +25,18 @@ export default function AnimateOnScroll({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(element);
-        }
+        // Set visibility based on whether the element is intersecting the viewport.
+        // This will trigger the animation every time it enters the screen.
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      }
     );
 
     observer.observe(element);
 
+    // Cleanup the observer when the component unmounts
     return () => {
       if (element) {
         observer.unobserve(element);
