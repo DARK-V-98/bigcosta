@@ -12,7 +12,7 @@ export default function Hero() {
           <div className="absolute inset-0 [clip-path:polygon(15%_0%,_85%_0%,_100%_100%,_0%_100%)] animated-light-bg"></div>
           
           <div 
-            className="absolute inset-[3px] [clip-path:polygon(15%_0%,_85%_0%,_100%_100%,_0%_100%)] bg-gradient-to-br from-primary to-secondary flex items-center justify-center"
+            className="absolute inset-[3px] [clip-path:polygon(15%_0%,_85%_0%,_100%_100%,_0%_100%)] bg-black flex items-center justify-center"
           >
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
               <div 
