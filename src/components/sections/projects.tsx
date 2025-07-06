@@ -34,7 +34,18 @@ export default function Projects() {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const projectsData: Project[] = [];
       querySnapshot.forEach((doc) => {
-        projectsData.push({ id: doc.id, ...doc.data() } as Project);
+        const data = doc.data();
+        let images: string[] = [];
+        // Backward compatibility: handle old 'image' (string) and new 'images' (array)
+        if (data.images && Array.isArray(data.images)) {
+          images = data.images;
+        } else if (data.image && typeof data.image === 'string') {
+          images = [data.image];
+        }
+
+        if (images.length > 0) {
+            projectsData.push({ id: doc.id, ...data, images } as Project);
+        }
       });
       setProjects(projectsData);
       setLoading(false);
