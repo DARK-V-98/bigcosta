@@ -41,51 +41,49 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="overflow-hidden transform -skew-y-3 bg-gradient-to-bl from-secondary to-background">
-      <div className="transform skew-y-3 py-20 md:py-28">
-        <div className="container mx-auto">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
-            <p className="mt-4 text-lg text-secondary-foreground">
-              We take pride in our work, but don't just take our word for it. Here's what our satisfied clients have to say.
-            </p>
-          </div>
-          <div className="mt-12 max-w-5xl mx-auto">
-            <Carousel
-              opts={{
-                align: 'start',
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-4 h-full">
-                      <Card className="h-full flex flex-col justify-between shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-xl bg-card">
-                        <CardContent className="p-6 flex-grow">
-                          <blockquote className="italic text-card-foreground border-l-4 border-primary pl-4">
-                            "{testimonial.quote}"
-                          </blockquote>
-                        </CardContent>
-                        <div className="p-6 bg-muted flex items-center gap-4 rounded-b-lg">
-                          <Avatar className="h-12 w-12">
-                            <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
-                            <AvatarFallback>{testimonial.initials}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="font-bold text-foreground">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                          </div>
+    <section id="testimonials" className="container mx-auto px-4">
+      <div className="rounded-3xl bg-gradient-to-bl from-secondary to-background p-12 md:p-20">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+          <p className="mt-4 text-lg text-secondary-foreground">
+            We take pride in our work, but don't just take our word for it. Here's what our satisfied clients have to say.
+          </p>
+        </div>
+        <div className="mt-12 max-w-5xl mx-auto">
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-4 h-full">
+                    <Card className="h-full flex flex-col justify-between shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-xl bg-card">
+                      <CardContent className="p-6 flex-grow">
+                        <blockquote className="italic text-card-foreground border-l-4 border-primary pl-4">
+                          "{testimonial.quote}"
+                        </blockquote>
+                      </CardContent>
+                      <div className="p-6 bg-muted flex items-center gap-4 rounded-b-lg">
+                        <Avatar className="h-12 w-12">
+                          <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
+                          <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-bold text-foreground">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                         </div>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
-            </Carousel>
-          </div>
+                      </div>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </div>
     </section>
