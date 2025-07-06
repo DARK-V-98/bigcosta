@@ -5,13 +5,12 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
+    <section className="relative h-[80vh] w-full flex items-center justify-center text-center overflow-hidden rounded-2xl shadow-xl">
       {/* Background Image */}
       <div className="absolute inset-0 z-[-1]">
         <Image
-          src="https://placehold.co/1920x1080.png"
+          src="/hr.jpg"
           alt="Modern architectural building"
-          data-ai-hint="modern architecture"
           fill
           className="object-cover"
           priority
