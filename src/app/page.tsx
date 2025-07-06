@@ -5,7 +5,6 @@ import Services from '@/components/sections/services';
 import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
-import CeoMessage from '@/components/sections/ceo-message';
 import AnimateOnScroll from '@/components/layout/animate-on-scroll';
 
 export default function Home() {
@@ -19,9 +18,6 @@ export default function Home() {
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-right-32 duration-1000">
           <Projects />
-        </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
-          <CeoMessage />
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Testimonials />
