@@ -52,7 +52,7 @@ export default function Projects() {
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300">
+            <Card key={index} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card/80">
               <CardContent className="p-0 relative">
                 <Image
                   src={project.image}

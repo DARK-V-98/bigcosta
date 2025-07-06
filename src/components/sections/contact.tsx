@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <Card>
+            <Card className="bg-card/80">
               <CardHeader>
                 <CardTitle className="font-headline">Send us a Message</CardTitle>
                 <CardDescription>We'll get back to you within 24 hours.</CardDescription>
