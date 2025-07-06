@@ -26,10 +26,38 @@
   height: 200%;
   background-image: conic-gradient(
     transparent,
-    hsl(24.6, 95%, 53.1%),
+    hsl(var(--primary)),
     transparent 30%
   );
   animation: rotate-light 4s linear infinite;
+}
+
+@keyframes pulse-text-neon {
+  0%,
+  100% {
+    text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary)), 0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent)), 0 0 40px hsl(var(--accent));
+  }
+  50% {
+    text-shadow: 0 0 2px hsl(var(--primary)), 0 0 5px hsl(var(--primary)), 0 0 8px hsl(var(--primary)), 0 0 10px hsl(var(--accent)), 0 0 15px hsl(var(--accent)), 0 0 20px hsl(var(--accent));
+  }
+}
+
+@keyframes pulse-box-neon {
+  0%,
+  100% {
+    box-shadow: 0 0 3px hsl(var(--primary)), 0 0 5px hsl(var(--primary)), 0 0 8px hsl(var(--accent));
+  }
+  50% {
+    box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
+  }
+}
+
+.animate-neon-text {
+  animation: pulse-text-neon 3s ease-in-out infinite;
+}
+
+.animate-neon-button {
+  animation: pulse-box-neon 2s ease-in-out infinite;
 }
 
 body {
