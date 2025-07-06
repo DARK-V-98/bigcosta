@@ -1,6 +1,8 @@
+
 import Link from 'next/link';
-import { Building, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Facebook, Twitter, Instagram } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import Image from 'next/image';
 
 export default function Footer() {
   const navItems = [
@@ -17,7 +19,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Building className="h-8 w-8 text-primary" />
+              <Image src="/logobc.png" alt="BigCosta Construction Logo" width={32} height={32} className="h-8 w-8" />
               <span className="font-headline text-xl font-bold text-foreground">BigCosta Construction</span>
             </Link>
             <p className="text-sm text-center md:text-left">Building your vision, one brick at a time.</p>

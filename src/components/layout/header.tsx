@@ -1,8 +1,10 @@
+
 'use client';
 
 import Link from 'next/link';
-import { Building, Menu, LogOut, LayoutDashboard } from 'lucide-react';
+import { Menu, LogOut, LayoutDashboard } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 import { useAuth } from '@/context/auth-provider';
 import { cn } from '@/lib/utils';
@@ -48,9 +50,9 @@ export default function Header() {
       "sticky top-0 z-50 w-full transition-all duration-300",
       scrolled ? "border-b border-border bg-background" : "bg-transparent"
     )}>
-      <div className="container flex h-20 max-w-7xl items-center justify-between">
+      <div className="container flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 mr-4">
-          <Building className="h-8 w-8 text-primary" />
+          <Image src="/logobc.png" alt="BigCosta Construction Logo" width={32} height={32} className="h-8 w-8" />
           <span className="font-headline text-2xl font-bold text-foreground">BigCosta Construction</span>
         </Link>
         
@@ -121,7 +123,7 @@ export default function Header() {
               <SheetContent side="right">
                 <div className="grid gap-6 p-6">
                   <Link href="/" className="flex items-center gap-2 mb-4">
-                    <Building className="h-8 w-8 text-primary" />
+                    <Image src="/logobc.png" alt="BigCosta Construction Logo" width={32} height={32} className="h-8 w-8" />
                     <span className="font-headline text-xl font-bold">BigCosta Construction</span>
                   </Link>
                   <nav className="grid gap-4">
