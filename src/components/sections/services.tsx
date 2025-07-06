@@ -21,8 +21,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="overflow-hidden transform -skew-y-3 bg-gradient-to-br from-secondary to-background">
-      <div className="transform skew-y-3 py-20 md:py-28">
+    <section id="services" className="overflow-hidden transform skew-y-3 bg-gradient-to-br from-secondary to-background">
+      <div className="transform -skew-y-3 py-20 md:py-28">
         <div className="container mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Core Services</h2>
