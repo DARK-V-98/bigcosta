@@ -7,6 +7,8 @@ import { db } from '@/lib/firebase-client';
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from "next/image";
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+
 
 interface Project {
   id: string;
@@ -19,6 +21,7 @@ interface Project {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const q = query(
@@ -65,27 +68,29 @@ export default function Projects() {
              ))
           ) : (
             projects.map((project) => (
-              <Card key={project.id} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl">
-                <CardContent className="p-0 relative">
-                  <Image
-                    src={project.image}
-                    alt={project.title || project.category}
-                    data-ai-hint={project.hint}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
-                  />
-                  {project.title && (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 p-6">
-                        <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
-                        <p className="text-primary font-semibold">{project.category}</p>
-                      </div>
-                    </>
-                  )}
-                </CardContent>
-              </Card>
+              <div key={project.id} onClick={() => setSelectedImage(project.image)} className="cursor-pointer">
+                <Card className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl h-full">
+                  <CardContent className="p-0 relative">
+                    <Image
+                      src={project.image}
+                      alt={project.title || 'Project Image'}
+                      data-ai-hint={project.hint}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
+                    />
+                    {project.title && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-6">
+                          <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
+                          <p className="text-primary font-semibold">{project.category}</p>
+                        </div>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
             ))
           )}
         </div>
@@ -95,6 +100,19 @@ export default function Projects() {
              </div>
          )}
       </div>
+       {selectedImage && (
+        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl p-0 bg-transparent border-0">
+            <Image
+              src={selectedImage}
+              alt="Enlarged project view"
+              width={1200}
+              height={800}
+              className="rounded-lg object-contain w-full h-full"
+            />
+          </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
 }
