@@ -26,7 +26,7 @@
   height: 200%;
   background-image: conic-gradient(
     transparent,
-    hsl(var(--accent)),
+    hsl(24.6, 95%, 53.1%),
     transparent 30%
   );
   animation: rotate-light 4s linear infinite;

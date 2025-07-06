@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section id="hero" className="w-full">
       <div 
-        className="container mx-auto px-4 z-10 h-[80vh] flex items-center justify-center"
+        className="container mx-auto px-4 z-10 h-[85vh] flex items-center justify-center"
       >
         <div className="relative w-full h-full">
           <div className="absolute inset-0 [clip-path:polygon(50%_0%,_100%_50%,_50%_100%,_0%_50%)] animated-light-bg"></div>
