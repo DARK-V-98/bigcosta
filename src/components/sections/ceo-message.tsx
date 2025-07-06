@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function CeoMessage() {
   return (
     <section id="ceo-message" className="container mx-auto px-4">
-      <div className="rounded-3xl bg-gradient-to-br from-background to-primary p-8 md:p-12 lg:p-20">
+      <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-lg group">
             <Image
@@ -22,7 +22,7 @@ export default function CeoMessage() {
           </div>
           <div className="space-y-6">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">A Message from Our CEO</h2>
-            <div className="text-muted-foreground space-y-4">
+            <div className="text-secondary-foreground space-y-4">
                 <p>
                     We take pride in being one of the pioneer companies dealing with Construction, engineering, and building materials. The Company has attained prominence as a leader through competence, competitiveness, and timely delivery with the highest quality standards and recognized safety performance. We have a long tradition of serving our valued clients to their complete satisfaction through efficient management and excellent workmanship, which we continue to maintain with our untiring efforts.
                 </p>
