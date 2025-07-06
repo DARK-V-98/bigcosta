@@ -9,10 +9,10 @@ export default function Hero() {
         className="container mx-auto px-4 z-10 h-[85vh] flex items-center justify-center"
       >
         <div className="relative w-full h-full">
-          <div className="absolute inset-0 [clip-path:polygon(15%_0%,_85%_0%,_100%_100%,_0%_100%)] animated-light-bg"></div>
+          <div className="absolute inset-0 rounded-3xl animated-light-bg"></div>
           
           <div 
-            className="absolute inset-[3px] [clip-path:polygon(15%_0%,_85%_0%,_100%_100%,_0%_100%)] bg-black flex items-center justify-center"
+            className="absolute inset-[3px] rounded-3xl bg-black flex items-center justify-center"
           >
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
               <div 
