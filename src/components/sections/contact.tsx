@@ -53,13 +53,13 @@ export default function Contact() {
         </div>
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg">
+            <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg group">
               <Image
                 src="https://placehold.co/600x800.png"
                 alt="Construction blueprint"
                 data-ai-hint="construction blueprint"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <div className="space-y-4">
