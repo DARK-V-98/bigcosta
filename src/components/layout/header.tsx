@@ -23,10 +23,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 
 const navItems = [
-  { name: 'Services', href: '#services' },
-  { name: 'CEO Message', href: '#ceo-message' },
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/#services' },
+  { name: 'CEO Message', href: '/#ceo-message' },
   { name: 'Projects', href: '/projects' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Testimonials', href: '/#testimonials' },
 ];
 
 export default function Header() {
@@ -67,7 +68,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-2">
             <Button asChild className="rounded-full">
-              <Link href="#contact">Contact Us</Link>
+              <Link href="/#contact">Contact Us</Link>
             </Button>
             {loading ? (
               <Skeleton className="h-10 w-10 rounded-full" />
@@ -137,7 +138,7 @@ export default function Header() {
                   </nav>
                   <SheetClose asChild>
                     <Button asChild className="w-full">
-                      <Link href="#contact">Contact Us</Link>
+                      <Link href="/#contact">Contact Us</Link>
                     </Button>
                   </SheetClose>
                    <SheetClose asChild>

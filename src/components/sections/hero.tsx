@@ -31,10 +31,10 @@ export default function Hero() {
                 className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000"
               >
                 <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto animate-neon-button">
-                  <Link href="#contact">Get a Free Quote</Link>
+                  <Link href="/#contact">Get a Free Quote</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg text-white border-white hover:bg-white hover:text-black w-full sm:w-auto animate-neon-button">
-                  <Link href="#projects">
+                  <Link href="/#projects">
                     View Our Work
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
