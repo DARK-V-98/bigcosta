@@ -1,10 +1,15 @@
+'use client';
+
 import Link from 'next/link';
-import { Building } from 'lucide-react';
+import { Building, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import React from 'react';
 
 const navItems = [
   { name: 'Services', href: '#services' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Testimonials', href: '#testimonials' },
   { name: 'Awards', href: '#awards' },
 ];
 
@@ -16,6 +21,7 @@ export default function Header() {
           <Building className="h-8 w-8 text-primary" />
           <span className="font-headline text-xl font-bold">BigCosta Construction</span>
         </Link>
+        
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((item) => (
             <Link key={item.name} href={item.href} className="transition-colors hover:text-primary">
@@ -23,10 +29,46 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex flex-1 items-center justify-end">
-           <Button asChild>
-            <Link href="#contact">Contact Us</Link>
-          </Button>
+
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex">
+            <Button asChild>
+              <Link href="#contact">Contact Us</Link>
+            </Button>
+          </div>
+
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="grid gap-6 p-6">
+                  <Link href="/" className="flex items-center gap-2 mb-4">
+                    <Building className="h-8 w-8 text-primary" />
+                    <span className="font-headline text-xl font-bold">BigCosta Construction</span>
+                  </Link>
+                  <nav className="grid gap-4">
+                    {navItems.map((item) => (
+                      <SheetClose key={item.name} asChild>
+                        <Link href={item.href} className="text-lg font-medium transition-colors hover:text-primary">
+                          {item.name}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+                  <SheetClose asChild>
+                    <Button asChild className="w-full">
+                      <Link href="#contact">Contact Us</Link>
+                    </Button>
+                  </SheetClose>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
