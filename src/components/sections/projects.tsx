@@ -10,7 +10,7 @@ import Image from "next/image";
 
 interface Project {
   id: string;
-  title: string;
+  title?: string;
   category: string;
   image: string;
   hint: string;
@@ -69,17 +69,21 @@ export default function Projects() {
                 <CardContent className="p-0 relative">
                   <Image
                     src={project.image}
-                    alt={project.title || 'Project Image'}
+                    alt={project.title || project.category}
                     data-ai-hint={project.hint}
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-6">
-                    <h3 className="font-headline text-2xl font-bold text-white">{project.title || 'Untitled Project'}</h3>
-                    <p className="text-primary font-semibold">{project.category}</p>
-                  </div>
+                  {project.title && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 p-6">
+                        <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
+                        <p className="text-primary font-semibold">{project.category}</p>
+                      </div>
+                    </>
+                  )}
                 </CardContent>
               </Card>
             ))
