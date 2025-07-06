@@ -18,8 +18,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Roboto', 'sans-serif'],
-        headline: ['Montserrat', 'sans-serif'],
-        code: ['monospace'],
+        headline: ['Playfair Display', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

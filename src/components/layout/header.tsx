@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { Building, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
 
 const navItems = [
   { name: 'Services', href: '#services' },
@@ -15,17 +16,30 @@ const navItems = [
 ];
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-7xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 mr-4">
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300",
+      scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+    )}>
+      <div className="container flex h-20 max-w-7xl items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 mr-4">
           <Building className="h-8 w-8 text-primary" />
-          <span className="font-headline text-xl font-bold">BigCosta Construction</span>
+          <span className="font-headline text-2xl font-bold text-foreground">BigCosta Construction</span>
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((item) => (
-            <Link key={item.name} href={item.href} className="transition-colors hover:text-primary">
+            <Link key={item.name} href={item.href} className="transition-colors text-foreground/80 hover:text-primary">
               {item.name}
             </Link>
           ))}
