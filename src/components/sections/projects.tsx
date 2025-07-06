@@ -42,34 +42,36 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 md:py-28 bg-gradient-to-br from-primary to-background">
-      <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Project Showcase</h2>
-          <p className="mt-4 text-lg text-foreground">
-            Explore a selection of our finest work, a testament to our commitment to quality and craftsmanship.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card">
-              <CardContent className="p-0 relative">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  data-ai-hint={project.hint}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
-                  <p className="text-primary font-semibold">{project.category}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+    <section id="projects" className="overflow-hidden transform -skew-y-3 bg-gradient-to-br from-primary to-background">
+      <div className="transform skew-y-3 py-20 md:py-28">
+        <div className="container mx-auto">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Project Showcase</h2>
+            <p className="mt-4 text-lg text-foreground">
+              Explore a selection of our finest work, a testament to our commitment to quality and craftsmanship.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <Card key={index} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card">
+                <CardContent className="p-0 relative">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    data-ai-hint={project.hint}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
+                    <p className="text-primary font-semibold">{project.category}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

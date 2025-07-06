@@ -43,109 +43,111 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-gradient-to-br from-background to-secondary">
-      <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">Get In Touch</h2>
-          <p className="mt-4 text-lg text-foreground">
-            Have a project in mind? We'd love to hear from you. Fill out the form below or contact us directly.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-8">
-            <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg group">
-              <Image
-                src="https://placehold.co/600x800.png"
-                alt="Construction blueprint"
-                data-ai-hint="construction blueprint"
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-headline text-2xl font-semibold text-foreground">Contact Information</h3>
-              <div className="space-y-3 text-muted-foreground">
-                <div className="flex items-center gap-4">
-                  <Mail className="h-5 w-5 text-primary" />
-                  <span>contact@bigcosta.com</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Phone className="h-5 w-5 text-primary" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <span>123 Construction Ave, Builder City, 45678</span>
+    <section id="contact" className="overflow-hidden transform -skew-y-3 bg-gradient-to-br from-background to-secondary">
+      <div className="transform skew-y-3 py-20 md:py-28">
+        <div className="container mx-auto">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">Get In Touch</h2>
+            <p className="mt-4 text-lg text-foreground">
+              Have a project in mind? We'd love to hear from you. Fill out the form below or contact us directly.
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-8">
+              <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg group">
+                <Image
+                  src="https://placehold.co/600x800.png"
+                  alt="Construction blueprint"
+                  data-ai-hint="construction blueprint"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-4">
+                <h3 className="font-headline text-2xl font-semibold text-foreground">Contact Information</h3>
+                <div className="space-y-3 text-muted-foreground">
+                  <div className="flex items-center gap-4">
+                    <Mail className="h-5 w-5 text-primary" />
+                    <span>contact@bigcosta.com</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Phone className="h-5 w-5 text-primary" />
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <MapPin className="h-5 w-5 text-primary" />
+                    <span>123 Construction Ave, Builder City, 45678</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            <Card className="bg-card">
-              <CardHeader>
-                <CardTitle className="font-headline">Send us a Message</CardTitle>
-                <CardDescription>We'll get back to you within 24 hours.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="John Doe" {...field} className="bg-background placeholder:text-muted-foreground" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email Address</FormLabel>
-                          <FormControl>
-                            <Input placeholder="john.doe@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number (Optional)</FormLabel>
-                          <FormControl>
-                            <Input placeholder="(123) 456-7890" {...field} className="bg-background placeholder:text-muted-foreground" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Your Message</FormLabel>
-                          <FormControl>
-                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" size="lg" className="w-full">Send Message</Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
+            <div>
+              <Card className="bg-card">
+                <CardHeader>
+                  <CardTitle className="font-headline">Send us a Message</CardTitle>
+                  <CardDescription>We'll get back to you within 24 hours.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address</FormLabel>
+                            <FormControl>
+                              <Input placeholder="john.doe@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Phone Number (Optional)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="(123) 456-7890" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Your Message</FormLabel>
+                            <FormControl>
+                              <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <Button type="submit" size="lg" className="w-full">Send Message</Button>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

@@ -11,10 +11,8 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1">
-        <div className="container py-10">
-          <Hero />
-        </div>
+      <main className="flex-1 flex flex-col space-y-24 md:space-y-32 py-12">
+        <Hero />
         <Services />
         <CeoMessage />
         <Projects />
