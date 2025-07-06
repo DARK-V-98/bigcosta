@@ -1,54 +1,52 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card } from '@/components/ui/card';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-slate-50 overflow-hidden">
-      {/* Background Image and Gradient */}
-      <div className="absolute inset-0">
+    <section className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-[-1]">
         <Image
-          src="https://placehold.co/1920x1280.png"
-          alt="Scenic landscape with mountains"
-          data-ai-hint="mountains landscape"
+          src="https://placehold.co/1920x1080.png"
+          alt="Modern architectural building"
+          data-ai-hint="modern architecture"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent" />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="relative container mx-auto px-4 pt-24 pb-24 sm:pt-32 lg:pt-40 lg:pb-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Text Content */}
-          <div className="text-center lg:text-left">
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight">
-              The Perfect Home
+      {/* Content */}
+      <div className="relative container mx-auto px-4 z-10">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          <div 
+            className="animate-in fade-in slide-in-from-bottom-12 duration-1000"
+          >
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight drop-shadow-lg">
+              Building Dreams, Crafting Futures
             </h1>
-            <p className="mt-6 text-lg text-gray-600 max-w-lg mx-auto lg:mx-0">
-              We craft custom homes, combining innovative design and the best materials to bring your vision to life.
+            <p className="mt-6 text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
+              We specialize in creating exceptional buildings and spaces through expert craftsmanship, innovative design, and a steadfast commitment to quality.
             </p>
-            <Button asChild size="lg" className="mt-8 rounded-md px-10 py-3 text-base font-semibold shadow-lg">
-              <Link href="#contact">Start Your Project</Link>
-            </Button>
           </div>
-
-          {/* Right Image Content */}
-          <div className="relative">
-            <Card className="rounded-2xl shadow-2xl overflow-hidden border-2 border-white aspect-[4/3]">
-              <Image
-                src="https://placehold.co/800x600.png"
-                alt="Modern house rendering"
-                data-ai-hint="modern house architecture"
-                fill
-                className="object-cover"
-              />
-            </Card>
-            <Card className="absolute -bottom-8 -right-8 w-60 p-4 rounded-xl shadow-xl bg-white/80 backdrop-blur-sm border-none hidden sm:block">
-                <h4 className="font-semibold text-gray-800">Unique Design</h4>
-                <p className="text-sm text-gray-600 mt-1">From blueprints to final renders.</p>
-            </Card>
+          
+          <div 
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000"
+          >
+            <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto">
+              <Link href="#contact">Get a Free Quote</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg text-white border-white hover:bg-white hover:text-black w-full sm:w-auto">
+              <Link href="#projects">
+                View Our Work
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
