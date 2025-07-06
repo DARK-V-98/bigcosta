@@ -1,46 +1,42 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
+import { db } from '@/lib/firebase-client';
+
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from '@/components/ui/skeleton';
 import Image from "next/image";
 
-const projects = [
-  {
-    title: "Modern Villa",
-    category: "Residential",
-    image: "https://placehold.co/600x400.png",
-    hint: "modern house"
-  },
-  {
-    title: "Downtown Office Complex",
-    category: "Commercial",
-    image: "https://placehold.co/600x400.png",
-    hint: "office building"
-  },
-  {
-    title: "Luxury Kitchen Remodel",
-    category: "Renovation",
-    image: "https://placehold.co/600x400.png",
-    hint: "luxury kitchen"
-  },
-  {
-    title: "Suburban Family Home",
-    category: "Residential",
-    image: "https://placehold.co/600x400.png",
-    hint: "suburban house"
-  },
-  {
-    title: "Retail Shopping Center",
-    category: "Commercial",
-    image: "https://placehold.co/600x400.png",
-    hint: "shopping mall"
-  },
-  {
-    title: "Historic Building Restoration",
-    category: "Renovation",
-    image: "https://placehold.co/600x400.png",
-    hint: "historic building"
-  }
-];
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  hint: string;
+}
 
 export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const projectsData: Project[] = [];
+      querySnapshot.forEach((doc) => {
+        projectsData.push({ id: doc.id, ...doc.data() } as Project);
+      });
+      setProjects(projectsData);
+      setLoading(false);
+    }, (error) => {
+      console.error("Error fetching projects: ", error);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <section id="projects" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-primary to-background p-12 md:p-20">
@@ -51,26 +47,45 @@ export default function Projects() {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card">
-              <CardContent className="p-0 relative">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  data-ai-hint={project.hint}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
-                  <p className="text-primary font-semibold">{project.category}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {loading ? (
+             Array.from({ length: 6 }).map((_, index) => (
+                <Card key={index} className="overflow-hidden bg-card">
+                    <CardContent className="p-0">
+                        <Skeleton className="w-full h-[250px]" />
+                        <div className="p-6">
+                            <Skeleton className="h-6 w-3/4 mb-2" />
+                            <Skeleton className="h-4 w-1/2" />
+                        </div>
+                    </CardContent>
+                </Card>
+             ))
+          ) : (
+            projects.map((project) => (
+              <Card key={project.id} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card">
+                <CardContent className="p-0 relative">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    data-ai-hint={project.hint}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
+                    <p className="text-primary font-semibold">{project.category}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          )}
         </div>
+         {!loading && projects.length === 0 && (
+             <div className="text-center text-foreground mt-12 text-lg">
+                 No projects have been uploaded yet. Check back soon!
+             </div>
+         )}
       </div>
     </section>
   );
