@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Home, Building2, Wrench } from 'lucide-react';
+import AnimateOnScroll from "@/components/layout/animate-on-scroll";
 
 const services = [
   {
@@ -19,6 +20,8 @@ const services = [
   },
 ];
 
+const animationDelays = ["delay-0", "delay-150", "delay-300"];
+
 export default function Services() {
   return (
     <section id="services" className="container mx-auto px-4">
@@ -31,15 +34,21 @@ export default function Services() {
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-card">
-              <CardHeader className="items-center">
-                {service.icon}
-                <CardTitle className="font-headline mt-4">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-secondary-foreground">{service.description}</CardDescription>
-              </CardContent>
-            </Card>
+            <AnimateOnScroll
+              key={index}
+              animationClasses={`animate-in fade-in zoom-in-95 duration-500 ${animationDelays[index]}`}
+              className="h-full"
+            >
+              <Card className="flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-card rounded-2xl h-full">
+                <CardHeader className="items-center">
+                  {service.icon}
+                  <CardTitle className="font-headline mt-4">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <CardDescription className="text-secondary-foreground">{service.description}</CardDescription>
+                </CardContent>
+              </Card>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>
