@@ -1,25 +1,10 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative h-[80vh] w-full flex items-center justify-center text-center overflow-hidden rounded-2xl shadow-xl">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-[-1]">
-        <Image
-          src="/hr.jpg"
-          alt="Modern architectural building"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10" />
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
+    <section className="relative h-[80vh] w-full flex items-center justify-center text-center overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-primary to-secondary">
       {/* Content */}
       <div className="relative container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
