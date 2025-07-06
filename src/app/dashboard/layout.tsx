@@ -1,3 +1,4 @@
+
 'use client';
 
 import { ReactNode } from 'react';
@@ -41,7 +42,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                       <span>Overview</span>
                     </Link>
                   </SidebarMenuButton>
-              </AdicionarMenuItem>
+              </SidebarMenuItem>
               <SidebarMenuItem>
                  <SidebarMenuButton asChild tooltip="Manage Roles">
                     <Link href="/dashboard/roles">
