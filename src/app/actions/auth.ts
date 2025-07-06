@@ -30,7 +30,14 @@ export async function setupNewUser(data: z.infer<typeof SignupSchema>) {
     if (error instanceof z.ZodError) {
       return { success: false, error: 'Invalid data provided.' };
     }
-    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
+    
+    let errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
+    
+    // Check for specific credential-related error
+    if (errorMessage.includes('invalid_grant') || errorMessage.includes('credential')) {
+      errorMessage = 'The server encountered an authentication issue. This is likely due to invalid or expired Firebase Admin credentials. Please verify your service account keys in the .env.local file.';
+    }
+
     return { success: false, error: `User setup failed: ${errorMessage}` };
   }
 }
