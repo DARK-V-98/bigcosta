@@ -71,11 +71,11 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+94 (77) 123-4567</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-5 w-5 text-primary" />
-                  <span>123 Construction Ave, Builder City, 45678</span>
+                  <span>123, Galle Road, Colombo 03, Sri Lanka</span>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="Your Name" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -109,7 +109,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="john.doe@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="your.email@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -122,7 +122,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="(123) 456-7890" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="+94 (XX) XXX-XXXX" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
