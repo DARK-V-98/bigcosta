@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={32} height={32} className="h-8 w-8" />
+              <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10" />
               <span className="font-headline text-xl font-bold text-foreground">BigCosta Construction</span>
             </Link>
             <p className="text-sm text-center md:text-left">Building your vision, one brick at a time.</p>
