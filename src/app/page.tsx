@@ -17,11 +17,11 @@ export default function Home() {
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Services />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
-          <CeoMessage />
-        </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-right-32 duration-1000">
           <Projects />
+        </AnimateOnScroll>
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
+          <CeoMessage />
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Testimonials />
