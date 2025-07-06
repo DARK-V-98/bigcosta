@@ -6,6 +6,7 @@ import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
 import Awards from '@/components/sections/awards';
 import Contact from '@/components/sections/contact';
+import CeoMessage from '@/components/sections/ceo-message';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Services />
+        <CeoMessage />
         <Projects />
         <Testimonials />
         <Awards />
