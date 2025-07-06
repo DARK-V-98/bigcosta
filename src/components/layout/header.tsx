@@ -89,7 +89,7 @@ export default function Header() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  {role === 'admin' && (
+                  {(role === 'admin' || role === 'developer') && (
                     <DropdownMenuItem asChild>
                        <Link href="/dashboard">
                         <LayoutDashboard className="mr-2 h-4 w-4" />

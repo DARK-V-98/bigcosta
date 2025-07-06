@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     );
   }
 
-  if (!user || role !== 'admin') {
+  if (!user || (role !== 'admin' && role !== 'developer')) {
     router.replace('/');
     return null;
   }
@@ -41,7 +41,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                       <span>Overview</span>
                     </Link>
                   </SidebarMenuButton>
-              </SidebarMenuItem>
+              </AdicionarMenuItem>
               <SidebarMenuItem>
                  <SidebarMenuButton asChild tooltip="Manage Roles">
                     <Link href="/dashboard/roles">
