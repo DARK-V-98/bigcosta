@@ -81,9 +81,25 @@ export default function AuthPage() {
       router.push('/');
       toast({ title: 'Login successful!' });
     } catch (error: any) {
+      let description = 'An unexpected error occurred. Please try again.';
+      switch (error.code) {
+        case 'auth/user-not-found':
+        case 'auth/wrong-password':
+        case 'auth/invalid-credential':
+          description = 'Invalid email or password. Please check your credentials and try again.';
+          break;
+        case 'auth/too-many-requests':
+          description = 'Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.';
+          break;
+        case 'auth/invalid-email':
+          description = 'Please enter a valid email address.';
+          break;
+        default:
+           description = error.message || description;
+      }
       toast({
-        title: 'Login failed',
-        description: error.message,
+        title: 'Login Failed',
+        description: description,
         variant: 'destructive',
       });
     } finally {
@@ -103,15 +119,30 @@ export default function AuthPage() {
 
       const result = await setupNewUser({ uid: user.uid, email: user.email! });
       if (!result.success) {
-        throw new Error(result.error);
+        // This will be caught by the generic error handler below
+        throw new Error(result.error || 'Failed to set up new user.');
       }
 
       router.push('/');
-      toast({ title: 'Signup successful!' });
+      toast({ title: 'Signup successful!', description: "Welcome! You have been logged in." });
     } catch (error: any) {
+      let description = 'An unexpected error occurred. Please try again.';
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          description = 'This email address is already registered. Please login or use a different email.';
+          break;
+        case 'auth/weak-password':
+          description = 'The password is too weak. It must be at least 6 characters long.';
+          break;
+        case 'auth/invalid-email':
+            description = 'The email address is not valid. Please enter a valid email.';
+            break;
+        default:
+            description = error.message || description;
+      }
       toast({
-        title: 'Signup failed',
-        description: error.message,
+        title: 'Signup Failed',
+        description,
         variant: 'destructive',
       });
     } finally {
@@ -129,7 +160,7 @@ export default function AuthPage() {
       if (additionalInfo?.isNewUser) {
         const setupResult = await setupNewUser({ uid: user.uid, email: user.email! });
         if (!setupResult.success) {
-          throw new Error(setupResult.error);
+          throw new Error(setupResult.error || 'Failed to set up new user.');
         }
       }
       
@@ -137,9 +168,20 @@ export default function AuthPage() {
       toast({ title: 'Signed in with Google successfully!' });
 
     } catch (error: any) {
+       let description = 'An unexpected error occurred. Please try again.';
+       switch(error.code) {
+        case 'auth/account-exists-with-different-credential':
+          description = 'An account already exists with this email. Please sign in using the method you originally used.';
+          break;
+        case 'auth/popup-closed-by-user':
+          description = 'The sign-in window was closed. Please try again.';
+          break;
+        default:
+          description = error.message || description;
+       }
       toast({
-        title: 'Google Sign-in failed',
-        description: error.message,
+        title: 'Google Sign-in Failed',
+        description,
         variant: 'destructive',
       });
     } finally {
@@ -153,6 +195,8 @@ export default function AuthPage() {
       loginForm.setError("email", { type: "manual", message: "Please enter your email to reset password." });
       return;
     }
+    // Clear previous errors if any
+    loginForm.clearErrors('email');
 
     setLoading(true);
     try {
@@ -161,10 +205,20 @@ export default function AuthPage() {
         title: 'Password Reset Email Sent',
         description: 'Check your inbox for instructions to reset your password.',
       });
-    } catch (error: any) {
+    } catch (error: any)
+    {
+      let description = 'An unexpected error occurred. Please try again.';
+      if(error.code === 'auth/user-not-found') {
+          description = 'No user found with this email address. Please check the email and try again.';
+      } else if(error.code === 'auth/invalid-email') {
+          description = 'Please enter a valid email address.';
+      } else {
+        description = error.message || description;
+      }
+
       toast({
         title: 'Password Reset Failed',
-        description: error.message,
+        description: description,
         variant: 'destructive',
       });
     } finally {
@@ -185,7 +239,7 @@ export default function AuthPage() {
             <CardHeader>
               <CardTitle>Login</CardTitle>
               <CardDescription>
-                Welcome back. Login to your account.
+                Enter your credentials to access your account.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -329,5 +383,3 @@ export default function AuthPage() {
     </div>
   );
 }
-
-    
