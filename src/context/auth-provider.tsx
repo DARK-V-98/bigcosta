@@ -1,9 +1,12 @@
+
 'use client';
 
 import React, { useState, useEffect, useContext, createContext, ReactNode } from 'react';
 import type { User } from 'firebase/auth';
-import { onIdTokenChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase-client';
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+
+import { auth, db } from '@/lib/firebase-client';
 import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -32,12 +35,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   useEffect(() => {
-    const unsubscribe = onIdTokenChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setLoading(true);
       if (user) {
-        const tokenResult = await user.getIdTokenResult();
         setUser(user);
-        setRole((tokenResult.claims.role as Role) || 'user');
+        const userDocRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+            setRole((userDoc.data().role as Role) || 'user');
+        } else {
+            // This can happen if the Firestore doc creation fails during signup.
+            // Defaulting to 'user' is a safe fallback.
+            setRole('user');
+        }
       } else {
         setUser(null);
         setRole(null);

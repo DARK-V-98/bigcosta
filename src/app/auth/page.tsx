@@ -13,9 +13,11 @@ import {
   GoogleAuthProvider,
   sendPasswordResetEmail,
   getAdditionalUserInfo,
+  type User,
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase-client';
-import { setupNewUser } from '@/app/actions/auth';
+import { doc, setDoc, serverTimestamp, getDoc } from 'firebase/firestore';
+
+import { auth, db } from '@/lib/firebase-client';
 import { useToast } from '@/hooks/use-toast';
 
 import { Button } from '@/components/ui/button';
@@ -74,6 +76,30 @@ export default function AuthPage() {
     defaultValues: { email: '', password: '' },
   });
 
+  const setupNewUserInFirestore = async (user: User) => {
+    try {
+        if (!user.email) {
+            throw new Error("User email is not available.");
+        }
+        const userRef = doc(db, 'users', user.uid);
+        await setDoc(userRef, {
+            email: user.email,
+            role: 'user', // Default role
+            createdAt: serverTimestamp(),
+        });
+    } catch (error) {
+        console.error("Error creating user document in Firestore:", error);
+        // This error should be logged, but we can still let the user proceed.
+        // The AuthProvider will handle cases where the doc doesn't exist.
+        toast({
+            title: "Account Setup Warning",
+            description: "Your account was created, but we couldn't save your profile information. Please contact support if you experience issues.",
+            variant: "destructive"
+        })
+    }
+  };
+
+
   const onLoginSubmit = async (values: z.infer<typeof loginSchema>) => {
     setLoading(true);
     try {
@@ -113,17 +139,12 @@ export default function AuthPage() {
         values.email,
         values.password
       );
-
-      if (!userCredential || !userCredential.user || !userCredential.user.email) {
+      
+      if (!userCredential || !userCredential.user) {
           throw new Error('Could not create user account. Please try again.');
       }
-
-      const { user } = userCredential;
-
-      const result = await setupNewUser({ uid: user.uid, email: user.email });
-      if (!result || !result.success) {
-        throw new Error(result?.error || 'Failed to set up new user profile in the database.');
-      }
+      
+      await setupNewUserInFirestore(userCredential.user);
 
       router.push('/');
       toast({ title: 'Signup successful!', description: "Welcome! You have been logged in." });
@@ -157,18 +178,14 @@ export default function AuthPage() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       
-      if (!result || !result.user || !result.user.email) {
+      if (!result || !result.user) {
           throw new Error('Could not sign in with Google. Please try again.');
       }
 
-      const user = result.user;
       const additionalInfo = getAdditionalUserInfo(result);
       
       if (additionalInfo?.isNewUser) {
-        const setupResult = await setupNewUser({ uid: user.uid, email: user.email });
-        if (!setupResult || !setupResult.success) {
-          throw new Error(setupResult.error || 'Failed to set up new user profile.');
-        }
+        await setupNewUserInFirestore(result.user);
       }
       
       router.push('/');
