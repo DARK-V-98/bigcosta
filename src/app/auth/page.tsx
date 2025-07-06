@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -8,6 +9,10 @@ import * as z from 'zod';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+  getAdditionalUserInfo,
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase-client';
 import { setupNewUser } from '@/app/actions/auth';
@@ -34,9 +39,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
-  password: z
-    .string()
-    .min(1, { message: 'Password is required.' }),
+  password: z.string().min(1, { message: 'Password is required.' }),
 });
 
 const signupSchema = z.object({
@@ -46,10 +49,20 @@ const signupSchema = z.object({
     .min(6, { message: 'Password must be at least 6 characters.' }),
 });
 
+const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg role="img" viewBox="0 0 24 24" {...props} xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2">
+      <title>Google</title>
+      <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.73 4.1-1.02 1.08-2.58 2.26-4.8 2.26-5.72 0-9.6-4.22-9.6-9.96s3.88-9.96 9.6-9.96c3.2 0 4.92 1.32 6.02 2.34l2.44-2.44C19.98 2.18 17.34.8 12.48.8 5.86.8.5 6.12.5 12.72s5.36 11.92 11.98 11.92c6.94 0 11.7-4.92 11.7-12.22 0-.76-.08-1.48-.2-2.18h-11.5z" fill="#4285F4"/>
+    </svg>
+);
+
+
 export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
+  
+  const googleProvider = new GoogleAuthProvider();
 
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -88,7 +101,6 @@ export default function AuthPage() {
       );
       const { user } = userCredential;
 
-      // Call server action to set custom claims and create user doc
       const result = await setupNewUser({ uid: user.uid, email: user.email! });
       if (!result.success) {
         throw new Error(result.error);
@@ -106,6 +118,60 @@ export default function AuthPage() {
       setLoading(false);
     }
   };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const additionalInfo = getAdditionalUserInfo(result);
+      
+      if (additionalInfo?.isNewUser) {
+        const setupResult = await setupNewUser({ uid: user.uid, email: user.email! });
+        if (!setupResult.success) {
+          throw new Error(setupResult.error);
+        }
+      }
+      
+      router.push('/');
+      toast({ title: 'Signed in with Google successfully!' });
+
+    } catch (error: any) {
+      toast({
+        title: 'Google Sign-in failed',
+        description: error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    const email = loginForm.getValues('email');
+    if (!email) {
+      loginForm.setError("email", { type: "manual", message: "Please enter your email to reset password." });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await sendPasswordResetEmail(auth, email);
+      toast({
+        title: 'Password Reset Email Sent',
+        description: 'Check your inbox for instructions to reset your password.',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Password Reset Failed',
+        description: error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
@@ -162,11 +228,30 @@ export default function AuthPage() {
                       </FormItem>
                     )}
                   />
+                  <div className="flex items-center justify-end">
+                      <Button variant="link" type="button" onClick={handlePasswordReset} disabled={loading} className="p-0 h-auto text-sm text-primary">
+                          Forgot your password?
+                      </Button>
+                  </div>
                   <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}
                   </Button>
                 </form>
               </Form>
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={loading}>
+                <GoogleIcon />
+                Sign in with Google
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
@@ -223,6 +308,20 @@ export default function AuthPage() {
                   </Button>
                 </form>
               </Form>
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={loading}>
+                <GoogleIcon />
+                Sign up with Google
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
@@ -230,3 +329,5 @@ export default function AuthPage() {
     </div>
   );
 }
+
+    
