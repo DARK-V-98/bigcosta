@@ -4,9 +4,10 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="w-full overflow-hidden transform -skew-y-3 bg-gradient-to-br from-primary to-secondary">
-      <div className="transform skew-y-3">
-        <div className="relative container mx-auto px-4 z-10 h-[80vh] flex items-center justify-center">
+    <section id="hero" className="w-full">
+      <div 
+        className="relative container mx-auto px-4 z-10 h-[80vh] flex items-center justify-center [clip-path:polygon(50%_0%,_100%_50%,_50%_100%,_0%_50%)] bg-gradient-to-br from-primary to-secondary"
+      >
           <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
             <div 
               className="animate-in fade-in slide-in-from-bottom-12 duration-1000"
@@ -33,7 +34,6 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
