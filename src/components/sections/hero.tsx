@@ -6,22 +6,22 @@ export default function Hero() {
   return (
     <section id="hero" className="w-full">
       <div 
-        className="container mx-auto px-4 z-10 min-h-[70vh] sm:h-[85vh] flex items-center justify-center"
+        className="container mx-auto px-4 z-10"
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full min-h-[70vh] sm:min-h-[85vh]">
           <div className="absolute inset-0 rounded-3xl animated-light-bg"></div>
           
           <div 
-            className="absolute inset-[3px] rounded-3xl bg-gradient-to-br from-primary via-black to-secondary flex items-center justify-center"
+            className="absolute inset-[3px] rounded-3xl bg-gradient-to-br from-primary via-black to-secondary flex items-center justify-center p-6"
           >
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
               <div 
                 className="animate-in fade-in slide-in-from-bottom-12 duration-1000"
               >
-                <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight drop-shadow-lg animate-fade-in-out">
+                <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary tracking-tight drop-shadow-lg animate-fade-in-out">
                   Building Dreams, Crafting Futures
                 </h1>
-                <p className="mt-6 text-base md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
+                <p className="mt-6 text-base sm:text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
                   We specialize in creating exceptional buildings and spaces through expert craftsmanship, innovative design, and a steadfast commitment to quality.
                 </p>
               </div>
