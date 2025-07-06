@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useContext, createContext, ReactNode } from 'react';
 import type { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 import { auth, db } from '@/lib/firebase-client';
 import { useRouter } from 'next/navigation';
@@ -41,12 +41,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(user);
         const userDocRef = doc(db, 'users', user.uid);
         const userDoc = await getDoc(userDocRef);
+
         if (userDoc.exists()) {
             setRole((userDoc.data().role as Role) || 'user');
         } else {
-            // This can happen if the Firestore doc creation fails during signup.
-            // Defaulting to 'user' is a safe fallback.
-            setRole('user');
+            // Document doesn't exist, so create it.
+            // This handles cases where the doc wasn't created on signup,
+            // or for users who existed before this logic was added.
+            try {
+                if (user.email) {
+                    await setDoc(userDocRef, {
+                        email: user.email,
+                        role: 'user', // Default role
+                        createdAt: serverTimestamp(),
+                    });
+                }
+                setRole('user');
+            } catch (error) {
+                console.error("Error creating Firestore document for user:", error);
+                // Fallback to 'user' role even if write fails
+                setRole('user');
+            }
         }
       } else {
         setUser(null);
