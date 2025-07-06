@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -8,7 +7,7 @@ import Image from 'next/image';
 
 import { useAuth } from '@/context/auth-provider';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import {
   DropdownMenu,
@@ -20,7 +19,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
-
+import { Separator } from '@/components/ui/separator';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -53,7 +52,7 @@ export default function Header() {
     )}>
       <div className="container flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 mr-4">
-          <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
+          <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={50} height={50} className="h-12 w-12 rounded-full" />
           <span className="font-headline text-2xl font-bold text-foreground">BigCosta Construction</span>
         </Link>
         
@@ -121,37 +120,74 @@ export default function Header() {
                   <span className="sr-only">Open navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <div className="grid gap-6 p-6">
-                  <Link href="/" className="flex items-center gap-2 mb-4">
-                    <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
-                    <span className="font-headline text-xl font-bold">BigCosta Construction</span>
-                  </Link>
-                  <nav className="grid gap-4">
-                    {navItems.map((item) => (
-                      <SheetClose key={item.name} asChild>
-                        <Link href={item.href} className="text-lg font-medium transition-colors hover:text-primary">
-                          {item.name}
-                        </Link>
+              <SheetContent side="right" className="flex flex-col p-0">
+                {/* Sheet Header */}
+                <div className="p-6">
+                    <Link href="/" className="flex items-center gap-2 mb-6">
+                        <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
+                        <span className="font-headline text-xl font-bold">BigCosta Construction</span>
+                    </Link>
+                    <nav className="grid gap-4">
+                        {navItems.map((item) => (
+                        <SheetClose key={item.name} asChild>
+                            <Link href={item.href} className="text-lg font-medium transition-colors hover:text-primary">
+                            {item.name}
+                            </Link>
+                        </SheetClose>
+                        ))}
+                    </nav>
+                </div>
+                
+                {/* Sheet Footer */}
+                <div className="mt-auto border-t p-6 grid gap-4">
+                  {loading ? (
+                    <div className="flex items-center space-x-4">
+                        <Skeleton className="h-12 w-12 rounded-full" />
+                        <div className="space-y-2">
+                            <Skeleton className="h-4 w-[150px]" />
+                        </div>
+                    </div>
+                  ) : user ? (
+                      <>
+                        <div className="flex items-center gap-4">
+                            <Avatar className="h-12 w-12">
+                                <AvatarImage src={user.photoURL ?? ''} alt={user.email ?? ''} />
+                                <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
+                            </Avatar>
+                            <div className="grid gap-1 overflow-hidden">
+                                <p className="text-sm font-medium leading-none">My Account</p>
+                                <p className="text-sm text-muted-foreground truncate">{user.email}</p>
+                            </div>
+                        </div>
+                        {(role === 'admin' || role === 'developer') && (
+                            <SheetClose asChild>
+                                <Link href="/dashboard" className={cn(buttonVariants({ variant: 'outline' }), "w-full justify-start")}>
+                                    <LayoutDashboard className="mr-2 h-4 w-4" />
+                                    Dashboard
+                                </Link>
+                            </SheetClose>
+                        )}
+                        <SheetClose asChild>
+                            <Button onClick={logout} variant="outline" className="w-full justify-start">
+                                <LogOut className="mr-2 h-4 w-4" />
+                                Logout
+                            </Button>
+                        </SheetClose>
+                      </>
+                  ) : (
+                    <>
+                      <SheetClose asChild>
+                        <Button asChild className="w-full">
+                          <Link href="/auth">Login / Sign Up</Link>
+                        </Button>
                       </SheetClose>
-                    ))}
-                  </nav>
-                  <SheetClose asChild>
-                    <Button asChild className="w-full">
-                      <Link href="/#contact">Contact Us</Link>
-                    </Button>
-                  </SheetClose>
-                   <SheetClose asChild>
-                     {loading ? (
-                       <Skeleton className="h-10 w-full" />
-                     ) : user ? (
-                       <Button onClick={logout} className="w-full" variant="outline">Logout</Button>
-                     ) : (
-                       <Button asChild className="w-full">
-                         <Link href="/auth">Login</Link>
-                       </Button>
-                     )}
-                   </SheetClose>
+                      <SheetClose asChild>
+                        <Button asChild className="w-full" variant="secondary">
+                          <Link href="/#contact">Contact Us</Link>
+                        </Button>
+                      </SheetClose>
+                    </>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>

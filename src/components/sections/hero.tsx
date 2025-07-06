@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -7,7 +6,7 @@ export default function Hero() {
   return (
     <section id="hero" className="w-full">
       <div 
-        className="container mx-auto px-4 z-10 h-[85vh] flex items-center justify-center"
+        className="container mx-auto px-4 z-10 min-h-[70vh] sm:h-[85vh] flex items-center justify-center"
       >
         <div className="relative w-full h-full">
           <div className="absolute inset-0 rounded-3xl animated-light-bg"></div>
@@ -19,7 +18,7 @@ export default function Hero() {
               <div 
                 className="animate-in fade-in slide-in-from-bottom-12 duration-1000"
               >
-                <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight drop-shadow-lg animate-fade-in-out">
+                <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary tracking-tight drop-shadow-lg animate-fade-in-out">
                   Building Dreams, Crafting Futures
                 </h1>
                 <p className="mt-6 text-base md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
