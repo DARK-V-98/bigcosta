@@ -8,7 +8,6 @@ export default function Footer() {
     { name: 'CEO Message', href: '#ceo-message' },
     { name: 'Projects', href: '#projects' },
     { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Awards', href: '#awards' },
     { name: 'Contact', href: '#contact' },
   ];
 

@@ -4,7 +4,6 @@ import Hero from '@/components/sections/hero';
 import Services from '@/components/sections/services';
 import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
-import Awards from '@/components/sections/awards';
 import Contact from '@/components/sections/contact';
 import CeoMessage from '@/components/sections/ceo-message';
 
@@ -18,7 +17,6 @@ export default function Home() {
         <CeoMessage />
         <Projects />
         <Testimonials />
-        <Awards />
         <Contact />
       </main>
       <Footer />

@@ -12,7 +12,6 @@ const navItems = [
   { name: 'CEO Message', href: '#ceo-message' },
   { name: 'Projects', href: '#projects' },
   { name: 'Testimonials', href: '#testimonials' },
-  { name: 'Awards', href: '#awards' },
 ];
 
 export default function Header() {
