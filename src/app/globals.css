@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes rotate-light {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animated-light-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-light-bg::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: conic-gradient(
+    transparent,
+    hsl(var(--accent)),
+    transparent 30%
+  );
+  animation: rotate-light 4s linear infinite;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
