@@ -56,9 +56,8 @@ export default function Contact() {
           <div className="space-y-8">
             <div className="relative h-80 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
               <Image
-                src="https://placehold.co/600x800.png"
-                alt="Construction blueprint"
-                data-ai-hint="construction blueprint"
+                src="/cs.jpg"
+                alt="Construction site"
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
