@@ -52,12 +52,26 @@
   }
 }
 
+@keyframes fade-in-out {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .animate-neon-text {
   animation: pulse-text-neon 3s ease-in-out infinite;
 }
 
 .animate-neon-button {
   animation: pulse-box-neon 2s ease-in-out infinite;
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 4s ease-in-out infinite;
 }
 
 body {
