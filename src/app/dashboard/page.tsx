@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 export default function DashboardPage() {
   return (
     <div>
-      <Card>
+      <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>Welcome!</CardTitle>
           <CardDescription>

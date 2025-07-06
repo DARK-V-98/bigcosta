@@ -53,7 +53,7 @@ export default function Contact() {
         </div>
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="relative h-96 w-full rounded-lg overflow-hidden shadow-lg group">
+            <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
               <Image
                 src="https://placehold.co/600x800.png"
                 alt="Construction blueprint"
@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <Card className="bg-card">
+            <Card className="bg-card rounded-2xl">
               <CardHeader>
                 <CardTitle className="font-headline">Send us a Message</CardTitle>
                 <CardDescription>We'll get back to you within 24 hours.</CardDescription>

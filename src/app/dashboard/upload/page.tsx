@@ -84,7 +84,7 @@ export default function UploadProjectsPage() {
 
   return (
     <div>
-       <Card>
+       <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>Project Image Upload</CardTitle>
           <CardDescription>
@@ -169,7 +169,7 @@ export default function UploadProjectsPage() {
                 control={form.control}
                 name="showOnHomepage"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                  <FormItem className="flex flex-row items-center justify-between rounded-2xl border p-3 shadow-sm">
                     <div className="space-y-0.5">
                       <FormLabel>Show on Homepage</FormLabel>
                       <CardDescription>

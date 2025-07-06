@@ -89,7 +89,7 @@ export default function ManageRolesPage() {
 
   return (
     <div>
-       <Card>
+       <Card className="rounded-2xl">
         <CardHeader>
           <CardTitle>User Role Management</CardTitle>
           <CardDescription>
@@ -97,7 +97,7 @@ export default function ManageRolesPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border">
+          <div className="rounded-2xl border">
             <Table>
               <TableHeader>
                 <TableRow>

@@ -259,7 +259,7 @@ export default function AuthPage() {
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-          <Card>
+          <Card className="rounded-2xl">
             <CardHeader>
               <CardTitle>Login</CardTitle>
               <CardDescription>
@@ -334,7 +334,7 @@ export default function AuthPage() {
           </Card>
         </TabsContent>
         <TabsContent value="signup">
-          <Card>
+          <Card className="rounded-2xl">
             <CardHeader>
               <CardTitle>Sign Up</CardTitle>
               <CardDescription>

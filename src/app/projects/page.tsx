@@ -53,7 +53,7 @@ export default function ProjectsPage() {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {loading ? (
               Array.from({ length: 9 }).map((_, index) => (
-                <Card key={index} className="overflow-hidden bg-card">
+                <Card key={index} className="overflow-hidden bg-card rounded-2xl">
                   <CardContent className="p-0">
                     <Skeleton className="w-full h-[250px]" />
                     <div className="p-6">
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
               ))
             ) : (
               projects.map((project) => (
-                <Card key={project.id} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card">
+                <Card key={project.id} className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl">
                   <CardContent className="p-0 relative">
                     <Image
                       src={project.image}

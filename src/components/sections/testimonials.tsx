@@ -60,13 +60,13 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-4 h-full">
-                    <Card className="h-full flex flex-col justify-between shadow-lg rounded-lg transition-shadow duration-300 hover:shadow-xl bg-card">
+                    <Card className="h-full flex flex-col justify-between shadow-lg rounded-2xl transition-shadow duration-300 hover:shadow-xl bg-card">
                       <CardContent className="p-6 flex-grow">
                         <blockquote className="italic text-card-foreground border-l-4 border-primary pl-4">
                           "{testimonial.quote}"
                         </blockquote>
                       </CardContent>
-                      <div className="p-6 bg-muted flex items-center gap-4 rounded-b-lg">
+                      <div className="p-6 bg-muted flex items-center gap-4 rounded-b-2xl">
                         <Avatar className="h-12 w-12">
                           <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
                           <AvatarFallback>{testimonial.initials}</AvatarFallback>
