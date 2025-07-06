@@ -79,12 +79,10 @@ export default function AuthPage() {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       router.push('/');
-      toast({ title: 'Login successful!' });
+      toast({ title: 'Login successful!', description: "You are now logged in." });
     } catch (error: any) {
       let description = 'An unexpected error occurred. Please try again.';
       switch (error.code) {
-        case 'auth/user-not-found':
-        case 'auth/wrong-password':
         case 'auth/invalid-credential':
           description = 'Invalid email or password. Please check your credentials and try again.';
           break;
