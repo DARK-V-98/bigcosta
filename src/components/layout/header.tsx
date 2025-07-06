@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useAuth } from '@/context/auth-provider';
 import { cn } from '@/lib/utils';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -121,6 +121,12 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="flex flex-col p-0">
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Menu</SheetTitle>
+                  <SheetDescription>
+                    Main menu for navigating the BigCosta Construction website.
+                  </SheetDescription>
+                </SheetHeader>
                 {/* Sheet Header */}
                 <div className="p-6">
                     <Link href="/" className="flex items-center gap-2 mb-6">
