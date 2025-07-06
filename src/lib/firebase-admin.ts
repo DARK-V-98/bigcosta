@@ -6,7 +6,18 @@ const privateKey = process.env.FIREBASE_PRIVATE_KEY;
 const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
 
 if (!projectId || !privateKey || !clientEmail) {
-    throw new Error('Missing Firebase Admin SDK credentials. Please ensure FIREBASE_PROJECT_ID, FIREBASE_PRIVATE_KEY, and FIREBASE_CLIENT_EMAIL are set in your .env.local file.');
+    const errorMsg = `Missing Firebase Admin SDK credentials.
+    This is not a bug in the code, but a problem with your local setup.
+    Please ensure:
+    1. You have a file named '.env.local' in the root directory of your project.
+    2. That file contains the following variables:
+       - FIREBASE_PROJECT_ID
+       - FIREBASE_PRIVATE_KEY
+       - FIREBASE_CLIENT_EMAIL
+    3. You have restarted your development server after creating the file.
+    
+    The application is currently unable to find these values.`;
+    throw new Error(errorMsg);
 }
 
 
