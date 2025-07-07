@@ -90,9 +90,9 @@ export default function Hero() {
               <Image
                 src="/logobc.png"
                 alt="BigCosta Construction Logo"
-                width={80}
-                height={80}
-                className="h-20 w-20 mb-6 mx-auto"
+                width={128}
+                height={128}
+                className="h-32 w-32 mb-6 mx-auto"
               />
               <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
                 Building Dreams, Crafting Futures
