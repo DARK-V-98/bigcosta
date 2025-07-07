@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -89,11 +88,11 @@ export default function Hero() {
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
             <div className="animate-in fade-in slide-in-from-bottom-12 duration-1000">
               <Image
-                src="/logobc.PNG"
+                src="/logobc.png"
                 alt="BigCosta Construction Logo"
                 width={80}
                 height={80}
-                className="h-20 w-20 rounded-full object-contain mb-6 mx-auto"
+                className="h-20 w-20 mb-6 mx-auto"
               />
               <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
                 Building Dreams, Crafting Futures
