@@ -56,7 +56,7 @@ export default function Services() {
           ))}
         </div>
         <div className="mt-12 text-center">
-            <Button asChild size="lg" variant="outline" className="rounded-lg text-foreground border-foreground hover:bg-foreground hover:text-background shadow-[4px_4px_0_hsl(var(--primary))] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+            <Button asChild size="lg" variant="outline" className="rounded-full text-foreground border-foreground hover:bg-foreground hover:text-background shadow-[4px_4px_0_hsl(var(--primary))] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/services">
                     View All Services
                     <ArrowRight className="ml-2 h-5 w-5" />
