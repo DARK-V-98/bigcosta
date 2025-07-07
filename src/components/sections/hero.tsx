@@ -93,7 +93,7 @@ export default function Hero() {
                 alt="BigCosta Construction Logo"
                 width={80}
                 height={80}
-                className="h-20 w-auto mb-6 mx-auto"
+                className="h-20 w-20 rounded-full object-cover mb-6 mx-auto"
               />
               <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
                 Building Dreams, Crafting Futures
