@@ -19,8 +19,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image src="/logobc.png" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10" />
-              <span className="font-headline text-xl font-bold text-foreground">BigCosta Construction</span>
+              <Image src="/logobc.png" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
+              <span className="font-headline text-xl font-bold text-foreground">BigCosta Construction (private) limited</span>
             </Link>
             <p className="text-sm text-center md:text-left">Building your vision, one brick at a time.</p>
           </div>
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
         <Separator className="my-8 bg-border" />
         <div className="text-center text-sm">
-          <p>© {new Date().getFullYear()} BigCosta Construction. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} BigCosta Construction (private) limited. All rights reserved.</p>
           <p className="mt-2">
             Website powered by{' '}
             <a 
