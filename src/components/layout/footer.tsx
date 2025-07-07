@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -7,7 +8,7 @@ export default function Footer() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'CEO Message', href: '/ceo-message' },
+    { name: 'About Us', href: '/about-us' },
     { name: 'Projects', href: '/projects' },
     { name: 'Testimonials', href: '/#testimonials' },
     { name: 'Contact', href: '/#contact' },

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -24,7 +25,7 @@ import { Separator } from '@/components/ui/separator';
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
-  { name: 'CEO Message', href: '/ceo-message' },
+  { name: 'About Us', href: '/about-us' },
   { name: 'Projects', href: '/projects' },
   { name: 'Testimonials', href: '/#testimonials' },
 ];
