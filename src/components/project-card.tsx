@@ -19,9 +19,10 @@ interface ProjectCardProps {
   project: ProjectForCard;
   onCardClick: (images: string[], startIndex: number) => void;
   showBadges?: boolean;
+  showTitle?: boolean;
 }
 
-export default function ProjectCard({ project, onCardClick, showBadges = true }: ProjectCardProps) {
+export default function ProjectCard({ project, onCardClick, showBadges = true, showTitle = true }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = (e: React.MouseEvent) => {
@@ -75,7 +76,7 @@ export default function ProjectCard({ project, onCardClick, showBadges = true }:
           )}
         </CardContent>
         <div className="p-4 bg-card flex-grow flex flex-col">
-            <h3 className="font-headline text-xl font-bold text-foreground">{project.title || 'Project'}</h3>
+          {showTitle && <h3 className="font-headline text-xl font-bold text-foreground">{project.title || 'Project'}</h3>}
             <div className="flex-grow mt-2">
                 {showBadges && (
                     <>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -88,7 +87,7 @@ export default function Projects() {
              ))
           ) : (
             projects.map((project) => (
-               <ProjectCard key={project.id} project={project} onCardClick={handleCardClick} showBadges={false} />
+               <ProjectCard key={project.id} project={project} onCardClick={handleCardClick} showBadges={false} showTitle={false} />
             ))
           )}
         </div>
