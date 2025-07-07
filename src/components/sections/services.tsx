@@ -1,27 +1,42 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Home, Building2, Wrench } from 'lucide-react';
+import { HardHat, DraftingCompass, Wrench, Building2, Shovel, PaintRoller } from 'lucide-react';
 import AnimateOnScroll from "@/components/layout/animate-on-scroll";
 
 const services = [
   {
-    icon: <Home className="h-10 w-10 text-primary" />,
-    title: 'Residential Construction',
-    description: 'Custom homes, multi-family units, and renovations built with precision and care for lasting value and comfort.',
+    icon: <HardHat className="h-10 w-10 text-primary" />,
+    title: 'General Contractor Services',
+    description: 'Overseeing your entire project from start to finish, ensuring quality, budget, and timeline are met with precision.',
   },
   {
-    icon: <Building2 className="h-10 w-10 text-primary" />,
-    title: 'Commercial Construction',
-    description: 'From office buildings to retail centers, we deliver functional and impressive commercial spaces on time and on budget.',
+    icon: <DraftingCompass className="h-10 w-10 text-primary" />,
+    title: 'Architect & Interior Design',
+    description: 'Collaborating with you to create functional, beautiful spaces, from initial blueprints to final interior touches.',
   },
   {
     icon: <Wrench className="h-10 w-10 text-primary" />,
-    title: 'Renovations & Remodeling',
-    description: 'Transform your existing space. We handle all aspects of renovation, from kitchen remodels to large-scale additions.',
+    title: 'Electrical, Plumbing & HVAC',
+    description: 'Full installation and maintenance of essential systems, ensuring your building is safe, comfortable, and efficient.',
+  },
+  {
+    icon: <Building2 className="h-10 w-10 text-primary" />,
+    title: 'Roofing & Masonry',
+    description: 'Expert structural work, from durable roofing solutions to classic and modern masonry for a solid foundation.',
+  },
+  {
+    icon: <Shovel className="h-10 w-10 text-primary" />,
+    title: 'Demolition & Excavation',
+    description: 'Safe and efficient site preparation, including demolition of existing structures and expert excavation for new builds.',
+  },
+  {
+    icon: <PaintRoller className="h-10 w-10 text-primary" />,
+    title: 'Flooring & Painting',
+    description: 'Providing the finishing touches that bring your space to life, with professional flooring installation and painting services.',
   },
 ];
 
-const animationDelays = ["delay-0", "delay-150", "delay-300"];
+const animationDelays = ["delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300"];
 
 export default function Services() {
   return (
@@ -33,7 +48,7 @@ export default function Services() {
             We provide a wide range of construction services, tailored to meet the unique needs of each client and project.
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <AnimateOnScroll
               key={index}
