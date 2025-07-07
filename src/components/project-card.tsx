@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -19,9 +18,10 @@ export interface ProjectForCard {
 interface ProjectCardProps {
   project: ProjectForCard;
   onCardClick: (images: string[], startIndex: number) => void;
+  showBadges?: boolean;
 }
 
-export default function ProjectCard({ project, onCardClick }: ProjectCardProps) {
+export default function ProjectCard({ project, onCardClick, showBadges = true }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = (e: React.MouseEvent) => {
@@ -77,8 +77,12 @@ export default function ProjectCard({ project, onCardClick }: ProjectCardProps) 
         <div className="p-4 bg-card flex-grow flex flex-col">
             <h3 className="font-headline text-xl font-bold text-foreground">{project.title || 'Project'}</h3>
             <div className="flex-grow mt-2">
-                <Badge variant="secondary">{project.category}</Badge>
-                {project.subcategory && <Badge variant="outline" className="ml-2">{project.subcategory}</Badge>}
+                {showBadges && (
+                    <>
+                        <Badge variant="secondary">{project.category}</Badge>
+                        {project.subcategory && <Badge variant="outline" className="ml-2">{project.subcategory}</Badge>}
+                    </>
+                )}
             </div>
         </div>
       </Card>

@@ -88,7 +88,7 @@ export default function Projects() {
              ))
           ) : (
             projects.map((project) => (
-               <ProjectCard key={project.id} project={project} onCardClick={handleCardClick} />
+               <ProjectCard key={project.id} project={project} onCardClick={handleCardClick} showBadges={false} />
             ))
           )}
         </div>
