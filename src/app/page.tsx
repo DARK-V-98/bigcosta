@@ -4,6 +4,7 @@ import Hero from '@/components/sections/hero';
 import Services from '@/components/sections/services';
 import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
+import Awards from '@/components/sections/awards';
 import Contact from '@/components/sections/contact';
 import AnimateOnScroll from '@/components/layout/animate-on-scroll';
 
@@ -23,6 +24,9 @@ export default function Home() {
           <Testimonials />
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-right-32 duration-1000">
+          <Awards />
+        </AnimateOnScroll>
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Contact />
         </AnimateOnScroll>
       </main>
