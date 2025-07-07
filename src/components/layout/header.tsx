@@ -53,7 +53,7 @@ export default function Header() {
     )}>
       <div className="container flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 mr-4">
-          <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={56} height={56} className="h-14 w-14 rounded-full" />
+          <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={56} height={56} className="h-14 w-auto" />
           <span className="font-headline text-2xl font-bold text-foreground">BigCosta Construction</span>
         </Link>
         
@@ -128,7 +128,7 @@ export default function Header() {
                     Main menu for navigating the BigCosta Construction website.
                   </SheetDescription>
                   <Link href="/" className="flex items-center gap-2 mb-6">
-                      <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={48} height={48} className="h-12 w-12 rounded-full" />
+                      <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={48} height={48} className="h-12 w-auto" />
                       <span className="font-headline text-xl font-bold">BigCosta Construction</span>
                   </Link>
                 </SheetHeader>
