@@ -23,11 +23,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'About Us', href: '/about-us' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Testimonials', href: '/#testimonials' },
+  { name: 'HOME', href: '/' },
+  { name: 'SERVICES', href: '/services' },
+  { name: 'ABOUT US', href: '/about-us' },
+  { name: 'PROJECTS', href: '/projects' },
+  { name: 'TESTIMONIALS', href: '/#testimonials' },
 ];
 
 export default function Header() {
@@ -68,7 +68,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-2">
             <Button asChild className="rounded-full">
-              <Link href="/#contact">Contact Us</Link>
+              <Link href="/#contact">CONTACT US</Link>
             </Button>
             {loading ? (
               <Skeleton className="h-10 w-10 rounded-full" />
@@ -85,7 +85,7 @@ export default function Header() {
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">My Account</p>
+                      <p className="text-sm font-medium leading-none">MY ACCOUNT</p>
                       <p className="text-xs leading-none text-muted-foreground">
                         {user.email}
                       </p>
@@ -96,19 +96,19 @@ export default function Header() {
                     <DropdownMenuItem asChild>
                        <Link href="/dashboard">
                         <LayoutDashboard className="mr-2 h-4 w-4" />
-                        <span>Dashboard</span>
+                        <span>DASHBOARD</span>
                       </Link>
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuItem onClick={logout}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
+                    <span>LOG OUT</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Button asChild variant="outline">
-                <Link href="/auth">Login</Link>
+                <Link href="/auth">LOGIN</Link>
               </Button>
             )}
           </div>
@@ -118,14 +118,14 @@ export default function Header() {
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open navigation menu</span>
+                  <span className="sr-only">OPEN NAVIGATION MENU</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="flex flex-col p-0">
                 <SheetHeader className="p-6">
-                  <SheetTitle className="sr-only">Menu</SheetTitle>
+                  <SheetTitle className="sr-only">MENU</SheetTitle>
                   <SheetDescription className="sr-only">
-                    Main menu for navigating the BigCosta Construction website.
+                    MAIN MENU FOR NAVIGATING THE BIGCOSTA CONSTRUCTION WEBSITE.
                   </SheetDescription>
                   <Link href="/" className="flex items-center gap-2 mb-6">
                       <Image src="/logobc.png" alt="BigCosta Construction Logo" width={48} height={48} className="h-12 w-12 rounded-full" />
@@ -160,7 +160,7 @@ export default function Header() {
                                 <AvatarFallback>{getInitials(user.email)}</AvatarFallback>
                             </Avatar>
                             <div className="grid gap-1 overflow-hidden">
-                                <p className="text-sm font-medium leading-none">My Account</p>
+                                <p className="text-sm font-medium leading-none">MY ACCOUNT</p>
                                 <p className="text-sm text-muted-foreground truncate">{user.email}</p>
                             </div>
                         </div>
@@ -168,14 +168,14 @@ export default function Header() {
                             <SheetClose asChild>
                                 <Link href="/dashboard" className={cn(buttonVariants({ variant: 'outline' }), "w-full justify-start")}>
                                     <LayoutDashboard className="mr-2 h-4 w-4" />
-                                    Dashboard
+                                    DASHBOARD
                                 </Link>
                             </SheetClose>
                         )}
                         <SheetClose asChild>
                             <Button onClick={logout} variant="outline" className="w-full justify-start">
                                 <LogOut className="mr-2 h-4 w-4" />
-                                Logout
+                                LOGOUT
                             </Button>
                         </SheetClose>
                       </>
@@ -183,12 +183,12 @@ export default function Header() {
                     <>
                       <SheetClose asChild>
                         <Button asChild className="w-full">
-                          <Link href="/auth">Login / Sign Up</Link>
+                          <Link href="/auth">LOGIN / SIGN UP</Link>
                         </Button>
                       </SheetClose>
                       <SheetClose asChild>
                         <Button asChild className="w-full" variant="secondary">
-                          <Link href="/#contact">Contact Us</Link>
+                          <Link href="/#contact">CONTACT US</Link>
                         </Button>
                       </SheetClose>
                     </>

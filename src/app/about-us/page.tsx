@@ -7,8 +7,8 @@ import { Target, Eye } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'About Us | BigCosta Construction (private) limited',
-  description: 'Learn about BigCosta Construction, our mission, our vision, and our commitment to quality and innovation in the construction industry.',
+  title: 'ABOUT US | BIGCOSTA CONSTRUCTION (PRIVATE) LIMITED',
+  description: 'LEARN ABOUT BIGCOSTA CONSTRUCTION. OUR MISSION, VISION, AND COMMITMENT TO QUALITY AND NEW IDEAS IN CONSTRUCTION.',
 };
 
 export default function AboutUsPage() {
@@ -19,9 +19,9 @@ export default function AboutUsPage() {
         <section id="about-us" className="container mx-auto px-4">
 
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">About BigCosta Construction</h1>
+            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">ABOUT BIGCOSTA CONSTRUCTION</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Building the future on a foundation of quality, integrity, and innovation.
+              BUILDING THE FUTURE WITH QUALITY, HONESTY, AND NEW IDEAS.
             </p>
           </div>
 
@@ -36,12 +36,12 @@ export default function AboutUsPage() {
                 />
             </div>
             <div className="space-y-4">
-                <h2 className="font-headline text-3xl font-bold">Our Story</h2>
+                <h2 className="font-headline text-3xl font-bold">OUR STORY</h2>
                 <p className="text-muted-foreground">
-                    Founded on the principles of hard work and an unwavering commitment to client satisfaction, BigCosta Construction has grown from a small, ambitious contractor into a leading name in the construction industry. Our journey is a testament to our dedication to excellence, our skilled team of professionals, and our core philosophy of not just building structures, but building lasting relationships.
+                    BIGCOSTA CONSTRUCTION STARTED WITH HARD WORK AND A FOCUS ON CLIENT HAPPINESS. WE GREW FROM A SMALL CONTRACTOR TO A TOP NAME IN CONSTRUCTION. OUR STORY SHOWS OUR DEDICATION TO DOING GREAT WORK. WE HAVE A SKILLED TEAM AND WE BUILD STRONG RELATIONSHIPS, NOT JUST BUILDINGS.
                 </p>
                 <p className="text-muted-foreground">
-                    From residential homes to large-scale commercial complexes and vital civil infrastructure, we have left our mark of quality across diverse projects. We continually embrace innovation, employing advanced project management techniques and sustainable practices to deliver results that exceed expectations.
+                    WE WORK ON MANY PROJECTS, FROM HOMES TO LARGE COMMERCIAL BUILDINGS AND INFRASTRUCTURE. WE ALWAYS USE NEW IDEAS, GOOD MANAGEMENT, AND GREEN METHODS. OUR RESULTS ARE BETTER THAN EXPECTED.
                 </p>
             </div>
           </div>
@@ -50,22 +50,22 @@ export default function AboutUsPage() {
             <Card className="rounded-2xl bg-card/50">
                 <CardHeader className="flex flex-row items-center gap-4">
                     <Target className="h-10 w-10 text-primary" />
-                    <CardTitle className="font-headline">Our Mission</CardTitle>
+                    <CardTitle className="font-headline">OUR MISSION</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        To deliver high-quality, cost-effective projects on schedule by employing and supporting motivated, flexible, and focused teams. We value the importance of our relationships and will continue to remain fair and true in our dealings with all employees, clients, vendors, and partners.
+                        OUR MISSION IS TO DELIVER GREAT PROJECTS ON TIME AND ON BUDGET. WE HAVE MOTIVATED AND FOCUSED TEAMS. WE VALUE OUR RELATIONSHIPS. WE ARE FAIR AND HONEST WITH OUR EMPLOYEES, CLIENTS, AND PARTNERS.
                     </p>
                 </CardContent>
             </Card>
             <Card className="rounded-2xl bg-card/50">
                 <CardHeader className="flex flex-row items-center gap-4">
                     <Eye className="h-10 w-10 text-primary" />
-                    <CardTitle className="font-headline">Our Vision</CardTitle>
+                    <CardTitle className="font-headline">OUR VISION</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        To be the most trusted and respected construction company in the region, renowned for our excellence, leadership, and unwavering commitment to improving the communities we serve. We aim to be the contractor of choice for our clients and a workplace of choice for our employees.
+                        OUR VISION IS TO BE THE MOST TRUSTED CONSTRUCTION COMPANY IN THE AREA. WE ARE KNOWN FOR GREAT WORK, LEADERSHIP, AND HELPING OUR COMMUNITIES. WE WANT TO BE THE TOP CHOICE FOR CLIENTS AND A GREAT PLACE TO WORK.
                     </p>
                 </CardContent>
             </Card>
@@ -75,16 +75,16 @@ export default function AboutUsPage() {
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="max-w-4xl mx-auto text-center">
                 <div className="space-y-6">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A Message from Our CEO</h2>
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A MESSAGE FROM OUR CEO</h2>
                     <div className="text-secondary-foreground space-y-6 text-left">
                         <p>
-                            We take pride in being one of the pioneer companies dealing with Construction, engineering, and building materials. The Company has attained prominence as a leader through competence, competitiveness, and timely delivery with the highest quality standards and recognized safety performance. We have a long tradition of serving our valued clients to their complete satisfaction through efficient management and excellent workmanship, which we continue to maintain with our untiring efforts.
+                            WE ARE PROUD TO BE A LEADING COMPANY IN CONSTRUCTION, ENGINEERING, AND BUILDING MATERIALS. WE ARE KNOWN FOR OUR SKILL, COMPETITIVE PRICES, AND ON-TIME DELIVERY. WE FOLLOW HIGH QUALITY AND SAFETY STANDARDS. WE HAVE A LONG HISTORY OF MAKING OUR CLIENTS HAPPY WITH GOOD MANAGEMENT AND GREAT WORK. WE CONTINUE TO DO THIS.
                         </p>
                         <p>
-                            Our progress from a small contractor to a large reputable construction firm. The reason for this progression lies not only in hard work and perseverance but our commitment to satisfy our customers and clients in the best way possible. Ethics, professionalism, commitment, and quality are the four pillars upon which our company stands. We have taken on construction projects in all major areas of the industry, including industrial, civil infrastructure, and residential housing projects in different cities. Our route to success has been highly dependent on our competent team of professionals and our philosophy of upholding client satisfaction.
+                            WE GREW FROM A SMALL CONTRACTOR TO A LARGE, RESPECTED FIRM. THIS IS BECAUSE OF HARD WORK AND OUR COMMITMENT TO MAKING CUSTOMERS HAPPY. OUR COMPANY IS BUILT ON ETHICS, PROFESSIONALISM, COMMITMENT, AND QUALITY. WE HAVE WORKED ON INDUSTRIAL, INFRASTRUCTURE, AND HOUSING PROJECTS. OUR SUCCESS COMES FROM OUR GREAT TEAM AND OUR FOCUS ON CLIENT HAPPINESS.
                         </p>
                         <p>
-                           Our long-term goals include expanding our operations to increase our business opportunities. We believe with committed staff and employment of advanced project management techniques, we have a recipe for sustainable growth and achievement. We are very proud of our employees, whose dedication, talent, and loyalty made BigCosta Construction an important force in the Construction market.
+                           OUR GOAL IS TO GROW AND GET MORE BUSINESS. WITH OUR DEDICATED STAFF AND MODERN MANAGEMENT, WE CAN ACHIEVE THIS. WE ARE PROUD OF OUR EMPLOYEES. THEIR HARD WORK AND LOYALTY MAKE BIGCOSTA CONSTRUCTION A STRONG COMPANY.
                         </p>
                     </div>
                 </div>

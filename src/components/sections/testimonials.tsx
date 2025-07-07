@@ -130,9 +130,9 @@ export default function Testimonials() {
     <section id="testimonials" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-background to-secondary p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">WHAT OUR CLIENTS SAY</h2>
           <p className="mt-4 text-lg text-foreground">
-            We take pride in our work, but don't just take our word for it. Here's what our satisfied clients have to say.
+            WE ARE PROUD OF OUR WORK. HEAR FROM OUR HAPPY CLIENTS.
           </p>
         </div>
         <div className="mt-12 max-w-5xl mx-auto">
@@ -190,7 +190,7 @@ export default function Testimonials() {
                 ))
               ) : (
                 <div className="w-full text-center col-span-full py-10">
-                   <p className="text-foreground">No testimonials yet. Be the first to share your thoughts!</p>
+                   <p className="text-foreground">NO TESTIMONIALS YET. BE THE FIRST TO SHARE YOURS!</p>
                 </div>
               )}
             </CarouselContent>
@@ -208,14 +208,14 @@ export default function Testimonials() {
              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                     <Button size="lg" variant="outline" className="text-foreground border-foreground hover:bg-foreground hover:text-background">
-                        Share Your Experience
+                        SHARE YOUR EXPERIENCE
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[480px]">
                     <DialogHeader>
-                        <DialogTitle>Add Your Testimonial</DialogTitle>
+                        <DialogTitle>ADD YOUR TESTIMONIAL</DialogTitle>
                         <DialogDescription>
-                           We'd love to hear about your experience with BigCosta Construction.
+                           WE WOULD LOVE TO HEAR ABOUT YOUR EXPERIENCE WITH US.
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
@@ -225,10 +225,10 @@ export default function Testimonials() {
                                 name="quote"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Your Thoughts</FormLabel>
+                                    <FormLabel>YOUR THOUGHTS</FormLabel>
                                     <FormControl>
                                     <Textarea
-                                        placeholder="They did an amazing job on our project..."
+                                        placeholder="THEY DID AN AMAZING JOB..."
                                         className="min-h-[120px]"
                                         {...field}
                                         disabled={isSubmitting}
@@ -243,9 +243,9 @@ export default function Testimonials() {
                                 name="title"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Your Role / Title</FormLabel>
+                                    <FormLabel>YOUR ROLE / TITLE</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="e.g., Homeowner, CEO" {...field} disabled={isSubmitting} />
+                                        <Input placeholder="E.G., HOMEOWNER, CEO" {...field} disabled={isSubmitting} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -256,9 +256,9 @@ export default function Testimonials() {
                                 name="company"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Company (Optional)</FormLabel>
+                                    <FormLabel>COMPANY (OPTIONAL)</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="e.g., Tech Innovations Inc." {...field} disabled={isSubmitting} />
+                                        <Input placeholder="E.G., TECH INNOVATIONS INC." {...field} disabled={isSubmitting} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -267,12 +267,12 @@ export default function Testimonials() {
                             <DialogFooter>
                                 <DialogClose asChild>
                                     <Button type="button" variant="outline" disabled={isSubmitting}>
-                                        Cancel
+                                        CANCEL
                                     </Button>
                                 </DialogClose>
                                 <Button type="submit" disabled={isSubmitting}>
                                     {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                                    Submit Testimonial
+                                    SUBMIT TESTIMONIAL
                                 </Button>
                             </DialogFooter>
                         </form>

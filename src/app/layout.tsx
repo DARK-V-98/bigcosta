@@ -4,9 +4,9 @@ import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/auth-provider';
 
 export const metadata: Metadata = {
-  title: 'BigCosta Construction (private) limited - Quality & Professionalism',
-  description: 'BigCosta Construction offers top-tier residential, commercial, and renovation services. Contact us for a quote today.',
-  keywords: 'construction, residential, commercial, renovation, building, contractor, general contractor',
+  title: 'BIGCOSTA CONSTRUCTION (PRIVATE) LIMITED - QUALITY & PROFESSIONALISM',
+  description: 'BIGCOSTA CONSTRUCTION OFFERS TOP-TIER RESIDENTIAL, COMMERCIAL, AND RENOVATION SERVICES. CONTACT US FOR A QUOTE TODAY.',
+  keywords: 'CONSTRUCTION, RESIDENTIAL, COMMERCIAL, RENOVATION, BUILDING, CONTRACTOR, GENERAL CONTRACTOR',
 };
 
 export default function RootLayout({

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -95,20 +96,20 @@ export default function Hero() {
                 className="h-32 w-32 mb-6 mx-auto"
               />
               <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
-                Building Dreams, Crafting Futures
+                BUILDING DREAMS, CRAFTING FUTURES
               </h1>
               <p className="mt-6 text-base sm:text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
-                We specialize in creating exceptional buildings and spaces through expert craftsmanship, innovative design, and a steadfast commitment to quality.
+                WE BUILD EXCEPTIONAL BUILDINGS AND SPACES. WE USE EXPERT SKILL, NEW DESIGNS, AND ARE COMMITTED TO QUALITY.
               </p>
             </div>
             
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000">
               <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto">
-                <Link href="/#contact">Get a Free Quote</Link>
+                <Link href="/#contact">GET A FREE QUOTE</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg text-white border-white hover:bg-white hover:text-black w-full sm:w-auto">
                 <Link href="/projects">
-                  View Our Work
+                  VIEW OUR WORK
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>

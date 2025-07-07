@@ -8,63 +8,63 @@ import AnimateOnScroll from "@/components/layout/animate-on-scroll";
 const allServices = [
   {
     icon: <HardHat className="h-10 w-10 text-primary" />,
-    title: 'General Contractor Services',
-    description: 'Overseeing your entire project from start to finish, ensuring quality, budget, and timeline are met with precision.',
+    title: 'GENERAL CONTRACTOR SERVICES',
+    description: 'WE MANAGE YOUR PROJECT FROM START TO FINISH. WE ENSURE QUALITY, BUDGET, AND TIMELINE.',
   },
   {
     icon: <DraftingCompass className="h-10 w-10 text-primary" />,
-    title: 'Architect & Interior Design',
-    description: 'Collaborating with you to create functional, beautiful spaces, from initial blueprints to final interior touches.',
+    title: 'ARCHITECT & INTERIOR DESIGN',
+    description: 'WE WORK WITH YOU TO DESIGN USEFUL AND BEAUTIFUL SPACES, FROM PLANS TO FINAL DETAILS.',
   },
   {
     icon: <Wrench className="h-10 w-10 text-primary" />,
-    title: 'Electrical, Plumbing & HVAC',
-    description: 'Full installation and maintenance of essential systems, ensuring your building is safe, comfortable, and efficient.',
+    title: 'ELECTRICAL, PLUMBING & HVAC',
+    description: 'WE INSTALL AND MAINTAIN KEY SYSTEMS. THIS MAKES YOUR BUILDING SAFE, COMFORTABLE, AND EFFICIENT.',
   },
   {
     icon: <Building2 className="h-10 w-10 text-primary" />,
-    title: 'Roofing & Masonry',
-    description: 'Expert structural work, from durable roofing solutions to classic and modern masonry for a solid foundation.',
+    title: 'ROOFING & MASONRY',
+    description: 'WE DO EXPERT STRUCTURAL WORK, FROM ROOFS TO MASONRY.',
   },
   {
     icon: <Shovel className="h-10 w-10 text-primary" />,
-    title: 'Demolition & Excavation',
-    description: 'Safe and efficient site preparation, including demolition of existing structures and expert excavation for new builds.',
+    title: 'DEMOLITION & EXCAVATION',
+    description: 'WE PREPARE SITES SAFELY AND QUICKLY. THIS INCLUDES DEMOLITION AND EXCAVATION.',
   },
   {
     icon: <PaintRoller className="h-10 w-10 text-primary" />,
-    title: 'Flooring & Painting',
-    description: 'Providing the finishing touches that bring your space to life, with professional flooring installation and painting services.',
+    title: 'FLOORING & PAINTING',
+    description: 'WE PROVIDE FINISHING TOUCHES. THIS INCLUDES PROFESSIONAL FLOORING AND PAINTING.',
   },
   {
     icon: <Layers className="h-10 w-10 text-primary" />,
-    title: 'Concrete Work',
-    description: 'Specializing in high-quality concrete pouring, finishing, and formwork for strong and durable structures.',
+    title: 'CONCRETE WORK',
+    description: 'WE SPECIALIZE IN HIGH-QUALITY CONCRETE WORK FOR STRONG STRUCTURES.',
   },
   {
     icon: <Droplets className="h-10 w-10 text-primary" />,
-    title: 'Tiling & Waterproofing',
-    description: 'Expert tile installation and robust waterproofing solutions to protect and beautify your property.',
+    title: 'TILING & WATERPROOFING',
+    description: 'WE PROVIDE EXPERT TILE AND WATERPROOFING SERVICES TO PROTECT YOUR PROPERTY.',
   },
   {
     icon: <Hammer className="h-10 w-10 text-primary" />,
-    title: 'Carpentry & Woodwork',
-    description: 'Custom carpentry and fine woodwork to add character and functionality to any space.',
+    title: 'CARPENTRY & WOODWORK',
+    description: 'WE OFFER CUSTOM CARPENTRY AND WOODWORK.',
   },
   {
     icon: <Paintbrush className="h-10 w-10 text-primary" />,
-    title: 'Plastering & Ceiling',
-    description: 'Smooth plastering and ceiling work for flawless interior walls and ceilings.',
+    title: 'PLASTERING & CEILING',
+    description: 'WE PROVIDE SMOOTH PLASTERING AND CEILING WORK.',
   },
   {
     icon: <Sprout className="h-10 w-10 text-primary" />,
-    title: 'Landscaping & Paving',
-    description: 'Transforming outdoor spaces with creative landscaping design and durable paving solutions.',
+    title: 'LANDSCAPING & PAVING',
+    description: 'WE TRANSFORM OUTDOOR SPACES WITH LANDSCAPING AND PAVING.',
   },
   {
     icon: <Flame className="h-10 w-10 text-primary" />,
-    title: 'Steel Fabrication',
-    description: 'Custom steel fabrication for structural components, railings, and decorative elements.',
+    title: 'STEEL FABRICATION',
+    description: 'WE OFFER CUSTOM STEEL FABRICATION.',
   },
 ];
 
@@ -79,9 +79,9 @@ export default function ServicesPage() {
          <section id="services" className="container mx-auto px-4">
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="text-center max-w-3xl mx-auto">
-                <h1 className="font-headline text-4xl md:text-5xl font-bold">Our Core Services</h1>
+                <h1 className="font-headline text-4xl md:text-5xl font-bold">OUR CORE SERVICES</h1>
                 <p className="mt-4 text-lg text-secondary-foreground">
-                    We provide a wide range of construction services, tailored to meet the unique needs of each client and project.
+                    WE OFFER MANY CONSTRUCTION SERVICES. WE CUSTOMIZE FOR EACH CLIENT AND PROJECT.
                 </p>
                 </div>
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
