@@ -8,63 +8,63 @@ import AnimateOnScroll from "@/components/layout/animate-on-scroll";
 const allServices = [
   {
     icon: <HardHat className="h-10 w-10 text-primary" />,
-    title: 'GENERAL CONTRACTOR SERVICES',
-    description: 'WE MANAGE YOUR PROJECT FROM START TO FINISH. WE ENSURE QUALITY, BUDGET, AND TIMELINE.',
+    title: 'General Contractor Services',
+    description: 'We manage your project from start to finish. We ensure quality, budget, and timeline.',
   },
   {
     icon: <DraftingCompass className="h-10 w-10 text-primary" />,
-    title: 'ARCHITECT & INTERIOR DESIGN',
-    description: 'WE WORK WITH YOU TO DESIGN USEFUL AND BEAUTIFUL SPACES, FROM PLANS TO FINAL DETAILS.',
+    title: 'Architect & Interior Design',
+    description: 'We work with you to design useful and beautiful spaces, from plans to final details.',
   },
   {
     icon: <Wrench className="h-10 w-10 text-primary" />,
-    title: 'ELECTRICAL, PLUMBING & HVAC',
-    description: 'WE INSTALL AND MAINTAIN KEY SYSTEMS. THIS MAKES YOUR BUILDING SAFE, COMFORTABLE, AND EFFICIENT.',
+    title: 'Electrical, Plumbing & HVAC',
+    description: 'We install and maintain key systems. This makes your building safe, comfortable, and efficient.',
   },
   {
     icon: <Building2 className="h-10 w-10 text-primary" />,
-    title: 'ROOFING & MASONRY',
-    description: 'WE DO EXPERT STRUCTURAL WORK, FROM ROOFS TO MASONRY.',
+    title: 'Roofing & Masonry',
+    description: 'We do expert structural work, from roofs to masonry.',
   },
   {
     icon: <Shovel className="h-10 w-10 text-primary" />,
-    title: 'DEMOLITION & EXCAVATION',
-    description: 'WE PREPARE SITES SAFELY AND QUICKLY. THIS INCLUDES DEMOLITION AND EXCAVATION.',
+    title: 'Demolition & Excavation',
+    description: 'We prepare sites safely and quickly. This includes demolition and excavation.',
   },
   {
     icon: <PaintRoller className="h-10 w-10 text-primary" />,
-    title: 'FLOORING & PAINTING',
-    description: 'WE PROVIDE FINISHING TOUCHES. THIS INCLUDES PROFESSIONAL FLOORING AND PAINTING.',
+    title: 'Flooring & Painting',
+    description: 'We provide finishing touches. This includes professional flooring and painting.',
   },
   {
     icon: <Layers className="h-10 w-10 text-primary" />,
-    title: 'CONCRETE WORK',
-    description: 'WE SPECIALIZE IN HIGH-QUALITY CONCRETE WORK FOR STRONG STRUCTURES.',
+    title: 'Concrete Work',
+    description: 'We specialize in high-quality concrete work for strong structures.',
   },
   {
     icon: <Droplets className="h-10 w-10 text-primary" />,
-    title: 'TILING & WATERPROOFING',
-    description: 'WE PROVIDE EXPERT TILE AND WATERPROOFING SERVICES TO PROTECT YOUR PROPERTY.',
+    title: 'Tiling & Waterproofing',
+    description: 'We provide expert tile and waterproofing services to protect your property.',
   },
   {
     icon: <Hammer className="h-10 w-10 text-primary" />,
-    title: 'CARPENTRY & WOODWORK',
-    description: 'WE OFFER CUSTOM CARPENTRY AND WOODWORK.',
+    title: 'Carpentry & Woodwork',
+    description: 'We offer custom carpentry and woodwork.',
   },
   {
     icon: <Paintbrush className="h-10 w-10 text-primary" />,
-    title: 'PLASTERING & CEILING',
-    description: 'WE PROVIDE SMOOTH PLASTERING AND CEILING WORK.',
+    title: 'Plastering & Ceiling',
+    description: 'We provide smooth plastering and ceiling work.',
   },
   {
     icon: <Sprout className="h-10 w-10 text-primary" />,
-    title: 'LANDSCAPING & PAVING',
-    description: 'WE TRANSFORM OUTDOOR SPACES WITH LANDSCAPING AND PAVING.',
+    title: 'Landscaping & Paving',
+    description: 'We transform outdoor spaces with landscaping and paving.',
   },
   {
     icon: <Flame className="h-10 w-10 text-primary" />,
-    title: 'STEEL FABRICATION',
-    description: 'WE OFFER CUSTOM STEEL FABRICATION.',
+    title: 'Steel Fabrication',
+    description: 'We offer custom steel fabrication.',
   },
 ];
 
@@ -79,9 +79,9 @@ export default function ServicesPage() {
          <section id="services" className="container mx-auto px-4">
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="text-center max-w-3xl mx-auto">
-                <h1 className="font-headline text-4xl md:text-5xl font-bold">OUR CORE SERVICES</h1>
+                <h1 className="font-headline text-4xl md:text-5xl font-bold">Our Core Services</h1>
                 <p className="mt-4 text-lg text-secondary-foreground">
-                    WE OFFER MANY CONSTRUCTION SERVICES. WE CUSTOMIZE FOR EACH CLIENT AND PROJECT.
+                    We offer many construction services. We customize for each client and project.
                 </p>
                 </div>
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

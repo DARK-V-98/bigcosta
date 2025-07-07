@@ -68,9 +68,9 @@ export default function Projects() {
     <section id="projects" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-primary to-background p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">PROJECT SHOWCASE</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">Project Showcase</h2>
           <p className="mt-4 text-lg text-foreground">
-            SEE OUR BEST WORK. IT SHOWS OUR COMMITMENT TO QUALITY AND SKILL.
+            See our best work. It shows our commitment to quality and skill.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -94,7 +94,7 @@ export default function Projects() {
         </div>
          {!loading && projects.length === 0 && (
              <div className="text-center text-foreground mt-12 text-lg">
-                 NO FEATURED PROJECTS YET. PLEASE CHECK BACK SOON!
+                 No featured projects yet. Please check back soon!
              </div>
          )}
       </div>

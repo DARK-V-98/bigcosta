@@ -130,9 +130,9 @@ export default function Testimonials() {
     <section id="testimonials" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-background to-secondary p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">WHAT OUR CLIENTS SAY</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
           <p className="mt-4 text-lg text-foreground">
-            WE ARE PROUD OF OUR WORK. HEAR FROM OUR HAPPY CLIENTS.
+            We are proud of our work. Hear from our happy clients.
           </p>
         </div>
         <div className="mt-12 max-w-5xl mx-auto">
@@ -190,7 +190,7 @@ export default function Testimonials() {
                 ))
               ) : (
                 <div className="w-full text-center col-span-full py-10">
-                   <p className="text-foreground">NO TESTIMONIALS YET. BE THE FIRST TO SHARE YOURS!</p>
+                   <p className="text-foreground">No testimonials yet. Be the first to share yours!</p>
                 </div>
               )}
             </CarouselContent>
@@ -208,14 +208,14 @@ export default function Testimonials() {
              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                     <Button size="lg" variant="outline" className="text-foreground border-foreground hover:bg-foreground hover:text-background">
-                        SHARE YOUR EXPERIENCE
+                        Share Your Experience
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[480px]">
                     <DialogHeader>
-                        <DialogTitle>ADD YOUR TESTIMONIAL</DialogTitle>
+                        <DialogTitle>Add Your Testimonial</DialogTitle>
                         <DialogDescription>
-                           WE WOULD LOVE TO HEAR ABOUT YOUR EXPERIENCE WITH US.
+                           We would love to hear about your experience with us.
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
@@ -225,10 +225,10 @@ export default function Testimonials() {
                                 name="quote"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>YOUR THOUGHTS</FormLabel>
+                                    <FormLabel>Your Thoughts</FormLabel>
                                     <FormControl>
                                     <Textarea
-                                        placeholder="THEY DID AN AMAZING JOB..."
+                                        placeholder="They did an amazing job..."
                                         className="min-h-[120px]"
                                         {...field}
                                         disabled={isSubmitting}
@@ -243,9 +243,9 @@ export default function Testimonials() {
                                 name="title"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>YOUR ROLE / TITLE</FormLabel>
+                                    <FormLabel>Your Role / Title</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="E.G., HOMEOWNER, CEO" {...field} disabled={isSubmitting} />
+                                        <Input placeholder="e.g., Homeowner, CEO" {...field} disabled={isSubmitting} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -256,9 +256,9 @@ export default function Testimonials() {
                                 name="company"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>COMPANY (OPTIONAL)</FormLabel>
+                                    <FormLabel>Company (Optional)</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="E.G., TECH INNOVATIONS INC." {...field} disabled={isSubmitting} />
+                                        <Input placeholder="e.g., Tech Innovations Inc." {...field} disabled={isSubmitting} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -267,12 +267,12 @@ export default function Testimonials() {
                             <DialogFooter>
                                 <DialogClose asChild>
                                     <Button type="button" variant="outline" disabled={isSubmitting}>
-                                        CANCEL
+                                        Cancel
                                     </Button>
                                 </DialogClose>
                                 <Button type="submit" disabled={isSubmitting}>
                                     {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                                    SUBMIT TESTIMONIAL
+                                    Submit Testimonial
                                 </Button>
                             </DialogFooter>
                         </form>

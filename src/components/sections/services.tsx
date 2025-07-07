@@ -9,18 +9,18 @@ import { ArrowRight } from "lucide-react";
 const featuredServices = [
   {
     icon: <HardHat className="h-10 w-10 text-primary" />,
-    title: 'GENERAL CONTRACTOR SERVICES',
-    description: 'WE MANAGE YOUR PROJECT FROM START TO FINISH. WE MAKE SURE IT IS HIGH QUALITY, ON BUDGET, AND ON TIME.',
+    title: 'General Contractor Services',
+    description: 'We manage your project from start to finish. We make sure it is high quality, on budget, and on time.',
   },
   {
     icon: <DraftingCompass className="h-10 w-10 text-primary" />,
-    title: 'ARCHITECT & INTERIOR DESIGN',
-    description: 'WE WORK WITH YOU TO DESIGN BEAUTIFUL AND USEFUL SPACES, FROM PLANS TO FINAL DETAILS.',
+    title: 'Architect & Interior Design',
+    description: 'We work with you to design beautiful and useful spaces, from plans to final details.',
   },
   {
     icon: <Wrench className="h-10 w-10 text-primary" />,
-    title: 'ELECTRICAL, PLUMBING & HVAC',
-    description: 'WE INSTALL AND MAINTAIN KEY SYSTEMS. WE MAKE YOUR BUILDING SAFE, COMFORTABLE, AND EFFICIENT.',
+    title: 'Electrical, Plumbing & HVAC',
+    description: 'We install and maintain key systems. We make your building safe, comfortable, and efficient.',
   },
 ];
 
@@ -31,9 +31,9 @@ export default function Services() {
     <section id="services" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">OUR CORE SERVICES</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Core Services</h2>
           <p className="mt-4 text-lg text-secondary-foreground">
-            WE OFFER MANY CONSTRUCTION SERVICES. WE CUSTOMIZE FOR EACH CLIENT AND PROJECT.
+            We offer many construction services. We customize for each client and project.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -58,7 +58,7 @@ export default function Services() {
         <div className="mt-12 text-center">
             <Button asChild size="lg" variant="outline" className="rounded-full text-foreground border-foreground hover:bg-foreground hover:text-background shadow-[4px_4px_0_hsl(var(--primary))] transition-all hover:shadow-none hover:translate-x-1 hover:translate-y-1">
                 <Link href="/services">
-                    VIEW ALL SERVICES
+                    View All Services
                     <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
             </Button>

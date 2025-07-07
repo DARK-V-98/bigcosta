@@ -36,8 +36,8 @@ export default function Contact() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     toast({
-      title: "MESSAGE SENT!",
-      description: "THANK YOU FOR CONTACTING US. WE WILL GET BACK TO YOU SHORTLY.",
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We will get back to you shortly.",
       variant: 'default',
     });
     form.reset();
@@ -47,9 +47,9 @@ export default function Contact() {
     <section id="contact" className="container mx-auto px-4">
       <div className="rounded-3xl bg-gradient-to-br from-background to-secondary p-8 md:p-12 lg:p-20">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">GET IN TOUCH</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold">Get In Touch</h2>
           <p className="mt-4 text-lg text-foreground">
-            HAVE A PROJECT? WE WANT TO HEAR FROM YOU. USE THE FORM OR CONTACT US DIRECTLY.
+            Have a project? We want to hear from you. Use the form or contact us directly.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -63,11 +63,11 @@ export default function Contact() {
               />
             </div>
             <div className="space-y-4">
-              <h3 className="font-headline text-2xl font-semibold text-foreground">CONTACT INFORMATION</h3>
+              <h3 className="font-headline text-2xl font-semibold text-foreground">Contact Information</h3>
               <div className="space-y-3 text-muted-foreground">
                 <div className="flex items-center gap-4">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>CONTACT@BIGCOSTA.COM</span>
+                  <span>contact@bigcosta.com</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="h-5 w-5 text-primary" />
@@ -75,7 +75,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-5 w-5 text-primary" />
-                  <span>123, GALLE ROAD, COLOMBO 03, SRI LANKA</span>
+                  <span>123, Galle Road, Colombo 03, Sri Lanka</span>
                 </div>
               </div>
             </div>
@@ -83,8 +83,8 @@ export default function Contact() {
           <div>
             <Card className="bg-card rounded-2xl">
               <CardHeader>
-                <CardTitle className="font-headline">SEND US A MESSAGE</CardTitle>
-                <CardDescription>WE WILL REPLY WITHIN 24 HOURS.</CardDescription>
+                <CardTitle className="font-headline">Send Us a Message</CardTitle>
+                <CardDescription>We will reply within 24 hours.</CardDescription>
               </CardHeader>
               <CardContent>
                 <Form {...form}>
@@ -94,9 +94,9 @@ export default function Contact() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>FULL NAME</FormLabel>
+                          <FormLabel>Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="YOUR NAME" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="Your Name" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -107,9 +107,9 @@ export default function Contact() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>EMAIL ADDRESS</FormLabel>
+                          <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="YOUR.EMAIL@EXAMPLE.COM" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="your.email@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -120,7 +120,7 @@ export default function Contact() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>PHONE NUMBER (OPTIONAL)</FormLabel>
+                          <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
                             <Input placeholder="+94 (XX) XXX-XXXX" {...field} className="bg-background placeholder:text-muted-foreground" />
                           </FormControl>
@@ -133,15 +133,15 @@ export default function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>YOUR MESSAGE</FormLabel>
+                          <FormLabel>Your Message</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="TELL US ABOUT YOUR PROJECT..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
+                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" size="lg" className="w-full">SEND MESSAGE</Button>
+                    <Button type="submit" size="lg" className="w-full">Send Message</Button>
                   </form>
                 </Form>
               </CardContent>

@@ -80,9 +80,9 @@ export default function ProjectsPage() {
       <main className="flex-1 py-16 md:py-24">
         <section className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">OUR WORK</h1>
+            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">Our Work</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              BROWSE OUR FULL PORTFOLIO. IT IS ORGANIZED BY CATEGORY.
+              Browse our full portfolio. It is organized by category.
             </p>
           </div>
           
@@ -126,7 +126,7 @@ export default function ProjectsPage() {
                 </Tabs>
             ) : (
                  <div className="text-center text-muted-foreground mt-12 text-lg">
-                    NO PROJECTS HAVE BEEN UPLOADED YET. PLEASE CHECK BACK SOON!
+                    No projects have been uploaded yet. Please check back soon!
                 </div>
             )}
           </div>

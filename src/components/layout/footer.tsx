@@ -6,12 +6,12 @@ import Image from 'next/image';
 
 export default function Footer() {
   const navItems = [
-    { name: 'HOME', href: '/' },
-    { name: 'SERVICES', href: '/services' },
-    { name: 'ABOUT US', href: '/about-us' },
-    { name: 'PROJECTS', href: '/projects' },
-    { name: 'TESTIMONIALS', href: '/#testimonials' },
-    { name: 'CONTACT', href: '/#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'About Us', href: '/about-us' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Testimonials', href: '/#testimonials' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -20,17 +20,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image src="/logobc.png" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
-              <span className="font-headline text-xl font-bold text-foreground">BigCosta Construction (private) limited</span>
+              <Image src="/logobc.png" alt="Big Costa Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
+              <span className="font-headline text-xl font-bold text-foreground">Big Costa Construction (Private) Limited</span>
             </Link>
-            <p className="text-sm text-center md:text-left">BUILDING YOUR VISION, ONE BRICK AT A TIME.</p>
+            <p className="text-sm text-center md:text-left">Building your vision, one brick at a time.</p>
           </div>
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-semibold text-foreground">QUICK LINKS</h3>
+            <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
             <ul className="mt-4 space-y-2 text-center md:text-left">
               {navItems.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm hover:text-primary transition-colors">
+                  <Link href={item.href} className="text-sm hover:text-primary transition-colors uppercase">
                     {item.name}
                   </Link>
                 </li>
@@ -38,7 +38,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="flex flex-col items-center md:items-start">
-             <h3 className="text-lg font-semibold text-foreground">FOLLOW US</h3>
+             <h3 className="text-lg font-semibold text-foreground">Follow Us</h3>
              <div className="mt-4 flex justify-center md:justify-start gap-4">
                <Link href="#" aria-label="Facebook">
                  <Facebook className="h-6 w-6 hover:text-primary transition-colors" />
@@ -54,9 +54,9 @@ export default function Footer() {
         </div>
         <Separator className="my-8 bg-border" />
         <div className="text-center text-sm">
-          <p>© {new Date().getFullYear()} BIGCOSTA CONSTRUCTION (PRIVATE) LIMITED. ALL RIGHTS RESERVED.</p>
+          <p>© {new Date().getFullYear()} Big Costa Construction (Private) Limited. All rights reserved.</p>
           <p className="mt-2">
-            WEBSITE POWERED BY{' '}
+            Website powered by{' '}
             <a 
               href="https://www.esystemlk.xyz" 
               target="_blank" 

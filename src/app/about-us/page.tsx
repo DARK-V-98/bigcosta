@@ -7,8 +7,8 @@ import { Target, Eye } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'ABOUT US | BIGCOSTA CONSTRUCTION (PRIVATE) LIMITED',
-  description: 'LEARN ABOUT BIGCOSTA CONSTRUCTION. OUR MISSION, VISION, AND COMMITMENT TO QUALITY AND NEW IDEAS IN CONSTRUCTION.',
+  title: 'About Us | Big Costa Construction (Private) Limited',
+  description: 'Learn about Big Costa Construction. Our mission, vision, and commitment to quality and new ideas in construction.',
 };
 
 export default function AboutUsPage() {
@@ -19,9 +19,9 @@ export default function AboutUsPage() {
         <section id="about-us" className="container mx-auto px-4">
 
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">ABOUT BIGCOSTA CONSTRUCTION</h1>
+            <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">About Big Costa Construction</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              BUILDING THE FUTURE WITH QUALITY, HONESTY, AND NEW IDEAS.
+              Building the future with quality, honesty, and new ideas.
             </p>
           </div>
 
@@ -36,12 +36,12 @@ export default function AboutUsPage() {
                 />
             </div>
             <div className="space-y-4">
-                <h2 className="font-headline text-3xl font-bold">OUR STORY</h2>
+                <h2 className="font-headline text-3xl font-bold">Our Story</h2>
                 <p className="text-muted-foreground">
-                    BIGCOSTA CONSTRUCTION STARTED WITH HARD WORK AND A FOCUS ON CLIENT HAPPINESS. WE GREW FROM A SMALL CONTRACTOR TO A TOP NAME IN CONSTRUCTION. OUR STORY SHOWS OUR DEDICATION TO DOING GREAT WORK. WE HAVE A SKILLED TEAM AND WE BUILD STRONG RELATIONSHIPS, NOT JUST BUILDINGS.
+                    Big Costa Construction started with hard work and a focus on client happiness. We grew from a small contractor to a top name in construction. Our story shows our dedication to doing great work. We have a skilled team and we build strong relationships, not just buildings.
                 </p>
                 <p className="text-muted-foreground">
-                    WE WORK ON MANY PROJECTS, FROM HOMES TO LARGE COMMERCIAL BUILDINGS AND INFRASTRUCTURE. WE ALWAYS USE NEW IDEAS, GOOD MANAGEMENT, AND GREEN METHODS. OUR RESULTS ARE BETTER THAN EXPECTED.
+                    We work on many projects, from homes to large commercial buildings and infrastructure. We always use new ideas, good management, and green methods. Our results are better than expected.
                 </p>
             </div>
           </div>
@@ -50,22 +50,22 @@ export default function AboutUsPage() {
             <Card className="rounded-2xl bg-card/50">
                 <CardHeader className="flex flex-row items-center gap-4">
                     <Target className="h-10 w-10 text-primary" />
-                    <CardTitle className="font-headline">OUR MISSION</CardTitle>
+                    <CardTitle className="font-headline">Our Mission</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        OUR MISSION IS TO DELIVER GREAT PROJECTS ON TIME AND ON BUDGET. WE HAVE MOTIVATED AND FOCUSED TEAMS. WE VALUE OUR RELATIONSHIPS. WE ARE FAIR AND HONEST WITH OUR EMPLOYEES, CLIENTS, AND PARTNERS.
+                        Our mission is to deliver great projects on time and on budget. We have motivated and focused teams. We value our relationships. We are fair and honest with our employees, clients, and partners.
                     </p>
                 </CardContent>
             </Card>
             <Card className="rounded-2xl bg-card/50">
                 <CardHeader className="flex flex-row items-center gap-4">
                     <Eye className="h-10 w-10 text-primary" />
-                    <CardTitle className="font-headline">OUR VISION</CardTitle>
+                    <CardTitle className="font-headline">Our Vision</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">
-                        OUR VISION IS TO BE THE MOST TRUSTED CONSTRUCTION COMPANY IN THE AREA. WE ARE KNOWN FOR GREAT WORK, LEADERSHIP, AND HELPING OUR COMMUNITIES. WE WANT TO BE THE TOP CHOICE FOR CLIENTS AND A GREAT PLACE TO WORK.
+                        Our vision is to be the most trusted construction company in the area. We are known for great work, leadership, and helping our communities. We want to be the top choice for clients and a great place to work.
                     </p>
                 </CardContent>
             </Card>
@@ -75,16 +75,16 @@ export default function AboutUsPage() {
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="max-w-4xl mx-auto text-center">
                 <div className="space-y-6">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A MESSAGE FROM OUR CEO</h2>
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A Message from Our CEO</h2>
                     <div className="text-secondary-foreground space-y-6 text-left">
                         <p>
-                            WE ARE PROUD TO BE A LEADING COMPANY IN CONSTRUCTION, ENGINEERING, AND BUILDING MATERIALS. WE ARE KNOWN FOR OUR SKILL, COMPETITIVE PRICES, AND ON-TIME DELIVERY. WE FOLLOW HIGH QUALITY AND SAFETY STANDARDS. WE HAVE A LONG HISTORY OF MAKING OUR CLIENTS HAPPY WITH GOOD MANAGEMENT AND GREAT WORK. WE CONTINUE TO DO THIS.
+                            We are proud to be a leading company in construction, engineering, and building materials. We are known for our skill, competitive prices, and on-time delivery. We follow high quality and safety standards. We have a long history of making our clients happy with good management and great work. We continue to do this.
                         </p>
                         <p>
-                            WE GREW FROM A SMALL CONTRACTOR TO A LARGE, RESPECTED FIRM. THIS IS BECAUSE OF HARD WORK AND OUR COMMITMENT TO MAKING CUSTOMERS HAPPY. OUR COMPANY IS BUILT ON ETHICS, PROFESSIONALISM, COMMITMENT, AND QUALITY. WE HAVE WORKED ON INDUSTRIAL, INFRASTRUCTURE, AND HOUSING PROJECTS. OUR SUCCESS COMES FROM OUR GREAT TEAM AND OUR FOCUS ON CLIENT HAPPINESS.
+                            We grew from a small contractor to a large, respected firm. This is because of hard work and our commitment to making customers happy. Our company is built on ethics, professionalism, commitment, and quality. We have worked on industrial, infrastructure, and housing projects. Our success comes from our great team and our focus on client happiness.
                         </p>
                         <p>
-                           OUR GOAL IS TO GROW AND GET MORE BUSINESS. WITH OUR DEDICATED STAFF AND MODERN MANAGEMENT, WE CAN ACHIEVE THIS. WE ARE PROUD OF OUR EMPLOYEES. THEIR HARD WORK AND LOYALTY MAKE BIGCOSTA CONSTRUCTION A STRONG COMPANY.
+                           Our goal is to grow and get more business. With our dedicated staff and modern management, we can achieve this. We are proud of our employees. Their hard work and loyalty make Big Costa Construction a strong company.
                         </p>
                     </div>
                 </div>
