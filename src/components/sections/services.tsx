@@ -1,9 +1,12 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { HardHat, DraftingCompass, Wrench, Building2, Shovel, PaintRoller, Layers, Droplets, Hammer, Paintbrush, Sprout, Flame } from 'lucide-react';
+import { HardHat, DraftingCompass, Wrench } from 'lucide-react';
 import AnimateOnScroll from "@/components/layout/animate-on-scroll";
+import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+import { ArrowRight } from "lucide-react";
 
-const services = [
+const featuredServices = [
   {
     icon: <HardHat className="h-10 w-10 text-primary" />,
     title: 'General Contractor Services',
@@ -19,54 +22,9 @@ const services = [
     title: 'Electrical, Plumbing & HVAC',
     description: 'Full installation and maintenance of essential systems, ensuring your building is safe, comfortable, and efficient.',
   },
-  {
-    icon: <Building2 className="h-10 w-10 text-primary" />,
-    title: 'Roofing & Masonry',
-    description: 'Expert structural work, from durable roofing solutions to classic and modern masonry for a solid foundation.',
-  },
-  {
-    icon: <Shovel className="h-10 w-10 text-primary" />,
-    title: 'Demolition & Excavation',
-    description: 'Safe and efficient site preparation, including demolition of existing structures and expert excavation for new builds.',
-  },
-  {
-    icon: <PaintRoller className="h-10 w-10 text-primary" />,
-    title: 'Flooring & Painting',
-    description: 'Providing the finishing touches that bring your space to life, with professional flooring installation and painting services.',
-  },
-  {
-    icon: <Layers className="h-10 w-10 text-primary" />,
-    title: 'Concrete Work',
-    description: 'Specializing in high-quality concrete pouring, finishing, and formwork for strong and durable structures.',
-  },
-  {
-    icon: <Droplets className="h-10 w-10 text-primary" />,
-    title: 'Tiling & Waterproofing',
-    description: 'Expert tile installation and robust waterproofing solutions to protect and beautify your property.',
-  },
-  {
-    icon: <Hammer className="h-10 w-10 text-primary" />,
-    title: 'Carpentry & Woodwork',
-    description: 'Custom carpentry and fine woodwork to add character and functionality to any space.',
-  },
-  {
-    icon: <Paintbrush className="h-10 w-10 text-primary" />,
-    title: 'Plastering & Ceiling',
-    description: 'Smooth plastering and ceiling work for flawless interior walls and ceilings.',
-  },
-  {
-    icon: <Sprout className="h-10 w-10 text-primary" />,
-    title: 'Landscaping & Paving',
-    description: 'Transforming outdoor spaces with creative landscaping design and durable paving solutions.',
-  },
-  {
-    icon: <Flame className="h-10 w-10 text-primary" />,
-    title: 'Steel Fabrication',
-    description: 'Custom steel fabrication for structural components, railings, and decorative elements.',
-  },
 ];
 
-const animationDelays = ["delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300"];
+const animationDelays = ["delay-0", "delay-150", "delay-300"];
 
 export default function Services() {
   return (
@@ -79,7 +37,7 @@ export default function Services() {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {featuredServices.map((service, index) => (
             <AnimateOnScroll
               key={index}
               animationClasses={`animate-in fade-in zoom-in-95 duration-500 ${animationDelays[index % animationDelays.length]}`}
@@ -96,6 +54,14 @@ export default function Services() {
               </Card>
             </AnimateOnScroll>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+            <Button asChild size="lg" variant="outline" className="text-foreground border-foreground hover:bg-foreground hover:text-background">
+                <Link href="/services">
+                    View All Services
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+            </Button>
         </div>
       </div>
     </section>

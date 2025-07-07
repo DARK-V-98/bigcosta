@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -23,7 +24,7 @@ import { Separator } from '@/components/ui/separator';
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/#services' },
+  { name: 'Services', href: '/services' },
   { name: 'CEO Message', href: '/ceo-message' },
   { name: 'Projects', href: '/projects' },
   { name: 'Testimonials', href: '/#testimonials' },
@@ -121,28 +122,26 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="flex flex-col p-0">
-                <SheetHeader className="sr-only">
-                  <SheetTitle>Menu</SheetTitle>
-                  <SheetDescription>
+                <SheetHeader className="p-6">
+                  <SheetTitle className="sr-only">Menu</SheetTitle>
+                  <SheetDescription className="sr-only">
                     Main menu for navigating the BigCosta Construction website.
                   </SheetDescription>
+                  <Link href="/" className="flex items-center gap-2 mb-6">
+                      <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
+                      <span className="font-headline text-xl font-bold">BigCosta Construction</span>
+                  </Link>
                 </SheetHeader>
-                {/* Sheet Header */}
-                <div className="p-6">
-                    <Link href="/" className="flex items-center gap-2 mb-6">
-                        <Image src="/logobc.PNG" alt="BigCosta Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
-                        <span className="font-headline text-xl font-bold">BigCosta Construction</span>
-                    </Link>
-                    <nav className="grid gap-4">
-                        {navItems.map((item) => (
-                        <SheetClose key={item.name} asChild>
-                            <Link href={item.href} className="text-lg font-medium transition-colors hover:text-primary">
-                            {item.name}
-                            </Link>
-                        </SheetClose>
-                        ))}
-                    </nav>
-                </div>
+                
+                <nav className="grid gap-4 px-6">
+                    {navItems.map((item) => (
+                    <SheetClose key={item.name} asChild>
+                        <Link href={item.href} className="text-lg font-medium transition-colors hover:text-primary">
+                        {item.name}
+                        </Link>
+                    </SheetClose>
+                    ))}
+                </nav>
                 
                 {/* Sheet Footer */}
                 <div className="mt-auto border-t p-6 grid gap-4">

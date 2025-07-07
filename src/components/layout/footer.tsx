@@ -7,7 +7,7 @@ import Image from 'next/image';
 export default function Footer() {
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/#services' },
+    { name: 'Services', href: '/services' },
     { name: 'CEO Message', href: '/ceo-message' },
     { name: 'Projects', href: '/projects' },
     { name: 'Testimonials', href: '/#testimonials' },
