@@ -1,15 +1,17 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Upload, Loader2 } from 'lucide-react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, query, onSnapshot } from 'firebase/firestore';
 
 import { storage, db } from '@/lib/firebase-client';
 import { useToast } from '@/hooks/use-toast';
+import { type Category } from '../categories/page';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -20,7 +22,8 @@ import { Switch } from '@/components/ui/switch';
 
 const projectSchema = z.object({
   title: z.string().optional(),
-  category: z.enum(['Residential', 'Commercial', 'Renovation']),
+  category: z.string().min(1, { message: 'A category is required.' }),
+  subcategory: z.string().optional(),
   description: z.string().optional(),
   showOnHomepage: z.boolean().default(false),
   images: z
@@ -40,6 +43,7 @@ type ProjectFormValues = z.infer<typeof projectSchema>;
 
 export default function UploadProjectsPage() {
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
   const { toast } = useToast();
 
   const form = useForm<ProjectFormValues>({
@@ -48,8 +52,23 @@ export default function UploadProjectsPage() {
       title: '',
       description: '',
       showOnHomepage: false,
+      category: '',
+      subcategory: '',
     },
   });
+
+  const watchCategory = form.watch('category');
+  const availableSubcategories = categories.find(c => c.name === watchCategory)?.subcategories || [];
+
+
+  useEffect(() => {
+    const q = query(collection(db, 'projectCategories'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const categoriesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Category[];
+        setCategories(categoriesData);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const onSubmit = async (data: ProjectFormValues) => {
     setLoading(true);
@@ -67,10 +86,10 @@ export default function UploadProjectsPage() {
       await addDoc(collection(db, 'projects'), {
         title: data.title || '',
         category: data.category,
+        subcategory: data.subcategory || '',
         description: data.description || '',
         images: imageUrls,
         showOnHomepage: data.showOnHomepage,
-        hint: `${data.category.toLowerCase()} project`,
         createdAt: serverTimestamp(),
       });
 
@@ -79,7 +98,6 @@ export default function UploadProjectsPage() {
         description: 'Your new project has been added.',
       });
       form.reset();
-      // Need to specifically reset the file input as it's not always controlled
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
       if(fileInput) fileInput.value = '';
 
@@ -99,9 +117,9 @@ export default function UploadProjectsPage() {
     <div>
        <Card className="rounded-2xl">
         <CardHeader>
-          <CardTitle>Project Image Upload</CardTitle>
+          <CardTitle>Upload New Project</CardTitle>
           <CardDescription>
-            Upload one or more images for new projects. Use the toggle to feature a project on the homepage.
+            Upload one or more images, assign a category, and optionally feature it on the homepage.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -120,29 +138,53 @@ export default function UploadProjectsPage() {
                   </FormItem>
                 )}
               />
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <FormField
+                    control={form.control}
+                    name="category"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Category</FormLabel>
+                        <Select onValueChange={(value) => { field.onChange(value); form.setValue('subcategory', ''); }} value={field.value} disabled={loading || categories.length === 0}>
+                        <FormControl>
+                            <SelectTrigger>
+                            <SelectValue placeholder="Select a project category" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            {categories.map(cat => <SelectItem key={cat.id} value={cat.name}>{cat.name}</SelectItem>)}
+                        </SelectContent>
+                        </Select>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
 
-              <FormField
-                control={form.control}
-                name="category"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Category</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loading}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a project category" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="Residential">Residential</SelectItem>
-                        <SelectItem value="Commercial">Commercial</SelectItem>
-                        <SelectItem value="Renovation">Renovation</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                {availableSubcategories.length > 0 && (
+                 <FormField
+                    control={form.control}
+                    name="subcategory"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Sub-category (Optional)</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value} disabled={loading}>
+                        <FormControl>
+                            <SelectTrigger>
+                            <SelectValue placeholder="Select a sub-category" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            <SelectItem value="">None</SelectItem>
+                            {availableSubcategories.map(sub => <SelectItem key={sub} value={sub}>{sub}</SelectItem>)}
+                        </SelectContent>
+                        </Select>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+               )}
+              </div>
 
               <FormField
                 control={form.control}
@@ -163,7 +205,7 @@ export default function UploadProjectsPage() {
                 name="images"
                 render={({ field: { onChange, value, ...rest } }) => (
                   <FormItem>
-                    <FormLabel>Project Images</FormLabel>
+                    <FormLabel>Project Images (Bulk Upload)</FormLabel>
                     <FormControl>
                       <Input 
                         type="file" 

@@ -1,14 +1,17 @@
+
 'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 export interface ProjectForCard {
   id: string;
   title?: string;
   category: string;
+  subcategory?: string;
   images: string[];
   hint: string;
 }
@@ -41,7 +44,7 @@ export default function ProjectCard({ project, onCardClick }: ProjectCardProps) 
   
   return (
     <div onClick={() => onCardClick(project.images, currentIndex)} className="cursor-pointer h-full">
-      <Card className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl h-full">
+      <Card className="overflow-hidden group shadow-md hover:shadow-2xl transition-shadow duration-300 bg-card rounded-2xl h-full flex flex-col">
         <CardContent className="p-0 relative">
           <Image
             src={project.images[currentIndex]}
@@ -49,7 +52,7 @@ export default function ProjectCard({ project, onCardClick }: ProjectCardProps) 
             data-ai-hint={project.hint}
             width={600}
             height={400}
-            className="w-full h-auto object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-auto object-cover aspect-[4/3] transition-transform duration-300 group-hover:scale-105"
           />
           
           {project.images.length > 1 && (
@@ -70,17 +73,14 @@ export default function ProjectCard({ project, onCardClick }: ProjectCardProps) 
               </button>
             </>
           )}
-
-          {project.title && (
-            <>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <h3 className="font-headline text-2xl font-bold text-white">{project.title}</h3>
-                <p className="text-primary font-semibold">{project.category}</p>
-              </div>
-            </>
-          )}
         </CardContent>
+        <div className="p-4 bg-card flex-grow flex flex-col">
+            <h3 className="font-headline text-xl font-bold text-foreground">{project.title || 'Project'}</h3>
+            <div className="flex-grow mt-2">
+                <Badge variant="secondary">{project.category}</Badge>
+                {project.subcategory && <Badge variant="outline" className="ml-2">{project.subcategory}</Badge>}
+            </div>
+        </div>
       </Card>
     </div>
   );

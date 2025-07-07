@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
     { name: 'Overview', href: '/dashboard' },
     { name: 'Manage Roles', href: '/dashboard/roles' },
+    { name: 'Manage Categories', href: '/dashboard/categories' },
     { name: 'Upload Projects', href: '/dashboard/upload' },
     { name: 'Manage Projects', href: '/dashboard/manage-projects' },
 ];

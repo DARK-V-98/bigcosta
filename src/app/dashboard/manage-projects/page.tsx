@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -11,6 +12,7 @@ import { MoreVertical, Edit, Trash2, Loader2, ImageIcon } from 'lucide-react';
 
 import { db, storage } from '@/lib/firebase-client';
 import { useToast } from '@/hooks/use-toast';
+import { type Category } from '../categories/page';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -51,7 +53,8 @@ import { Switch } from '@/components/ui/switch';
 interface Project {
   id: string;
   title?: string;
-  category: 'Residential' | 'Commercial' | 'Renovation';
+  category: string;
+  subcategory?: string;
   description?: string;
   images: string[];
   showOnHomepage: boolean;
@@ -60,7 +63,8 @@ interface Project {
 
 const editProjectSchema = z.object({
   title: z.string().optional(),
-  category: z.enum(['Residential', 'Commercial', 'Renovation']),
+  category: z.string().min(1, { message: 'A category is required.' }),
+  subcategory: z.string().optional(),
   description: z.string().optional(),
   showOnHomepage: z.boolean().default(false),
 });
@@ -70,6 +74,7 @@ type EditProjectFormValues = z.infer<typeof editProjectSchema>;
 
 export default function ManageProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
@@ -82,6 +87,9 @@ export default function ManageProjectsPage() {
     resolver: zodResolver(editProjectSchema),
   });
 
+  const watchCategory = form.watch('category');
+  const availableSubcategories = categories.find(c => c.name === watchCategory)?.subcategories || [];
+
   useEffect(() => {
     const q = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -89,15 +97,12 @@ export default function ManageProjectsPage() {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         let images: string[] = [];
-        // Backward compatibility: handle old 'image' (string) and new 'images' (array)
         if (data.images && Array.isArray(data.images)) {
           images = data.images;
         } else if (data.image && typeof data.image === 'string') {
           images = [data.image];
         }
 
-        // We show all projects in the dashboard, even if they have no images.
-        // We just ensure `images` is always an array.
         projectsData.push({ id: doc.id, ...data, images } as Project);
       });
       setProjects(projectsData);
@@ -110,6 +115,15 @@ export default function ManageProjectsPage() {
 
     return () => unsubscribe();
   }, [toast]);
+  
+  useEffect(() => {
+    const catQuery = query(collection(db, 'projectCategories'));
+    const catUnsubscribe = onSnapshot(catQuery, (querySnapshot) => {
+      const categoriesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Category[];
+      setCategories(categoriesData);
+    });
+    return () => catUnsubscribe();
+  }, []);
 
   const openDeleteDialog = (project: Project) => {
     setSelectedProject(project);
@@ -121,6 +135,7 @@ export default function ManageProjectsPage() {
     form.reset({
       title: project.title || '',
       category: project.category,
+      subcategory: project.subcategory || '',
       description: project.description || '',
       showOnHomepage: project.showOnHomepage,
     });
@@ -131,21 +146,16 @@ export default function ManageProjectsPage() {
     if (!selectedProject) return;
     setIsSubmitting(true);
     try {
-      // Delete images from storage
       if (selectedProject.images && selectedProject.images.length > 0) {
         const deletePromises = selectedProject.images.map(imageUrl => {
             const imageRef = ref(storage, imageUrl);
             return deleteObject(imageRef).catch(err => {
-                // Log error but don't fail the whole process if one image fails to delete
                 console.error(`Failed to delete image ${imageUrl}:`, err);
             });
         });
         await Promise.all(deletePromises);
       }
-
-      // Delete document from firestore
       await deleteDoc(doc(db, 'projects', selectedProject.id));
-
       toast({ title: 'Success', description: 'Project deleted successfully.' });
     } catch (error: any) {
       console.error("Error deleting project:", error);
@@ -164,7 +174,7 @@ export default function ManageProjectsPage() {
       const projectRef = doc(db, 'projects', selectedProject.id);
       await updateDoc(projectRef, {
         ...data,
-        hint: `${data.category.toLowerCase()} project`,
+        subcategory: data.subcategory || '', // ensure it's not undefined
       });
       toast({ title: 'Success', description: 'Project updated successfully.' });
     } catch (error) {
@@ -195,6 +205,7 @@ export default function ManageProjectsPage() {
                   <TableHead className="w-[80px]">Image</TableHead>
                   <TableHead>Title</TableHead>
                   <TableHead>Category</TableHead>
+                  <TableHead>Sub-Category</TableHead>
                   <TableHead>Images</TableHead>
                   <TableHead>On Homepage</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
@@ -205,7 +216,8 @@ export default function ManageProjectsPage() {
                   Array.from({ length: 3 }).map((_, i) => (
                     <TableRow key={i}>
                       <TableCell><Skeleton className="h-12 w-16 rounded-md" /></TableCell>
-                      <TableCell><Skeleton className="h-4 w-[200px]" /></TableCell>
+                      <TableCell><Skeleton className="h-4 w-[150px]" /></TableCell>
+                      <TableCell><Skeleton className="h-4 w-[100px]" /></TableCell>
                       <TableCell><Skeleton className="h-4 w-[100px]" /></TableCell>
                       <TableCell><Skeleton className="h-4 w-[50px]" /></TableCell>
                       <TableCell><Skeleton className="h-6 w-12" /></TableCell>
@@ -227,6 +239,9 @@ export default function ManageProjectsPage() {
                       <TableCell className="font-medium">{project.title || <span className="text-muted-foreground">Untitled</span>}</TableCell>
                       <TableCell>
                         <Badge variant="secondary">{project.category}</Badge>
+                      </TableCell>
+                       <TableCell>
+                        {project.subcategory ? <Badge variant="outline">{project.subcategory}</Badge> : '-'}
                       </TableCell>
                        <TableCell>
                         <Badge variant="outline">{project.images?.length || 0}</Badge>
@@ -317,22 +332,43 @@ export default function ManageProjectsPage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Category</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting}>
+                    <Select onValueChange={(value) => { field.onChange(value); form.setValue('subcategory', ''); }} value={field.value} disabled={isSubmitting}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a project category" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="Residential">Residential</SelectItem>
-                        <SelectItem value="Commercial">Commercial</SelectItem>
-                        <SelectItem value="Renovation">Renovation</SelectItem>
+                        {categories.map(cat => <SelectItem key={cat.id} value={cat.name}>{cat.name}</SelectItem>)}
                       </SelectContent>
                     </Select>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+               {availableSubcategories.length > 0 && (
+                 <FormField
+                    control={form.control}
+                    name="subcategory"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Sub-category (Optional)</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value} disabled={isSubmitting}>
+                        <FormControl>
+                            <SelectTrigger>
+                            <SelectValue placeholder="Select a sub-category" />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                             <SelectItem value="">None</SelectItem>
+                            {availableSubcategories.map(sub => <SelectItem key={sub} value={sub}>{sub}</SelectItem>)}
+                        </SelectContent>
+                        </Select>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+               )}
               <FormField
                 control={form.control}
                 name="description"
