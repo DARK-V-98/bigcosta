@@ -1,6 +1,6 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { HardHat, DraftingCompass, Wrench, Building2, Shovel, PaintRoller } from 'lucide-react';
+import { HardHat, DraftingCompass, Wrench, Building2, Shovel, PaintRoller, Layers, Droplets, Hammer, Paintbrush, Sprout, Flame } from 'lucide-react';
 import AnimateOnScroll from "@/components/layout/animate-on-scroll";
 
 const services = [
@@ -34,9 +34,39 @@ const services = [
     title: 'Flooring & Painting',
     description: 'Providing the finishing touches that bring your space to life, with professional flooring installation and painting services.',
   },
+  {
+    icon: <Layers className="h-10 w-10 text-primary" />,
+    title: 'Concrete Work',
+    description: 'Specializing in high-quality concrete pouring, finishing, and formwork for strong and durable structures.',
+  },
+  {
+    icon: <Droplets className="h-10 w-10 text-primary" />,
+    title: 'Tiling & Waterproofing',
+    description: 'Expert tile installation and robust waterproofing solutions to protect and beautify your property.',
+  },
+  {
+    icon: <Hammer className="h-10 w-10 text-primary" />,
+    title: 'Carpentry & Woodwork',
+    description: 'Custom carpentry and fine woodwork to add character and functionality to any space.',
+  },
+  {
+    icon: <Paintbrush className="h-10 w-10 text-primary" />,
+    title: 'Plastering & Ceiling',
+    description: 'Smooth plastering and ceiling work for flawless interior walls and ceilings.',
+  },
+  {
+    icon: <Sprout className="h-10 w-10 text-primary" />,
+    title: 'Landscaping & Paving',
+    description: 'Transforming outdoor spaces with creative landscaping design and durable paving solutions.',
+  },
+  {
+    icon: <Flame className="h-10 w-10 text-primary" />,
+    title: 'Steel Fabrication',
+    description: 'Custom steel fabrication for structural components, railings, and decorative elements.',
+  },
 ];
 
-const animationDelays = ["delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300"];
+const animationDelays = ["delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300", "delay-0", "delay-150", "delay-300"];
 
 export default function Services() {
   return (
@@ -52,7 +82,7 @@ export default function Services() {
           {services.map((service, index) => (
             <AnimateOnScroll
               key={index}
-              animationClasses={`animate-in fade-in zoom-in-95 duration-500 ${animationDelays[index]}`}
+              animationClasses={`animate-in fade-in zoom-in-95 duration-500 ${animationDelays[index % animationDelays.length]}`}
               className="h-full"
             >
               <Card className="flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-card rounded-2xl h-full">
