@@ -54,6 +54,7 @@ export default function UploadProjectsPage() {
       showOnHomepage: false,
       category: '',
       subcategory: '',
+      images: undefined,
     },
   });
 
@@ -214,7 +215,11 @@ export default function UploadProjectsPage() {
                         onBlur={onBlur}
                         name={name}
                         ref={ref}
-                        onChange={(e) => onChange(e.target.files)}
+                        onChange={(e) => {
+                            if (e.target.files) {
+                                onChange(e.target.files);
+                            }
+                        }}
                         disabled={loading}
                       />
                     </FormControl>

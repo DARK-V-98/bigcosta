@@ -94,7 +94,7 @@ export default function ManageEventsPage() {
       });
 
       toast({ title: 'Success', description: 'New event added successfully.' });
-      form.reset({ eventName: '', image: undefined });
+      form.reset();
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
       if (fileInput) fileInput.value = '';
     } catch (error) {
@@ -169,7 +169,11 @@ export default function ManageEventsPage() {
                           onBlur={onBlur}
                           name={name}
                           ref={ref}
-                          onChange={(e) => onChange(e.target.files)}
+                          onChange={(e) => {
+                            if (e.target.files) {
+                              onChange(e.target.files);
+                            }
+                          }}
                           disabled={isSubmitting}
                         />
                       </FormControl>
