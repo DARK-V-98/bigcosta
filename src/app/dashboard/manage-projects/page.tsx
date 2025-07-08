@@ -353,14 +353,14 @@ export default function ManageProjectsPage() {
                     render={({ field }) => (
                     <FormItem>
                         <FormLabel>Sub-category (Optional)</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value} disabled={isSubmitting}>
+                        <Select onValueChange={(v) => field.onChange(v === '__none__' ? '' : v)} value={field.value} disabled={isSubmitting}>
                         <FormControl>
                             <SelectTrigger>
                             <SelectValue placeholder="Select a sub-category" />
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                             <SelectItem value="">None</SelectItem>
+                             <SelectItem value="__none__">None</SelectItem>
                             {availableSubcategories.map(sub => <SelectItem key={sub} value={sub}>{sub}</SelectItem>)}
                         </SelectContent>
                         </Select>

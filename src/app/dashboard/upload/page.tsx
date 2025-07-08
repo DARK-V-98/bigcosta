@@ -168,14 +168,14 @@ export default function UploadProjectsPage() {
                     render={({ field }) => (
                     <FormItem>
                         <FormLabel>Sub-category (Optional)</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value} disabled={loading}>
+                        <Select onValueChange={(v) => field.onChange(v === '__none__' ? '' : v)} value={field.value} disabled={loading}>
                         <FormControl>
                             <SelectTrigger>
                             <SelectValue placeholder="Select a sub-category" />
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            <SelectItem value="">None</SelectItem>
+                            <SelectItem value="__none__">None</SelectItem>
                             {availableSubcategories.map(sub => <SelectItem key={sub} value={sub}>{sub}</SelectItem>)}
                         </SelectContent>
                         </Select>
