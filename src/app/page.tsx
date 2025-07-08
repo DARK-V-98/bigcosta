@@ -1,6 +1,7 @@
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import Hero from '@/components/sections/hero';
+import WhoWeAre from '@/components/sections/who-we-are';
 import Services from '@/components/sections/services';
 import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
@@ -13,6 +14,9 @@ export default function Home() {
       <Header />
       <main className="flex-1 flex flex-col space-y-24 md:space-y-32 py-12 overflow-x-hidden">
         <Hero />
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
+          <WhoWeAre />
+        </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Services />
         </AnimateOnScroll>
