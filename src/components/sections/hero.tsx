@@ -105,7 +105,7 @@ export default function Hero() {
             
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000">
               <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto">
-                <Link href="/#contact">Get a Free Quote</Link>
+                <Link href="/about-us">About Us</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg text-white border-white hover:bg-white hover:text-black w-full sm:w-auto">
                 <Link href="/projects">
