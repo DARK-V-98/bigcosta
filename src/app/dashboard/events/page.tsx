@@ -56,6 +56,9 @@ export default function ManageEventsPage() {
 
   const form = useForm<EventFormValues>({
     resolver: zodResolver(eventSchema),
+    defaultValues: {
+      eventName: '',
+    },
   });
 
   useEffect(() => {
