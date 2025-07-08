@@ -19,10 +19,10 @@ export default function Home() {
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-right-32 duration-1000">
           <Projects />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
+        <AnimateOnScroll animationClasses="animate-in fade-in zoom-in-95 slide-in-from-left-32 duration-1000">
           <Testimonials />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
+        <AnimateOnScroll animationClasses="animate-in fade-in zoom-in-95 slide-in-from-left-32 duration-1000">
           <Contact />
         </AnimateOnScroll>
       </main>

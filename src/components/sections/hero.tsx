@@ -95,7 +95,7 @@ export default function Hero() {
                 height={128}
                 className="h-32 w-32 mb-6 mx-auto rounded-full"
               />
-              <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
+              <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg animate-neon-text">
                 Building Dreams, Crafting Futures
               </h1>
               <p className="mt-6 text-base sm:text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto drop-shadow-sm">
@@ -104,7 +104,7 @@ export default function Hero() {
             </div>
             
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000">
-              <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto">
+              <Button asChild size="lg" className="px-8 py-6 text-lg w-full sm:w-auto animate-neon-button">
                 <Link href="/#contact">Get a Free Quote</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg text-white border-white hover:bg-white hover:text-black w-full sm:w-auto">
