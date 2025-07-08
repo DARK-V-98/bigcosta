@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Image src="/logobc.png" alt="Big Costa Construction Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
-              <span className="font-headline text-xl font-bold text-foreground">Big Costa Construction (Private) Limited</span>
+              <span className="font-headline text-lg font-medium text-foreground">Big Costa Construction (Private) Limited</span>
             </Link>
             <p className="text-sm text-center md:text-left">Building your vision, one brick at a time.</p>
           </div>
