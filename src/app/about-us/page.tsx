@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Target, Eye, Award, ShieldCheck, HardHat } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
@@ -71,68 +71,13 @@ export default function AboutUsPage() {
             </Card>
           </div>
 
-          <section id="awards" className="mt-24">
-            <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-headline text-3xl md:text-4xl font-bold">Awards and Certifications</h2>
-                <p className="mt-4 text-lg text-secondary-foreground">
-                  We are recognized for our commitment to quality, safety, and excellence in the construction industry.
-                </p>
-              </div>
-              <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                  <h3 className="font-headline text-2xl font-bold text-primary">A Legacy of Excellence</h3>
-                  <p className="text-muted-foreground">
-                    Our dedication to delivering outstanding results has been consistently recognized by industry leaders and clients alike. These accolades are a testament to our team's hard work, innovative solutions, and unwavering focus on exceeding expectations.
-                  </p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 bg-primary/10 rounded-full">
-                        <Award className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Industry-Recognized Quality</h4>
-                        <p className="text-muted-foreground text-sm">Holding top-tier certifications for quality management and construction excellence.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 bg-primary/10 rounded-full">
-                        <ShieldCheck className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Commitment to Safety</h4>
-                        <p className="text-muted-foreground text-sm">Awarded for our impeccable safety records and adherence to the highest safety standards.</p>
-                      </div>
-                    </li>
-                    <li className="flex items-start gap-4">
-                      <div className="p-2 bg-primary/10 rounded-full">
-                        <HardHat className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Professional Craftsmanship</h4>
-                        <p className="text-muted-foreground text-sm">Certified professionals in every trade, ensuring expert execution on all projects.</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
-                  <Image
-                    src="/cer.png"
-                    alt="Big Costa Construction Certifications"
-                    fill
-                    className="object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
           <section id="ceo-message" className="mt-24">
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
-                <div className="max-w-4xl mx-auto text-center">
-                <div className="space-y-6">
+                <div className="text-center max-w-3xl mx-auto">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">A Message from Our CEO</h2>
-                    <div className="text-secondary-foreground space-y-6 text-left">
+                </div>
+                <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-4 text-secondary-foreground">
                         <p>
                             We are proud to be a leading company in construction, engineering, and building materials. We are known for our skill, competitive prices, and on-time delivery. We follow high quality and safety standards. We have a long history of making our clients happy with good management and great work. We continue to do this.
                         </p>
@@ -143,7 +88,14 @@ export default function AboutUsPage() {
                            Our goal is to grow and get more business. With our dedicated staff and modern management, we can achieve this. We are proud of our employees. Their hard work and loyalty make Big Costa Construction a strong company.
                         </p>
                     </div>
-                </div>
+                    <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
+                        <Image
+                            src="/cer.png"
+                            alt="Big Costa Construction Certifications"
+                            fill
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </div>
                 </div>
             </div>
            </section>
