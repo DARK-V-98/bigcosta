@@ -30,8 +30,8 @@ const projectSchema = z.object({
     .instanceof(FileList)
     .refine((files) => files?.length >= 1, 'At least one image is required.')
     .refine(
-        (files) => Array.from(files).every((file) => file.size <= 5 * 1024 * 1024),
-        'Each image size must be less than 5MB.'
+        (files) => Array.from(files).every((file) => file.size <= 10 * 1024 * 1024),
+        'Each image size must be less than 10MB.'
     )
     .refine(
         (files) => Array.from(files).every((file) => file.type.startsWith('image/')),

@@ -39,7 +39,7 @@ const eventSchema = z.object({
   image: z
     .instanceof(FileList)
     .refine((files) => files?.length === 1, 'A single image is required.')
-    .refine((files) => files?.[0]?.size <= 5 * 1024 * 1024, 'Image size must be less than 5MB.')
+    .refine((files) => files?.[0]?.size <= 10 * 1024 * 1024, 'Image size must be less than 10MB.')
     .refine((files) => files?.[0]?.type.startsWith('image/'), 'Only image files are accepted.'),
 });
 
