@@ -1,12 +1,15 @@
 
 'use client';
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
+import { db } from '@/lib/firebase-client';
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -23,6 +26,7 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,14 +37,29 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We will get back to you shortly.",
-      variant: 'default',
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    try {
+      await addDoc(collection(db, "contactSubmissions"), {
+        ...values,
+        createdAt: serverTimestamp(),
+        read: false,
+      });
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We will get back to you shortly.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error sending your message. Please try again.",
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -96,7 +115,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Name" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="Your Name" {...field} className="bg-background placeholder:text-muted-foreground" disabled={loading} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -109,7 +128,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="your.email@example.com" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="your.email@example.com" {...field} className="bg-background placeholder:text-muted-foreground" disabled={loading} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -122,7 +141,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder="+94 (XX) XXX-XXXX" {...field} className="bg-background placeholder:text-muted-foreground" />
+                            <Input placeholder="+94 (XX) XXX-XXXX" {...field} className="bg-background placeholder:text-muted-foreground" disabled={loading} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -135,13 +154,16 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Your Message</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} />
+                            <Textarea placeholder="Tell us about your project..." className="min-h-[120px] bg-background placeholder:text-muted-foreground" {...field} disabled={loading} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" size="lg" className="w-full">Send Message</Button>
+                    <Button type="submit" size="lg" className="w-full" disabled={loading}>
+                      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {loading ? 'Sending...' : 'Send Message'}
+                    </Button>
                   </form>
                 </Form>
               </CardContent>

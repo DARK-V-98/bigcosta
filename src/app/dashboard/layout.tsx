@@ -18,6 +18,7 @@ const navItems = [
     { name: 'Upload Projects', href: '/dashboard/upload' },
     { name: 'Manage Projects', href: '/dashboard/manage-projects' },
     { name: 'Manage Events', href: '/dashboard/events' },
+    { name: 'Contact Messages', href: '/dashboard/messages' },
 ];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
