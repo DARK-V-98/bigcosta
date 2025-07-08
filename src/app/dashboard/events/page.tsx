@@ -58,6 +58,7 @@ export default function ManageEventsPage() {
     resolver: zodResolver(eventSchema),
     defaultValues: {
       eventName: '',
+      image: undefined,
     },
   });
 
@@ -158,15 +159,17 @@ export default function ManageEventsPage() {
                 <FormField
                   control={form.control}
                   name="image"
-                  render={({ field: { onChange, ...rest } }) => (
+                  render={({ field: { onChange, onBlur, name, ref } }) => (
                     <FormItem>
                       <FormLabel>Event Image</FormLabel>
                       <FormControl>
                         <Input
                           type="file"
                           accept="image/*"
+                          onBlur={onBlur}
+                          name={name}
+                          ref={ref}
                           onChange={(e) => onChange(e.target.files)}
-                          {...rest}
                           disabled={isSubmitting}
                         />
                       </FormControl>

@@ -203,7 +203,7 @@ export default function UploadProjectsPage() {
               <FormField
                 control={form.control}
                 name="images"
-                render={({ field: { onChange, value, ...rest } }) => (
+                render={({ field: { onChange, onBlur, name, ref } }) => (
                   <FormItem>
                     <FormLabel>Project Images (Bulk Upload)</FormLabel>
                     <FormControl>
@@ -211,8 +211,10 @@ export default function UploadProjectsPage() {
                         type="file" 
                         accept="image/*"
                         multiple
+                        onBlur={onBlur}
+                        name={name}
+                        ref={ref}
                         onChange={(e) => onChange(e.target.files)}
-                        {...rest}
                         disabled={loading}
                       />
                     </FormControl>
