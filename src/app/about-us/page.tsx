@@ -46,7 +46,7 @@ const qualifications = [
 
 interface DirectorEvent {
   id: string;
-  eventName: string;
+  eventName?: string;
   imageUrl: string;
 }
 
@@ -223,11 +223,13 @@ export default function AboutUsPage() {
                     {events.map((event) => (
                       <Card key={event.id} className="overflow-hidden rounded-2xl group">
                         <div className="relative aspect-video">
-                          <Image src={event.imageUrl} alt={event.eventName} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
+                          <Image src={event.imageUrl} alt={event.eventName || 'A special event moment'} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
                         </div>
-                        <CardContent className="p-4 bg-card">
-                          <p className="font-semibold text-center text-card-foreground">{event.eventName}</p>
-                        </CardContent>
+                        {event.eventName && (
+                          <CardContent className="p-4 bg-card">
+                            <p className="font-semibold text-center text-card-foreground">{event.eventName}</p>
+                          </CardContent>
+                        )}
                       </Card>
                     ))}
                   </div>

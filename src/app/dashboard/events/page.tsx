@@ -30,12 +30,12 @@ import {
 
 interface DirectorEvent {
   id: string;
-  eventName: string;
+  eventName?: string;
   imageUrl: string;
 }
 
 const eventSchema = z.object({
-  eventName: z.string().min(3, { message: 'Event name must be at least 3 characters long.' }),
+  eventName: z.string().optional(),
   image: z
     .instanceof(FileList)
     .refine((files) => files?.length === 1, 'A single image is required.')
@@ -84,13 +84,13 @@ export default function ManageEventsPage() {
       const imageUrl = await getDownloadURL(uploadResult.ref);
 
       await addDoc(collection(db, 'directorEvents'), {
-        eventName: data.eventName,
+        eventName: data.eventName || '',
         imageUrl,
         createdAt: serverTimestamp(),
       });
 
       toast({ title: 'Success', description: 'New event added successfully.' });
-      form.reset();
+      form.reset({ eventName: '', image: undefined });
       const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
       if (fileInput) fileInput.value = '';
     } catch (error) {
@@ -144,7 +144,7 @@ export default function ManageEventsPage() {
                   name="eventName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Event Name</FormLabel>
+                      <FormLabel>Event Name (Optional)</FormLabel>
                       <FormControl>
                         <Input placeholder="e.g., Company Anniversary" {...field} disabled={isSubmitting} />
                       </FormControl>
@@ -198,8 +198,8 @@ export default function ManageEventsPage() {
                 {events.map((event) => (
                   <div key={event.id} className="border p-3 rounded-lg flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                       <Image src={event.imageUrl} alt={event.eventName} width={64} height={48} className="rounded-md object-cover w-16 h-12" />
-                       <span className="font-medium">{event.eventName}</span>
+                       <Image src={event.imageUrl} alt={event.eventName || 'Event Image'} width={64} height={48} className="rounded-md object-cover w-16 h-12" />
+                       <span className="font-medium">{event.eventName || <span className="italic text-muted-foreground">Untitled Event</span>}</span>
                     </div>
                     <Button variant="destructive" size="icon" onClick={() => handleDeleteClick(event)} disabled={isDeleting}>
                         <Trash2 className="h-4 w-4" />
