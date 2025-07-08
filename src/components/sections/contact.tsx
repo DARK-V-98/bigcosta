@@ -86,7 +86,7 @@ export default function Contact() {
               <div className="space-y-3 text-muted-foreground">
                 <div className="flex items-center gap-4">
                   <Mail className="h-5 w-5 text-primary" />
-                  <span>contact@bigcosta.com</span>
+                  <span>costa@bigcosta.lk</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="h-5 w-5 text-primary" />
