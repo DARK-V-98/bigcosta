@@ -137,6 +137,9 @@ export default function AboutUsPage() {
             <section id="qualifications" className="mt-24">
               <div className="text-center max-w-3xl mx-auto">
                 <h2 className="font-headline text-3xl md:text-4xl font-bold">Managing Director's Qualifications</h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    Managing Director Lakshman De Costa is a fully qualified chartered marketer by profession; holds a Dip in Marketing, a post-graduate diploma In marketing, and a Master of Business Management (UK). Mr. Lakshman De Costa has more than 25 years of experience in the field of Construction. Property Development in Sri Lanka and Internationally as well, and respectfully, Ex-Sri Lankan Naval Officer.
+                </p>
               </div>
               <div className="mt-12 max-w-4xl mx-auto">
                 <div className="relative">
