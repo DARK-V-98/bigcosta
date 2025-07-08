@@ -14,6 +14,9 @@ export default function WhoWeAre() {
           <p className="text-muted-foreground leading-relaxed">
             INTEGRITY. EXPERTISE. LEADERSHIP. Our expertise in estimating, construction, project management and reconstruction services ensures that our customers receive a quality product at a fair price and in a reasonable time frame. This is accomplished through the selective use of responsible subcontractors, hiring and retaining first class employees, and working for clients that share a belief in open, honest, and direct communication.
           </p>
+           <p className="text-muted-foreground leading-relaxed">
+            <span className="font-semibold text-foreground">VISION:</span> To build a legacy of construction excellence.
+          </p>
         </div>
         <div className="relative h-96 w-full rounded-2xl overflow-hidden shadow-lg group">
           <Image
