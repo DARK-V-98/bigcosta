@@ -7,6 +7,7 @@ import Projects from '@/components/sections/projects';
 import Testimonials from '@/components/sections/testimonials';
 import Contact from '@/components/sections/contact';
 import AnimateOnScroll from '@/components/layout/animate-on-scroll';
+import VisionMission from '@/components/sections/vision-mission';
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
         <Hero />
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
           <WhoWeAre />
+        </AnimateOnScroll>
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
+          <VisionMission />
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
           <Services />
