@@ -2,56 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes rotate-light {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animated-light-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.animated-light-bg::before {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  left: -50%;
-  top: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: conic-gradient(
-    transparent,
-    hsl(var(--primary)),
-    transparent 30%
-  );
-  animation: rotate-light 4s linear infinite;
-}
-
-@keyframes pulse-text-neon {
-  0%,
-  100% {
-    text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary)), 0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent)), 0 0 40px hsl(var(--accent));
-  }
-  50% {
-    text-shadow: 0 0 2px hsl(var(--primary)), 0 0 5px hsl(var(--primary)), 0 0 8px hsl(var(--primary)), 0 0 10px hsl(var(--accent)), 0 0 15px hsl(var(--accent)), 0 0 20px hsl(var(--accent));
-  }
-}
-
-@keyframes pulse-box-neon {
-  0%,
-  100% {
-    box-shadow: 0 0 3px hsl(var(--primary)), 0 0 5px hsl(var(--primary)), 0 0 8px hsl(var(--accent));
-  }
-  50% {
-    box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--accent));
-  }
-}
-
 @keyframes fade-in-out {
   0%,
   100% {
@@ -60,14 +10,6 @@
   50% {
     opacity: 1;
   }
-}
-
-.animate-neon-text {
-  animation: pulse-text-neon 3s ease-in-out infinite;
-}
-
-.animate-neon-button {
-  animation: pulse-box-neon 2s ease-in-out infinite;
 }
 
 .animate-fade-in-out {
