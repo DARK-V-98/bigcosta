@@ -149,7 +149,7 @@ export default function ManageEventsPage() {
                     <FormItem>
                       <FormLabel>Event Name (Optional)</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Company Anniversary" {...field} disabled={isSubmitting} />
+                        <Input placeholder="e.g., Company Anniversary" {...field} value={field.value ?? ''} disabled={isSubmitting} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
