@@ -93,7 +93,7 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-5 w-5 text-primary" />
-                  <span>123, Galle Road, Colombo 03, Sri Lanka</span>
+                  <span>276/16 Weralugaha Landa Thewatta Road Ragama Sri Lanka</span>
                 </div>
               </div>
             </div>
