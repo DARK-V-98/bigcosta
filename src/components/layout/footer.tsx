@@ -46,7 +46,7 @@ export default function Footer() {
                <Link href="https://www.linkedin.com/in/lakshman-de-costa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                  <Linkedin className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
-               <Link href="#" aria-label="Instagram">
+               <Link href="https://www.instagram.com/lakshmandecosta?igsh=MWJ0eTV1NGlnazJ3Mw==" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                  <Instagram className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
              </div>
