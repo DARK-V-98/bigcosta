@@ -40,7 +40,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
              <h3 className="text-lg font-semibold text-foreground">Follow Us</h3>
              <div className="mt-4 flex justify-center md:justify-start gap-4">
-               <Link href="#" aria-label="Facebook">
+               <Link href="https://www.facebook.com/bigcostaconstruction" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                  <Facebook className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
                <Link href="#" aria-label="Twitter">
