@@ -1,15 +1,11 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
-import { db } from '@/lib/firebase-client';
+import { Target, Eye, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from '@/components/ui/skeleton';
-import { Target, Eye, GraduationCap } from 'lucide-react';
-import Image from 'next/image';
 
 const qualifications = [
   {
@@ -44,32 +40,7 @@ const qualifications = [
   }
 ];
 
-interface DirectorEvent {
-  id: string;
-  eventName?: string;
-  imageUrl: string;
-}
-
 export default function AboutUsPage() {
-  const [events, setEvents] = useState<DirectorEvent[]>([]);
-  const [loadingEvents, setLoadingEvents] = useState(true);
-
-  useEffect(() => {
-    const q = query(collection(db, 'directorEvents'), orderBy('createdAt', 'desc'));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const eventsData: DirectorEvent[] = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      } as DirectorEvent));
-      setEvents(eventsData);
-      setLoadingEvents(false);
-    }, (error) => {
-      console.error("Error fetching events: ", error);
-      setLoadingEvents(false);
-    });
-    return () => unsubscribe();
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -196,46 +167,6 @@ export default function AboutUsPage() {
                     ))}
                   </ul>
                 </div>
-              </div>
-            </section>
-
-            <section id="special-events" className="mt-24">
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-headline text-3xl md:text-4xl font-bold">Special Moments</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  A gallery of memorable events and milestones.
-                </p>
-              </div>
-              <div className="mt-12">
-                {loadingEvents ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {Array.from({ length: 3 }).map((_, index) => (
-                      <Card key={index} className="overflow-hidden rounded-2xl">
-                        <Skeleton className="w-full aspect-video" />
-                        <CardContent className="p-4">
-                          <Skeleton className="h-5 w-3/4 mx-auto" />
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                ) : events.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {events.map((event) => (
-                      <Card key={event.id} className="overflow-hidden rounded-2xl group">
-                        <div className="relative aspect-video">
-                          <Image src={event.imageUrl} alt={event.eventName || 'A special event moment'} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-                        </div>
-                        {event.eventName && (
-                          <CardContent className="p-4 bg-card">
-                            <p className="font-semibold text-center text-card-foreground">{event.eventName}</p>
-                          </CardContent>
-                        )}
-                      </Card>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-center text-muted-foreground">No special events have been added yet.</p>
-                )}
               </div>
             </section>
         </section>
