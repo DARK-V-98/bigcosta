@@ -132,7 +132,7 @@ export default function AboutUsPage() {
           <section id="director-message" className="mt-24">
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A Managing Director's Message</h2>
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A Chairman's Message</h2>
                 </div>
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-4 text-secondary-foreground">
@@ -160,9 +160,9 @@ export default function AboutUsPage() {
 
             <section id="qualifications" className="mt-24">
               <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-headline text-3xl md:text-4xl font-bold">Managing Director's Qualifications</h2>
+                <h2 className="font-headline text-3xl md:text-4xl font-bold">Chairman's Qualifications</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
-                    Managing Director Lakshman De Costa is a fully qualified chartered marketer by profession; holds a Dip in Marketing, a post-graduate diploma In marketing, and a Master of Business Management (UK). Mr. Lakshman De Costa has more than 25 years of experience in the field of Construction. Property Development in Sri Lanka and Internationally as well, and respectfully, Ex-Sri Lankan Naval Officer.
+                    Chairman Lakshman De Costa is a fully qualified chartered marketer by profession; holds a Dip in Marketing, a post-graduate diploma In marketing, and a Master of Business Management (UK). Mr. Lakshman De Costa has more than 25 years of experience in the field of Construction. Property Development in Sri Lanka and Internationally as well, and respectfully, Ex-Sri Lankan Naval Officer.
                 </p>
               </div>
               <div className="mt-12 max-w-4xl mx-auto">
