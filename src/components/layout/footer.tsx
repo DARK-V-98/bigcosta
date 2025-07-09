@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram } from 'lucide-react';
+import { Facebook, Linkedin, Instagram } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import Image from 'next/image';
 
@@ -43,8 +43,8 @@ export default function Footer() {
                <Link href="https://www.facebook.com/bigcostaconstruction" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                  <Facebook className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
-               <Link href="#" aria-label="Twitter">
-                 <Twitter className="h-6 w-6 hover:text-primary transition-colors" />
+               <Link href="https://www.linkedin.com/in/lakshman-de-costa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                 <Linkedin className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
                <Link href="#" aria-label="Instagram">
                  <Instagram className="h-6 w-6 hover:text-primary transition-colors" />
