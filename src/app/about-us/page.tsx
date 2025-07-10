@@ -1,44 +1,11 @@
 
 'use client';
 
-import { Target, Eye, GraduationCap } from 'lucide-react';
+import { Target, Eye } from 'lucide-react';
 import Image from 'next/image';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-const qualifications = [
-  {
-    title: 'Master in Business Administration',
-    year: '2003',
-    institution: 'Wigan & Leight Campus - UK (LBS)',
-    details: ''
-  },
-  {
-    title: 'Postgraduate Diploma in Marketing Management',
-    year: '2001',
-    institution: 'Wigan & Leight Campus - UK (LBS)',
-    details: ''
-  },
-  {
-    title: 'Pharmacist',
-    year: '1997',
-    institution: 'Medical Council of Sri Lanka',
-    details: 'Apprentice Pharmacist (Reg No - N4822)'
-  },
-  {
-    title: 'General Certificate of Post Master',
-    year: '1996',
-    institution: 'Sri Lanka Telecommunication, Sri Lanka',
-    details: 'Marine Telecommunication (Cert No - G/08/96)'
-  },
-  {
-    title: 'Advanced Diploma in Firefighting',
-    year: '1996',
-    institution: 'Nautical Engineering College, Sri Lanka',
-    details: 'Advanced Diploma in Firefighting / First Aid and Survival at Colombo'
-  }
-];
 
 export default function AboutUsPage() {
   return (
@@ -128,47 +95,6 @@ export default function AboutUsPage() {
                 </div>
             </div>
            </section>
-
-            <section id="qualifications" className="mt-24">
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-headline text-3xl md:text-4xl font-bold">Chairman's Qualifications</h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                    Chairman Lakshman De Costa is a fully qualified chartered marketer by profession; holds a Dip in Marketing, a post-graduate diploma In marketing, and a Master of Business Management (UK). Mr. Lakshman De Costa has more than 25 years of experience in the field of Construction. Property Development in Sri Lanka and Internationally as well, and respectfully, Ex-Sri Lankan Naval Officer.
-                </p>
-              </div>
-              <div className="mt-12 max-w-4xl mx-auto">
-                <div className="relative">
-                  <div className="absolute left-5 top-5 -ml-px h-full w-0.5 bg-border" aria-hidden="true" />
-                  <ul className="space-y-12">
-                    {qualifications.map((qualification, index) => (
-                      <li key={index}>
-                        <div className="relative flex items-start space-x-4">
-                          <div className="flex-shrink-0">
-                            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary ring-8 ring-background">
-                              <GraduationCap className="h-5 w-5 text-primary-foreground" />
-                            </span>
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <h3 className="font-headline text-xl font-bold text-foreground">
-                              {qualification.title}
-                            </h3>
-                            <p className="mt-1 text-sm font-semibold text-muted-foreground">
-                              {qualification.year}
-                            </p>
-                            <div className="mt-2 text-base text-muted-foreground">
-                              <p>{qualification.institution}</p>
-                              {qualification.details && (
-                                <p className="mt-1 text-sm italic">{qualification.details}</p>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
         </section>
       </main>
       <Footer />
