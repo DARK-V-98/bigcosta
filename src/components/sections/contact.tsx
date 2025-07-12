@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from "react";
@@ -90,6 +91,10 @@ export default function Contact() {
                 <div className="flex items-center gap-4">
                   <Phone className="h-5 w-5 text-primary" />
                   <span>+94 77 466 2078</span>
+                </div>
+                 <div className="flex items-center gap-4">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <span>+94 114 991 200 (Landline)</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-5 w-5 text-primary" />
