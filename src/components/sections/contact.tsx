@@ -94,7 +94,7 @@ export default function Contact() {
                 </div>
                  <div className="flex items-center gap-4">
                   <Phone className="h-5 w-5 text-primary" />
-                  <span>+94 11 499 1200 (Landline)</span>
+                  <span>+94 11 499 1200</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-5 w-5 text-primary" />
