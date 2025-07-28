@@ -46,6 +46,9 @@ export default function Footer() {
                <Link href="https://www.instagram.com/big_costa_construction" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                  <Instagram className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
+                <Link href="https://www.linkedin.com/in/lakshman-de-costa-271562376" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                 <Linkedin className="h-6 w-6 hover:text-primary transition-colors" />
+               </Link>
              </div>
           </div>
         </div>
