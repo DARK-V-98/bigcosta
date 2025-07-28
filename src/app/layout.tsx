@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     description: 'Quality construction and design services in Sri Lanka.',
     images: ['/logobc.png'], // Path to your logo
   },
+  icons: {
+    icon: '/logobc.png',
+    shortcut: '/logobc.png',
+    apple: '/logobc.png',
+  },
 };
 
 export default function RootLayout({
