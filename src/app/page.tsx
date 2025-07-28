@@ -29,6 +29,8 @@ const jsonLd: WithContext<HomeAndConstructionBusiness> = {
   },
   'sameAs': [
     'https://www.facebook.com/bigcostaconstruction',
+    'https://www.instagram.com/big_costa_construction',
+    'https://www.linkedin.com/in/lakshman-de-costa-271562376',
   ],
   'geo': {
     '@type': 'GeoCoordinates',
@@ -49,7 +51,8 @@ const jsonLd: WithContext<HomeAndConstructionBusiness> = {
       'opens': '09:00',
       'closes': '17:00'
     }
-  ]
+  ],
+  'logo': 'https://bigcosta.lk/logobc.png'
 };
 
 export default function Home() {
@@ -65,7 +68,7 @@ export default function Home() {
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
           <WhoWeAre />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-top-16 duration-1000">
           <VisionMission />
         </AnimateOnScroll>
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-left-32 duration-1000">
@@ -74,10 +77,10 @@ export default function Home() {
         <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-right-32 duration-1000">
           <Projects />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in zoom-in-95 slide-in-from-left-32 duration-1000">
+        <AnimateOnScroll animationClasses="animate-in fade-in zoom-in-95 duration-1000">
           <Testimonials />
         </AnimateOnScroll>
-        <AnimateOnScroll animationClasses="animate-in fade-in zoom-in-95 slide-in-from-left-32 duration-1000">
+        <AnimateOnScroll animationClasses="animate-in fade-in slide-in-from-bottom-16 duration-1000">
           <Contact />
         </AnimateOnScroll>
       </main>
