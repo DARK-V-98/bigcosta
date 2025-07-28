@@ -12,12 +12,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProjectCard from '@/components/project-card';
 import ImageCarouselDialog from '@/components/image-carousel-dialog';
-import { type Metadata } from 'next';
-
-export const metadata: Metadata = {
-    title: 'Our Projects',
-    description: 'Browse our portfolio of completed construction projects across Sri Lanka, including residential, commercial, and industrial buildings.',
-};
 
 interface Project {
   id: string;
