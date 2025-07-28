@@ -4,6 +4,13 @@ import Footer from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { HardHat, DraftingCompass, Wrench, Building2, Shovel, PaintRoller, Layers, Droplets, Hammer, Paintbrush, Sprout, Flame } from 'lucide-react';
 import AnimateOnScroll from "@/components/layout/animate-on-scroll";
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Our Services',
+    description: 'Explore the wide range of construction services offered by Big Costa Construction, from general contracting and design to specialized trades like electrical, plumbing, and steel fabrication.',
+};
+
 
 const allServices = [
   {

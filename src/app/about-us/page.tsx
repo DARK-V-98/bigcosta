@@ -6,6 +6,12 @@ import Image from 'next/image';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'About Us',
+    description: 'Learn about the history, mission, and vision of Big Costa Construction, a leading construction firm in Sri Lanka.',
+};
 
 export default function AboutUsPage() {
   return (
