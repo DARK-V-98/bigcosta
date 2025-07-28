@@ -43,6 +43,9 @@ export default function Footer() {
                <Link href="https://www.facebook.com/bigcostaconstruction" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                  <Facebook className="h-6 w-6 hover:text-primary transition-colors" />
                </Link>
+               <Link href="https://www.instagram.com/big_costa_construction" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                 <Instagram className="h-6 w-6 hover:text-primary transition-colors" />
+               </Link>
              </div>
           </div>
         </div>
