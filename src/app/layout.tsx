@@ -5,8 +5,8 @@ import { AuthProvider } from '@/context/auth-provider';
 
 export const metadata: Metadata = {
   title: 'Big Costa Construction (Private) Limited - Quality & Professionalism',
-  description: 'Big Costa Construction offers top-tier residential, commercial, and renovation services. Contact us for a quote today.',
-  keywords: 'construction, residential, commercial, renovation, building, contractor, general contractor',
+  description: 'Big Costa Construction is a top construction company in Sri Lanka, specializing in house construction, commercial buildings, and renovations. Contact the best builders in Sri Lanka for your project.',
+  keywords: 'construction companies in Sri Lanka, best construction company in Sri Lanka, house construction Sri Lanka, building contractors Sri Lanka, home construction in Sri Lanka, commercial construction Sri Lanka, architectural design Sri Lanka, construction materials Sri Lanka, builders in Colombo, Big Costa Construction',
 };
 
 export default function RootLayout({
