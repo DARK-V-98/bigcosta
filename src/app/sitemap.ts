@@ -28,12 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: page === '/' ? 1 : 0.8,
   }));
   
-  // Note: We can't dynamically serve different sitemaps for different domains
-  // in a static build. A common approach is to have one primary domain for SEO
-  // or manage separate sitemaps. For now, this will generate a sitemap
-  // primarily for the .lk domain as it is set as the metadataBase.
-  // To have fully separate sitemaps, a more complex server-side setup is needed.
-  // This setup provides a good foundation.
+  // Note: This combines sitemaps for both domains into one file. 
+  // For optimal SEO, it's often recommended to host separate sitemap files for each domain 
+  // and submit them individually to search consoles. However, this combined approach is a valid starting point.
 
-  return lkEntries;
+  return [...lkEntries, ...comEntries];
 }
