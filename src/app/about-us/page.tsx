@@ -54,13 +54,13 @@ export default function AboutUsPage() {
                   Get an in-depth look at our work, capabilities, and company history.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <Button asChild size="lg">
+                  <Button asChild size="lg" className="rounded-full">
                     <a href="/pro.pdf" target="_blank" rel="noopener noreferrer">
                       <Eye className="mr-2" />
                       View Profile
                     </a>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="lg" className="rounded-full">
                     <a href="/pro.pdf" download="Big_Costa_Construction_Profile.pdf">
                       <Download className="mr-2" />
                       Download PDF
