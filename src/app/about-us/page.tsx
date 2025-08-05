@@ -1,11 +1,12 @@
 
 'use client';
 
-import { Target, Eye } from 'lucide-react';
+import { Target, Eye, Download, FileText } from 'lucide-react';
 import Image from 'next/image';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from '@/components/ui/button';
 
 export default function AboutUsPage() {
   return (
@@ -42,6 +43,34 @@ export default function AboutUsPage() {
             </div>
           </div>
           
+          <div className="mt-24 text-center">
+            <Card className="inline-block bg-card/50 rounded-2xl p-8">
+              <CardHeader className="p-0">
+                <FileText className="h-12 w-12 mx-auto text-primary" />
+                <CardTitle className="font-headline text-3xl mt-4">Our Company Profile</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0 mt-4">
+                <p className="text-muted-foreground mb-6">
+                  Get an in-depth look at our work, capabilities, and company history.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <Button asChild size="lg">
+                    <a href="/pro.pdf" target="_blank" rel="noopener noreferrer">
+                      <Eye className="mr-2" />
+                      View Profile
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg">
+                    <a href="/pro.pdf" download="Big_Costa_Construction_Profile.pdf">
+                      <Download className="mr-2" />
+                      Download PDF
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="rounded-2xl bg-card/50">
                 <CardHeader className="flex flex-row items-center gap-4">
