@@ -99,7 +99,7 @@ export default function AboutUsPage() {
           <section id="director-message" className="mt-24">
             <div className="rounded-3xl bg-gradient-to-br from-secondary to-background p-8 md:p-12 lg:p-20">
                 <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="font-headline text-3xl md:text-4xl font-bold">A Chairman's Message</h2>
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">The Chairman's Message</h2>
                 </div>
                 <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-4 text-secondary-foreground">
